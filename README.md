@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Zonemay
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# zonemay
+Real project for Zone May - Sliven
+>>>>>>> 60833cdea7d1b113d87f8ce99efa4c79db8d105d
