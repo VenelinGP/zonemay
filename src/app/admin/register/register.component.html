@@ -1,0 +1,46 @@
+<div class="row x-50"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <!--Intro Section-->
+        <div class="col-md-5 col-xl-5">
+            <!--Form-->
+            <mdb-card class="wow fadeInDown" data-wow-delay="0.3s">
+                <mdb-card-body class="full-bg-img z-depth-2">
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3 class="white-text">
+                            <mdb-icon fas icon="user" class="text-white"></mdb-icon> Register
+                        </h3>
+                    </div>
+                    <!--Body-->
+                    <div class="md-form">
+                        <mdb-icon fas icon="user" class="text-white active"></mdb-icon>
+                        <input #username type="text" id="form1" class="text-white form-control" mdbInput>
+                        <label for="form1" class="text-white">Your username</label>
+                    </div>
+                    <div class="md-form">
+                        <mdb-icon fas icon="lock" class="text-white active"></mdb-icon>
+                        <input #password type="password" id="form2" class="text-white form-control" mdbInput>
+                        <label for="form2" class="text-white">Your password</label>
+                    </div>
+                    <div class="md-form">
+                        <mdb-icon fas icon="user" class="text-white active"></mdb-icon>
+                        <input #name type="text" id="form3" class="text-white form-control" mdbInput>
+                        <label for="form3" class="text-white">Your name</label>
+                    </div>
+                    <div class="md-form">
+                        <mdb-icon fas icon="envelope" class="text-white active"></mdb-icon>
+                        <input #email type="email" id="form4" class="text-white form-control" mdbInput>
+                        <label for="form4" class="text-white">Your email</label>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button mdbBtn color="deep-purple" block="true" mdbWavesEffect (click)="signUp(username.value, password.value, name.value, email.value)">Sign up</button>
+                    </div>
+                </mdb-card-body>
+            </mdb-card>
+            <!--/.Form-->
+        </div>
+
+    </div>
+</div>
