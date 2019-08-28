@@ -11,37 +11,6 @@ const data = mongoose.connect(dbURI, {
 });
 
 module.exports = () => {
-    function getAdminByName(username) {
-        return new Promise((resolve, reject) => {
-            // data;
-            let db = mongoose.connection;
-            db.on('open', () => {
-                console.log("getAdminByUsername we're connected!");
-            });
-            AdminModel.findOne({
-                    username: username
-                })
-                .then(admin => {
-                    resolve(admin);
-                });
-        });
-    }
-
-    function getAdminById(userId) {
-        return new Promise((resolve, reject) => {
-            let db = mongoose.connection;
-            db.on('open', () => {
-                console.log("getAdminById we're connected!");
-            });
-            AdminModel.findOne({
-                    _id: userId
-                })
-                .then(admin => {
-                    resolve(admin);
-                });
-        });
-    }
-
     function addAdmin(req, res) {
 
         mongoose.connect(dbURI, {
@@ -95,9 +64,66 @@ module.exports = () => {
         }
     }
 
+    function getAdmins(req, res) {
+        mongoose.connect(dbURI, {
+            useNewUrlParser: true
+        });
+        db.on('error', (err) => {
+            console.log('connection error!');
+        });
+        db.on('open', () => {
+            console.log("getAdmins we're connected!");
+        });
+        AdminModel.find()
+            .then((users) => {
+                admins = (users.role == "Admin");
+                return res.send({
+                    status: true,
+                    message: admins
+                });
+            });
+    }
+
+    function getAdminByName(username) {
+        return new Promise((resolve, reject) => {
+            // data;
+            let db = mongoose.connection;
+            db.on('open', () => {
+                console.log("getAdminByUsername we're connected!");
+            });
+            AdminModel.findOne({
+                    username: username
+                })
+                .then(admin => {
+                    resolve(admin);
+                });
+        });
+    }
+
+    function getAdminById(req, res) {
+        userId = req.params.id;
+        mongoose.connect(dbURI, {
+            useNewUrlParser: true
+        });
+        db.on('error', (err) => {
+            console.log('connection error!');
+        });
+        db.on('open', () => {
+            console.log("getAdminById we're connected!");
+        });
+        AdminModel.findOne({
+                _id: userId
+            })
+            .then(admin => {
+                res.send(admin);
+            });
+    }
+
+
     return {
-        getAdminByName,
+        addAdmin,
+        getAdmins,
         getAdminById,
-        addAdmin
+        getAdminByName
     };
 };

@@ -14,7 +14,7 @@
         </ul>
         <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">
             <li class="nav-item waves-light" mdbWavesEffect>
-                <a class="nav-link">{{currentUser.firstName}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link">{{currentUser.name}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item waves-light" mdbWavesEffect>
                 <a class="nav-link" (click)="logout()">Logout <span class=" sr-only ">(current)</span></a>
@@ -22,4 +22,9 @@
         </ul>
     </links>
 </mdb-navbar>
+<div class="position-absolute w-100">
+    <div class="float-right">
+        <alert></alert>
+    </div>
+</div>
 <router-outlet></router-outlet>

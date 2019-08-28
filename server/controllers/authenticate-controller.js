@@ -26,40 +26,47 @@ module.exports = () => {
             //console.log("Req:", req);
             //const user1 = req.body;
             const auth = passport.authenticate("local", (error, user) => {
-                console.log("Auth:", user);
+                console.log("1. Auth:", user);
                 if (error) {
                     return next(error);
                 }
                 if (!user) {
-                    res.json({
+                    console.log(!user);
+                    res.send({
                         status: false,
                         message: "Invalid user or password"
                     });
+                    // return;
                 }
-                if (user.role === "Fake") {
-                    res.json({
-                        status: false,
-                        message: "This user is not authorized!"
-                    })
-                }
+
+
                 req.login(user, error => {
-                    console.log("Logged");
+                    console.log("!Logged");
                     const token = generateAuthKey("zone_may_");
                     if (error) {
                         return next(error);
                     }
-                    res.send({
-                        status: true,
-                        user: {
-                            id: user._id,
-                            username: user.username,
-                            name: user.name,
-                            role: user.role,
-                            token: token
-                        }
-                    });
+                    if (user.role === "Fake") {
+                        console.log(user.role);
+                        res.send({
+                            status: false,
+                            message: "This user is not authorized!"
+                        });
+                    } else {
+                        res.send({
+                            status: true,
+                            user: {
+                                id: user._id,
+                                username: user.username,
+                                name: user.name,
+                                role: user.role,
+                                token: token
+                            }
+                        });
+                    }
                     //res.redirect('/admin/profile');
                 });
+
             });
             auth(req, res, next);
         }

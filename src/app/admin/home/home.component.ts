@@ -3,6 +3,7 @@ import { first } from "rxjs/operators";
 
 import { User } from "../../_models";
 import { AuthenticationService, UserService } from "../../_services";
+import { AlertService } from "src/app/_alert";
 
 @Component({
   selector: "app-home",
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }

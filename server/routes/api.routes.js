@@ -14,6 +14,8 @@ router
         res.status(200).redirect("/");
     })
     .post("/registeradmin", AdminController.addAdmin)
-    .post("/authenticate", authController.authenticate);
+    .post("/authenticate", authController.authenticate)
+    .get("/admins", AdminController.getAdmins)
+    .get("/admins/:id", AdminController.getAdminById);
 
 module.exports = router;

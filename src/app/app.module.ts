@@ -6,6 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
 
 import { AppComponent } from "./app.component";
+
+import { AlertModule } from "./_alert";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { LoginComponent } from "./admin/login/login.component";
@@ -32,6 +34,7 @@ import { JwtInterceptor, ErrorInterceptor } from "./_helpers";
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AlertModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot()
   ],

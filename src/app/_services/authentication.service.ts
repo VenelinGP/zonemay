@@ -1,15 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, from } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { User } from "../_models";
-import { appConfig } from "../app.config";
+import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+  private currentError = "";
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
@@ -28,10 +29,10 @@ export class AuthenticationService {
         "Content-Type": "application/json"
       })
     };
-    console.log("URL:" + appConfig.apiUrl + "/authenticate");
+    console.log("URL:" + environment.apiUrl + "/authenticate");
     return this.http
       .post<any>(
-        appConfig.apiUrl + "/authenticate",
+        environment.apiUrl + "/authenticate",
         {
           username,
           password
@@ -43,6 +44,7 @@ export class AuthenticationService {
           console.log(res);
           if (res.status) {
             const user = res.user;
+            console.log(res.status);
             if (user && user.token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem("currentUser", JSON.stringify(user));
@@ -51,7 +53,10 @@ export class AuthenticationService {
               this.currentUserSubject.next(res.user);
             }
             // login successful if there's a jwt token in the response
-            return user;
+            return { status: true, message: user };
+          }
+          if (!res.status) {
+            return res;
           }
         })
       );

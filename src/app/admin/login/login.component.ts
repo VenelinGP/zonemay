@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
 import { AuthenticationService } from "./../../_services";
+import { AlertService, AlertTime } from "src/app/_alert";
 
 @Component({
   selector: "app-login",
@@ -15,13 +16,14 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  error = "";
+  error = { status: false, message: "" };
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(["/admin/"]);
@@ -60,12 +62,20 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
-          console.log(data);
+          if (data.status == false) {
+            this.errorMess(data.message);
+          }
         },
         error => {
           this.error = error;
           this.loading = false;
         }
       );
+  }
+  errorMess(message: string) {
+    this.alertService.error(message);
+    setTimeout(() => {
+      this.alertService.clear();
+    }, AlertTime.Long);
   }
 }

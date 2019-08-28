@@ -13,14 +13,16 @@ module.exports = (passport, data) => {
                     done(null, false);
                 })
                 .then(admin => {
-                    bcrypt.compare(password, admin.password)
-                        .then(res => {
-                            if (res) {
-                                done(null, admin);
-                                return;
-                            }
-                            done(null, false);
-                        });
+                    if (admin) {
+                        bcrypt.compare(password, admin.password)
+                            .then(res => {
+                                if (res) {
+                                    done(null, admin);
+                                    return;
+                                }
+                                done(null, false);
+                            });
+                    }
 
                 })
                 .catch(error => done(error, false));

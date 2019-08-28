@@ -23,13 +23,16 @@ export class UserService {
     console.log(appConfig.apiUrl + "/registeradmin");
     return this.http
       .post<any>(appConfig.apiUrl + "/registeradmin", admin, httpOptions)
-      .subscribe(
-        data => {
-          console.log("POST Request", data);
-        },
-        error => {
-          console.log("Error", error);
-        }
+      .pipe(
+        map(
+          data => {
+            console.log("POST Request", data);
+            return data;
+          },
+          error => {
+            console.log("Error", error);
+          }
+        )
       );
   }
 
@@ -51,6 +54,7 @@ export class UserService {
   }
 
   getAdminById(id: number) {
+    console.log(`${environment.apiUrl}/admins/${id}`);
     return this.http.get<User>(`${environment.apiUrl}/admins/${id}`);
   }
 }
