@@ -1,13 +1,52 @@
-<div class="card mt-4">
-    <h4 class="card-header">Home</h4>
-    <div class="card-body">
-        <p>You're logged in with Angular 8 & JWT!!</p>
-        <p>Your role is: <strong>{{currentUser.role}}</strong>.</p>
-        <p>This page can be accessed by <u>all authenticated users</u>.</p>
-        <p class="mb-1">Current user from secure api end point:</p>
-        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-        <ul *ngIf="userFromApi">
-            <li>{{userFromApi.name}}</li>
+<mdb-navbar id="nav" SideClass="navbar navbar-expand-lg navbar-dark special-color ie-nav" [containerInside]="false" *ngIf="currentUser">
+    <mdb-navbar-brand>
+        <i class="fa fa-bars mr-4 text-white" aria-hidden="true" onClick="openNav()"></i>
+        <!-- <strong class="logo navbar-brand" href="#"><strong>Navbar</strong></a> -->
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active waves-light" mdbWavesEffect>
+                <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-item nav-link" routerLink="master" *ngIf="currentUser">Admin</a>
+            </li>
         </ul>
+        <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">{{ currentUser.name }} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link" (click)="logout()">Logout <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+<div class="row">
+    <div class="menu" *ngIf="currentUser">
+        <a href="javascript:void(0)" class="closebtn float-right" onclick="closeNav()">&times;</a>
+        <a href="#/admin/menu">Меню - настройки</a>
+        <a href="#/admin/products">Добавяне на продукти</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
     </div>
+    <router-outlet></router-outlet>
+    <div class="position-absolute w-100">
+        <div class="float-right">
+            <app-alert></app-alert>
+        </div>
+    </div>
+    <!-- <div class="card mt-4">
+        <h4 class="card-header">Home</h4>
+        <div class="card-body">
+            <p>You're logged in with Angular 8 & JWT!!</p>
+            <p>Your role is: <strong>{{currentUser.role}}</strong>.</p>
+            <p>This page can be accessed by <u>all authenticated users</u>.</p>
+            <p class="mb-1">Current user from secure api end point:</p>
+            <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+            <ul *ngIf="userFromApi">
+                <li>{{userFromApi.name}}</li>
+            </ul>
+        </div>
+    </div> -->
 </div>

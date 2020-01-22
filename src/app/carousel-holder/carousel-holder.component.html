@@ -1,0 +1,72 @@
+<!-- Image One -->
+<!-- [@bounceInLeft]="{value: animationState,params: { duration: 1000, delay: 500, translate: '3000px' }}" -->
+<!-- [@bounceInUp]="{value: animationState,params: { duration: 1000, delay: 2000, translate: '3000px' }}" -->
+<!-- Image Two -->
+<!-- [@bounceInUp]="{value: animationState,params: { duration: 1000, delay: 500, translate: '3000px' }}" -->
+<!-- [@bounceInRight]="{value: animationState,params: { duration: 1000, delay: 2000, translate: '3000px' }}" -->
+<!-- Image Тhree -->
+<!-- [@flipInX]="{value: animationState,params: { duration: 1000, delay: 500, translate: '3000px' }}" -->
+<!-- [@bounceInRight]="{value: animationState,params: { duration: 1000, delay: 2000, translate: '3000px' }}" -->
+<!-- <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+</ol> -->
+<owl-carousel-o [options]="customOptions" #owlCat (changed)="getData($event)" (change)="clear()">
+    <ng-container *ngFor="let image of imagesData; index as i">
+        <ng-template carouselSlide>
+            <div class="slide">
+                <div class="carousel-item active white">
+                    <div id="contain-parallax">
+                        <img [src]="image.src" [alt]="image.alt" [title]="image.title" />
+                        <div *ngIf="i == 0" class="slide-parallax one"></div>
+                    </div>
+                    <div class="carousel-caption d-md-block">
+                        <div *ngIf="firstImageState">
+                            <div class="animated bounceInLeft">
+                                <h3 *ngIf="isStartChange">
+                                    {{ image.content }}
+                                </h3>
+                            </div>
+                            <div class="animated bounceInUp delay-1s">
+                                <a href="#category-1">
+                                    <button class="btn btn-primary btn-lg ">
+                    {{ image.menu }}
+                  </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div *ngIf="secondImageState">
+                            <div class="animated bounceInUp">
+                                <h3 *ngIf="isStartChange">
+                                    {{ image.content }}
+                                </h3>
+                            </div>
+                            <div class="animated bounceInRight delay-1s">
+                                <a href="#category-1">
+                                    <button class="btn btn-primary btn-lg">
+                    {{ image.menu }}
+                  </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div *ngIf="thirdImageState">
+                            <div class="animated flipInX slow">
+                                <h3 *ngIf="isStartChange">
+                                    {{ image.content }}
+                                </h3>
+                            </div>
+                            <div class="animated flipInY delay-1s slow">
+                                <a href="#category-1">
+                                    <button class="btn btn-primary btn-lg">
+                    {{ image.menu }}
+                  </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+</owl-carousel-o>

@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy, Input } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Alert, AlertType } from "./alert.model";
-import { AlertService } from "./alert.service";
+import { Alert, AlertType } from './alert.model';
+import { AlertService } from './alert.service';
 
 @Component({
-  selector: "alert",
-  templateUrl: "./alert.component.html"
+  selector: 'app-alert',
+  templateUrl: './alert.component.html'
 })
 export class AlertComponent implements OnInit, OnDestroy {
   @Input() id: string;
@@ -47,13 +47,13 @@ export class AlertComponent implements OnInit, OnDestroy {
     // return css class based on alert type
     switch (alert.type) {
       case AlertType.Success:
-        return "alert alert-success";
+        return 'alert alert-success';
       case AlertType.Error:
-        return "alert alert-danger";
+        return 'alert alert-danger';
       case AlertType.Info:
-        return "alert alert-info";
+        return 'alert alert-info';
       case AlertType.Warning:
-        return "alert alert-warning";
+        return 'alert alert-warning';
     }
   }
 }

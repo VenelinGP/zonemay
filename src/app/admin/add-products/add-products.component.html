@@ -1,0 +1,74 @@
+<div class="container" *ngIf="!isChecked">
+    <div class="md-form">
+        <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="product.name" />
+        <label for="form1" class="">Продукт:</label>
+    </div>
+    <div class="md-form">
+        <input mdbInput type="text" id="form2" class="form-control" [(ngModel)]="product.price" />
+        <label for="form2" class="">Цена:</label>
+    </div>
+    <div class="md-form">
+        <input mdbInput type="text" id="form3" class="form-control" [(ngModel)]="product.discount" />
+        <label for="form3" class="">Отстъпка:</label>
+    </div>
+    <div class="md-form">
+        <textarea mdbInput type="text" id="form4" class="form-control" [(ngModel)]="product.description"></textarea>
+        <label for="form4" class="">Описание:</label>
+    </div>
+    <mat-form-field>
+        <mat-label>Категории</mat-label>
+        <mat-select [formControl]="category" [(ngModel)]="product.category">
+            <mat-option>-- None --</mat-option>
+            <mat-optgroup *ngFor="let main of menu" [label]="main.name">
+                <mat-option *ngFor="let sub of main.submenu" [value]="sub._id">
+                    {{sub.name}}
+                </mat-option>
+            </mat-optgroup>
+        </mat-select>
+    </mat-form-field>
+    <div class="md-form">
+        <input mdbInput type="text" id="form6" class="form-control" [(ngModel)]="product.quantity" />
+        <label for="form6" class="">Количество:</label>
+    </div>
+
+    <input type="file" (change)="fileChangeEvent($event)" (change)="fileChangeEvent($event)">
+</div>
+<div *ngIf="!isChecked">
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1/1" [resizeToWidth]="540" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+    </image-cropper>
+    <button class="btn btn-info" (click)="next()">Напред >></button>
+</div>
+
+
+<div class="m-2 container" *ngIf="isChecked">
+    <div class="row">
+        <h4 class="col-md-2">Продукт: </h4>
+        <div class="col-md-6">{{product.name}}</div>
+    </div>
+    <div class="row">
+        <h4 class="col-md-2">Цена: </h4>
+        <div class="col-md-6">{{product.price}}</div>
+    </div>
+    <div class="row">
+        <h4 class="col-md-2">Отстъпка: </h4>
+        <div class="col-md-6">{{product.discount}}</div>
+    </div>
+    <div class="row">
+        <h4 class="col-md-2">Описание: </h4>
+        <div class="col-md-6">{{product.description}}</div>
+    </div>
+    <div class="row">
+        <h4 class="col-md-2">Категория: </h4>
+        <div class="col-md-6">{{product.category}}</div>
+    </div>
+    <div class="row">
+        <h4 class="col-md-2">Количество: </h4>
+        <div class="col-md-6">{{product.quantity}}</div>
+    </div>
+
+    <img [src]="croppedImage" />
+    <div>
+        <button class="btn btn-info" (click)="back()"><< Назад</button>
+        <button class="btn btn-info" (click)="saveProduct()">Запази продукта</button>
+    </div>
+</div>

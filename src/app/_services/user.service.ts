@@ -1,12 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "../_models";
-import { map } from "rxjs/operators";
-import { environment } from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../_models';
+import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
-import { appConfig } from "../app.config";
-
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(public http: HttpClient) {}
 
@@ -14,23 +12,23 @@ export class UserService {
     // const tokenValue = "Bearer " + token;
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        Accept: "application/json"
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
         // Authorization: tokenValue
       })
     };
 
-    console.log(appConfig.apiUrl + "/registeradmin");
+    console.log(environment.apiUrl + '/registeradmin');
     return this.http
-      .post<any>(appConfig.apiUrl + "/registeradmin", admin, httpOptions)
+      .post<any>(environment.apiUrl + '/registeradmin', admin, httpOptions)
       .pipe(
         map(
           data => {
-            console.log("POST Request", data);
+            console.log('POST Request', data);
             return data;
           },
           error => {
-            console.log("Error", error);
+            console.log('Error', error);
           }
         )
       );
@@ -39,10 +37,10 @@ export class UserService {
   getAdmins(token: string) {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       })
     };
-    const tokenValue = "Bearer " + token;
+    const tokenValue = 'Bearer ' + token;
     // const httpOptions = {
     //   headers: new HttpHeaders({
     //     "Content-Type": "application/json",
@@ -50,7 +48,7 @@ export class UserService {
     //     Authorization: tokenValue
     //   })
     // };
-    return this.http.get<any>(appConfig.apiUrl + "/admins", httpOptions);
+    return this.http.get<any>(environment.apiUrl + '/admins', httpOptions);
   }
 
   getAdminById(id: number) {

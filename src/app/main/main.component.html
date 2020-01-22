@@ -1,5 +1,730 @@
-<div style="text-align:center">
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
+<!--Top Menu line-->
+<div class="py-1 bg-black">
+    <div class="container">
+        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+            <div class="col-lg-12 d-block">
+                <div class="row d-flex">
+                    <div class="col-md pr-4 d-flex topper align-items-center">
+                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span> </div> <span class="text"><a href="тел:+359 88 978 5643">+359 88 978 5643</a></span> </div>
+                    <div class="col-md pr-4 d-flex topper align-items-center">
+                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div> <span class="text"> <a href="mailto:zonamai@abv.bg?subject=Здравейте!g">zonamai@abv.bg</a></span> </div>
+                    <div class="col-md-5 pr-4 d-flex topper-long align-items-center text-lg-right">
+                        <span class="text">Доставка при наличност - 24 часа</span> <span class="text">При изработка - 10 раб. дни</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!--Nav-->
+<!-- <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar intro-fixed-nav" scrolled awake[containerInside]="false">    <mdb-navbar-brand>        <a class="logo navbar-brand" href="#">            <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" />        </a>    </mdb-navbar-brand>    <links>        <ul class="navbar-nav mr-auto">            <li class="nav-item active waves-light" mdbWavesEffect>                <a class="nav-link">Home <span class="sr-only">(current)</span></a>            </li>            <li class="nav-item waves-light" mdbWavesEffect>                <a class="nav-link">Link</a>            </li>            <li class="nav-item waves-light" mdbWavesEffect>                <a class="nav-link">Profile</a>            </li>        </ul>    </links></mdb-navbar> -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"> 
+            <span class="oi oi-menu"></span> Меню 
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active stroke1 nav-elongate">
+                    <a href="index.html" class="nav-link">Начало</a>
+                </li>
+                <li class="nav-item dropdown" id="desktrop-drop" (mouseover)="drop()" (mouseout)="dropOut()" [ngClass]="{'show':isShow}">
+                    <a class="nav-link dropdown-toggle stroke2 nav-elongate" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="isShow">Магазин</a>
+                    <ul class="dropdown-menu multi-column columns-3 zindex-9" [ngClass]="{'show':isShow}">
+                        <div class="row" [innerHTML]="menuString">
+                            <!-- HERE PUT MENU -->
+                        </div>
+                    </ul>
+                </li>
+                <li class="nav-item stroke3 nav-elongate"><a href="about.html" class="nav-link">За Нас</a></li>
+                <li class="nav-item stroke4"><a href="contact.html" class="nav-link">Контакти</a></li>
+                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span                class="icon-shopping_cart"></span>[0]</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END Nav -->
+<section id="home-section" class="home-slider hero">
+    <div class="container-slider">
+        <div class="row">
+            <div class="col">
+                <app-carousel-holder></app-carousel-holder>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <!--Category Ruchno Izraboteni-->
+    <div class="container" id="category-1">
+        <div class="row justify-content-center mb-3 pb-3">
+            <!-- -->
+            <div class="col-md-12 heading-section text-center animated" [class.bounceInUp]=isStartChange>
+                <h2 class="mb-4">Продукти по категория</h2>
+                <p class="caveat-title">Ръчно Изработени Декорации</p>
+                <div class="spacer-border"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="category-3">
+        <div class="row">
+            <div class="col-sm col-md-6 col-lg wow fadeInUp">
+                <div class="product">
+                    <a href="#" class="img-prod">
+                        <img class="img-fluid" src="../../assets/product-img/category/product-2.jpg" alt="Кукли">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 px-3">
+                        <h3><a href="#">Кукли</a></h3>
+                        <p class="bottom-area d-flex px-3"> <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Виж всички<i class="ion-ios-add ml-1"></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
+                <div class="product">
+                    <a href="#" class="img-prod"><img class="img-fluid" src="../../assets/product-img/category/b-doll.jpg" alt="Бутикови Кукли">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 px-3">
+                        <h3><a href="#">Бутикови кукли</a></h3>
+                        <p class="bottom-area d-flex px-3"> <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Виж всички<i
+                                        class="ion-ios-add ml-1"></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
+                <div class="product">
+                    <a href="#" class="img-prod"><img class="img-fluid" src="../../assets/product-img/category/letter.jpg" alt="Цифри и Букви">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 px-3">
+                        <h3><a href="#">Цифри и букви</a></h3>
+                        <p class="bottom-area d-flex px-3"> <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Виж всички<i
+                                        class="ion-ios-add ml-1"></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg col-lg wow fadeInUp" data-wow-delay="0.6s">
+                <div class="product">
+                    <a href="#" class="img-prod"><img class="img-fluid" src="../../assets/product-img/category/animal.jpg" alt="Животни">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 px-3">
+                        <h3><a href="#">Животни</a></h3>
+                        <p class="bottom-area d-flex px-3"> <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Виж всички<i
+                                        class="ion-ios-add ml-1"></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg wow fadeInUp">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/cushions.jpg " alt="Възглавнички ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Възглавнички</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/book-cover.jpg " alt="Дрехи за книги ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Дрехи за книги</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/cases.jpg " alt="Несесери ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Несесери</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.6s">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/flowers.jpg " alt="Цветя ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Цветя</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/album.jpg " alt="Фото Албуми ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Фото Албуми</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/frames.jpg " alt="Рамки ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Рамки</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/home.jpg " alt="За дома ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">За дома</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/candy-b.jpg " alt="Букети с бонбони ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Букети с бонбони</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Category Bijuta-->
+    <div class="container ">
+        <div class="row justify-content-center mb-3 pb-3 ">
+            <!-- -->
+            <div class="col-md-12 heading-section text-center ">
+                <p class="caveat-title ">Бижута и аксесоари</p>
+                <div class="spacer-border "></div>
+            </div>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="row ">
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/jewelry.jpg " alt="Обеци ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Обеци</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/necklaces.jpg " alt="Колиета ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Колиета</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/set.jpg " alt="Комплекти ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Комплекти</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/jewelry1.jpg " alt="Други ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Други</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Category Tematichni -->
+    <div class="container ">
+        <div class="row justify-content-center mb-3 pb-3 ">
+            <!-- -->
+            <div class="col-md-12 heading-section text-center ">
+                <p class="caveat-title ">Тематични</p>
+                <div class="spacer-border "></div>
+            </div>
+        </div>
+    </div>
+    <div class="container " id="category-2 ">
+        <div class="row ">
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/xmas.jpg " alt="Коледа ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Коледа</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/valantine.jpg " alt="Свети Валентин ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Свети Валентин</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/baba.jpg " alt="Баба Марта ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Баба Марта</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/march.jpg " alt="Осми Март ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Осми Март</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/east.jpg " alt="Великден ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Великден</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/prom.jpg " alt="Бал ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Бал</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/sea.jpg " alt="Морски ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Морски</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+            <div class="col-sm col-md-6 col-lg ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/baloon.jpg " alt="Други ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Други</a></h3>
+                        <p class="bottom-area d-flex px-3 "> <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж всички<i
+                                        class="ion-ios-add ml-1 "></i></span></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light ">
+    <div class="container ">
+        <div class="row justify-content-center mb-3 pb-3 ">
+            <div class="col-md-12 heading-section text-center fadeInUp ftco-animated ">
+                <h2 class="mb-4 ">Най-продавани</h2>
+                <p>Разглейдайте продуктите които нашите клиенти обожават.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="row ">
+            <div class="col-sm col-md-6 col-lg fadeInUp ftco-animated ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="assets/product-img/product-1.jpg " alt="Снимка Продукт " style="transform: matrix(1, 0, 0, 1, 9.22628, 0); ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Продукт Име</a></h3>
+                        <div class="d-flex ">
+                            <div class="pricing ">
+                                <p class="price "><span>10.00 лв.</span></p>
+                            </div>
+                            <div class="rating ">
+                                <p class="text-right ">
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="bottom-area d-flex px-3 ">
+                            <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж продукт <i
+                    class="ion-ios-add ml-1 "></i></span></a>
+                            <a href="# " class="buy-now text-center py-2 ">Купи<span><i class="ion-ios-cart ml-1 "></i></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm col-md-6 col-lg fadeInUp ftco-animated ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="assets/product-img/product-2.jpg " alt="Снимка Продукт " style="transform: matrix(1, 0, 0, 1, 9.22628, 0); ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Продукт Име</a></h3>
+                        <div class="d-flex ">
+                            <div class="pricing ">
+                                <p class="price "><span>10.00 лв.</span></p>
+                            </div>
+                            <div class="rating ">
+                                <p class="text-right ">
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="bottom-area d-flex px-3 ">
+                            <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж продукт <i
+                    class="ion-ios-add ml-1 "></i></span></a>
+                            <a href="# " class="buy-now text-center py-2 ">Купи<span><i class="ion-ios-cart ml-1 "></i></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm col-md-6 col-lg fadeInUp ftco-animated ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="assets/product-img/product-3.jpg " alt="Снимка Продукт " style="transform: matrix(1, 0, 0, 1, 9.22628, 0); ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Продукт Име</a></h3>
+                        <div class="d-flex ">
+                            <div class="pricing ">
+                                <p class="price "><span>10.00 лв.</span></p>
+                            </div>
+                            <div class="rating ">
+                                <p class="text-right ">
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="bottom-area d-flex px-3 ">
+                            <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж продукт <i
+                    class="ion-ios-add ml-1 "></i></span></a>
+                            <a href="# " class="buy-now text-center py-2 ">Купи<span><i class="ion-ios-cart ml-1 "></i></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm col-md-6 col-lg fadeInUp ftco-animated ">
+                <div class="product ">
+                    <a href="# " class="img-prod "><img class="img-fluid " src="assets/product-img/product-4.jpg " alt="Снимка Продукт " style="transform: matrix(1, 0, 0, 1, 9.22628, 0); ">
+                        <div class="overlay "></div>
+                    </a>
+                    <div class="text py-3 px-3 ">
+                        <h3><a href="# ">Продукт Име</a></h3>
+                        <div class="d-flex ">
+                            <div class="pricing ">
+                                <p class="price "><span>10.00 лв.</span></p>
+                            </div>
+                            <div class="rating ">
+                                <p class="text-right ">
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                    <a href="# "><span class="ion-ios-star-outline "></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="bottom-area d-flex px-3 ">
+                            <a href="# " class="add-to-cart text-center py-2 mr-1 "><span>Виж продукт <i
+                    class="ion-ios-add ml-1 "></i></span></a>
+                            <a href="# " class="buy-now text-center py-2 ">Купи<span><i class="ion-ios-cart ml-1 "></i></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-8 d-flex align-items-stretch ">
+                <div class="img " style="background-image: url(../../assets/images/about-1.jpg); "></div>
+            </div>
+            <!-- <div class="col-md-4 py-md-5 fadeInUp ftco-animated "> -->
+            <div class="col-md-4 py-md-5 fadeInUp animated ">
+                <div class="text py-3 py-md-5 ">
+                    <h2 class="mb-4 ">Подаръци за Вас и близките Ви.</h2>
+                    <p>Изберете подарък с високо качество и уникален вид от нашия магазин.</p>
+                    <p><a href="shop.html " class="btn btn-white px-4 py-3 ">Виж продукти</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-5 order-md-last d-flex align-items-stretch ">
+                <div class="img img-2 " style="background-image: url(../../assets/images/about-2.jpg); "></div>
+            </div>
+            <!-- -->
+            <div class="col-md-7 py-3 py-md-5 ">
+                <div class="text text-2 py-md-5 ">
+                    <h2 class="mb-4 ">Ръчно изработени.</h2>
+                    <p>Нашите продукти са ръчно изработени от нашите работливи пчелички и ще изненадат близките Ви с елегантния си вид.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 d-flex align-items-stretch">
+                <a href="sale.html">
+                    <div class="sale"></div>
+                </a>
+            </div>
+            <div class="col-md-4 py-md-5 fadeInUp animated">
+                <div class="text3 py-3 py-md-5">
+                    <h2 class="mb-4">Промоции</h2>
+                    <p>Разгледайте промоциионалните ни продукти в момента</p>
+                    <p><a href="sale.html" class="btn btn-blue px-4 py-3">Виж промоции</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 py-md-5-2 fadeInUp animated">
+                <div class="text2 py-3 py-md-5-2">
+                    <h2 class="mb-4">Ваучери</h2>
+                    <p>Подарете ваучер за подарък на близки и приятели.</p>
+                    <p><a href="sale.html" class="btn btn-blue px-4 py-3">Купи ваучер</a></p>
+                </div>
+            </div>
+            <div class="col-md-8 d-flex align-items-stretch">
+                <a href="giftcard.html">
+                    <div class="gift"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Subsciption Form-->
+<section class="ftco-section-parallax ">
+    <div class="parallax-img d-flex align-items-center ">
+        <div class="container ">
+            <div class="row d-flex justify-content-center py-5 ">
+                <!-- -->
+                <div class="col-md-7 text-center heading-section ">
+                    <h2>Абонирайте се за нас:</h2>
+                    <div class="row d-flex justify-content-center mt-5 ">
+                        <div class="col-md-8 ">
+                            <!-- <form action="# " class="subscribe-form "> <div class="form-group d-flex "><input type="text " class="form-control " placeholder="E-mail адрес. ">                                    <input type="submit " value="Абонирай
+                ме! " class="submit px-3 ">                                </div>                            </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Footer-->
+<footer class="ftco-footer bg-light ftco-section ">
+    <div class="footer-color ">
+        <div class="container ">
+            <div class="row ">
+                <div class="mouse ">
+                    <a href="# " class="mouse-icon ">
+                        <div class="mouse-wheel "><span class="ion-ios-arrow-up "></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ">
+                        <h2 class="ftco-heading-2 ">Зона Май</h2>
+                        <p>Креативни, уникални и самоделни декорации и подаръци.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5 ">
+                            <!-- -->
+                            <li class=" ">
+                                <a target="_blank " href="https://www.facebook.com/%D0%97%D0%BE%D0%BD%D0%B0-%D0%9C%D0%B0%D0%B9-441507525941541/ ">
+                                    <span class="icon-facebook "></span>
+                                </a>
+                            </li>
+                            <!-- -->
+                            <li class=" ">
+                                <a target="_blank " href="https://www.instagram.com/explore/tags/%D0%B7%D0%BE%D0%BD%D0%B0%D0%BC%D0%B0%D0%B9/ ">
+                                    <span class="icon-instagram "></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5 ">
+                        <h2 class="ftco-heading-2 ">Меню</h2>
+                        <ul class="list-unstyled ">
+                            <li><a href="shop.html " class="py-2 d-block ">Магазин</a></li>
+                            <li><a href="about.html " class="py-2 d-block ">За Нас</a></li>
+                            <li><a href="contact.html " class="py-2 d-block ">Контакти</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="ftco-footer-widget mb-4 ">
+                        <h2 class="ftco-heading-2 ">Помощ</h2>
+                        <div class="d-flex ">
+                            <ul class="list-unstyled mr-l-5 pr-l-3 mr-4 ">
+                                <li><a href="shipping.html " class="py-2 d-block ">Информация за Доставка</a></li>
+                                <li><a href="returns.html " class="py-2 d-block ">Подмяна и връщане</a></li>
+                                <li><a href="terms.html " class="py-2 d-block ">Условия на закупуване</a></li>
+                                <li><a href="privacypolicy.html " class="py-2 d-block ">Поверителност</a></li>
+                            </ul>
+                            <ul class="list-unstyled ">
+                                <li><a href="faq.html " class="py-2 d-block ">Често задавани въпроси</a></li>
+                                <li><a href="contacts.html " class="py-2 d-block ">Контакти</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md ">
+                    <div class="ftco-footer-widget mb-4 ">
+                        <h2 class="ftco-heading-2 ">Свържете се с нас:</h2>
+                        <div class="block-23 mb-3 ">
+                            <ul>
+                                <li><span class="icon icon-map-marker "></span><span class="text ">ул. Мишо Тодоров №7, Сливен, България</span></li>
+                                <li><a href="tel:+359889785643 "><span class="icon icon-phone "></span><span class="text ">+359 88 978 5643</span></a></li>
+                                <li><a href="mailto:zonamai@abv.bg?subject=Здравейте! "><span class="icon icon-envelope "></span><span  class="text ">zonamai@abv.bg</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 text-center ">
+                    <p>Copyright ©
+                        <script type="text/javascript ">
+                            document.write(new Date().getFullYear());
+                        </script> | Всички права запазени. - Зона Май | <a href="https://zonamai.bg/ " target="_blank ">zonamai.bg</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- loader -->
+<!-- <div id="ftco-loader " class="fullscreen ">
+    <svg class="circular " width="48px " height="48px ">      
+        <circle class="path-bg " cx="24 " cy="24 " r="22 " fill="none " stroke-width="4 " stroke="#eeeeee "></circle>
+        <circle class="path " cx="24 " cy="24 " r="22 " fill="none " stroke-width="4 " stroke-miterlimit="10 " stroke="#F96D00 "></circle>    
+    </svg>
+</div> -->

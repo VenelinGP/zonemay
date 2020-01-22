@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://zonemay.bg/api"
+  apiUrl: 'https://polar-dusk-75070.herokuapp.com/api'
 };

@@ -1,0 +1,31 @@
+<div class="row" *ngIf="selectedMenu">
+    <h2>{{selectedMenu.name | uppercase}} Details</h2>
+    <div>
+        <span class="hidden">id: </span>
+        <div class=hidden>{{selectedMenu._id}}</div>
+        <div>
+            <label>Главно Меню:
+                <input [(ngModel)]="selectedMenu.name" placeholder="name" />
+              </label>
+        </div>
+        <button (click)="save(selectedMenu._id)">Запази</button>
+        <button (click)="goBack()">Откажи</button>
+    </div>
+    <ul class="submenu">
+        <li *ngFor="let sub of selectedMenu.submenu">
+            <a routerLink="/detail/{{sub.id}}">
+                <span class="badge">{{sub.id}}</span> {{sub.name}}
+            </a>
+            <button class="delete" title="delete subMenu" (click)="delete(sub.id)">x</button>
+        </li>
+    </ul>
+    <div>
+        <label>Подменю:
+        <input class="form-control mb-4" #subName />
+      </label>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button (click)="add(subName.value); subName.value=''">
+        Добави
+      </button>
+    </div>
+</div>

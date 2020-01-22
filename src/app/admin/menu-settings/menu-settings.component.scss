@@ -1,0 +1,151 @@
+// :host {
+//     div {
+//         margin-left: 50px;
+//         >span {
+//             font-size: 18px;
+//             color: Dodgerblue;
+//             margin-right: 6px;
+//             >img {
+//                 height: 50px;
+//                 width: 50px;
+//             }
+//         }
+//         >.mainmenu {
+//             font-size: 18px;
+//             position: relative;
+//             bottom: 2rem;
+//             left: -1.5rem;
+//             right: -02rem;
+//             height: 0.75rem;
+//             // z-index: -1;s
+//         }
+//         >.submenu {
+//             margin: 0 50px;
+//             height: 0;
+//             opacity: 0;
+//         }
+//         >p {
+//             margin-top: 0;
+//             margin-bottom: 0;
+//         }
+//     }
+// }
+
+/* DashboardComponent's private CSS styles */
+
+:host {
+    [class*='col-'] {
+        float: left;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        &:last-of-type {
+            padding-right: 0;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        &:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        &:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    }
+    h3 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    h4 {
+        position: relative;
+        font-size: 18px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+    .row {
+        padding-top: 10px;
+        input[text] {
+            color: #333;
+            font-family: Cambria, Georgia;
+        }
+    }
+    .container {
+        display: block;
+        height: 100px;
+        padding-left: 80px;
+    }
+    .grid {
+        margin: 0;
+    }
+    .col-1-4 {
+        width: 20%;
+    }
+    .module {
+        padding: 20px;
+        text-align: center;
+        color: #eee;
+        max-height: 120px;
+        min-width: 120px;
+        background-color: #37474F;
+        border-radius: 2px;
+        &:hover {
+            background-color: #eee;
+            cursor: pointer;
+            color: #607d8b;
+        }
+    }
+    .grid-pad {
+        padding: 10px 0;
+        >[class*='col-'] {
+            &:last-of-type {
+                padding-right: 20px;
+            }
+        }
+    }
+    button {
+        color: #333;
+        font-family: Cambria, Georgia;
+        font-family: Arial;
+        background-color: #eee;
+        border: none;
+        padding: 10px 16px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        cursor: hand;
+        &:hover {
+            background-color: #cfd8dc;
+        }
+        &:disabled {
+            background-color: #eee;
+            color: #aaa;
+            cursor: auto;
+        }
+    }
+    .savebutton {
+        position: relative;
+        left: 500px;
+    }
+    @media (max-width: 600px) {
+        .module {
+            font-size: 10px;
+            max-height: 75px;
+        }
+    }
+    @media (max-width: 1024px) {
+        .grid {
+            margin: 0;
+        }
+        .module {
+            min-width: 60px;
+        }
+    }
+}

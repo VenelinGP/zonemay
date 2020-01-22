@@ -1,0 +1,68 @@
+.menu {
+    background-color: #37474F;
+    margin-top: 3px;
+    height: 100%;
+    width: 300px;
+}
+
+.menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    position: absolute;
+    padding-top: 18px;
+    z-index: 1;
+    top: 43px;
+    left: 0;
+    background-color: #37474F;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: relative;
+    top: -18px;
+    right: 6px;
+    font-size: 36px;
+    margin-left: 50px;
+    height: 36px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+.navbar {
+    z-index: 100 !important;
+    margin-bottom: 2px;
+}

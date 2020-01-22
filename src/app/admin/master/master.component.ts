@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { first } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
 
-import { User } from "../../_models";
-import { UserService } from "../../_services";
+import { User } from '../../_models';
+import { UserService } from '../../_services';
 
 @Component({
-  selector: "app-master",
-  templateUrl: "./master.component.html",
-  styleUrls: ["./master.component.scss"]
+  selector: 'app-master',
+  templateUrl: './master.component.html',
+  styleUrls: ['./master.component.scss']
 })
 export class MasterComponent implements OnInit {
   loading = false;
@@ -17,7 +17,7 @@ export class MasterComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.currentToken = localStorage.getItem("currentToken");
+    this.currentToken = localStorage.getItem('currentToken');
     this.userService
       .getAdmins(this.currentToken)
       .pipe(first())

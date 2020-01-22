@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="container">
+        <div class="grid grid-pad">
+            <a *ngFor="let mainmenu of menu" class="col-1-5" (click)="onSelect(mainmenu)">
+                <div class="module menu">
+                    <h4>{{mainmenu.name}}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <app-menu-detail *ngIf="selectedMenu" [selectedMenu]="selectedMenu"></app-menu-detail>
+    </div>
+    <div class="container">
+        <app-menu-save class="savebutton" [menu]="selectedMenu"></app-menu-save>
+    </div>
+</div>

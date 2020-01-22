@@ -1,0 +1,61 @@
+label {
+    font-size: 14px;
+    display: inline-block
+}
+
+.form-control,
+.mat-form-field {
+    width: 1200px;
+}
+
+button {
+    color: #333;
+    font-family: Cambria, Georgia;
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 10px 16px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+    &:hover {
+        background-color: #cfd8dc;
+    }
+    &:disabled {
+        background-color: #eee;
+        color: #aaa;
+        cursor: auto;
+    }
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.mat-option {
+    color: dimgrey;
+}
+
+h4,
+.col-md-6 {
+    margin: 6px 10px;
+    float: left;
+    font-size: 0.8rem;
+}
+
+.row {
+    border-bottom: 1px solid black;
+    padding: 0 8px;
+    margin: 10px;
+}
+
+img {
+    padding: 5px;
+}

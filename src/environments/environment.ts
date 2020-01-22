@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:4200/api"
+  apiUrl: 'https://polar-dusk-75070.herokuapp.com/api'
+  // apiUrl: "http://localhost:4200/api"
+  // apiUrl: "http://www.zonemay.eu:8686/api"
 };
 
 /*

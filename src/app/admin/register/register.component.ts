@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { UserService } from "../../_services/user.service";
-import { User, Role } from "src/app/_models/";
-import { first } from "rxjs/operators";
-import { AlertService, AlertTime } from "src/app/_alert";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../_services/user.service';
+import { User, Role } from 'src/app/_models/';
+import { first } from 'rxjs/operators';
+import { AlertService, AlertTime } from 'src/app/_alert';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"]
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   private role: Role = Role.Fake;
@@ -22,13 +22,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   signUp(username: string, password: string, name: string, email: string) {
-    console.log("Sign Up");
+    console.log('Sign Up');
 
-    let newUser: User = {
-      username: username,
-      email: email,
-      password: password,
-      name: name,
+    const newUser: User = {
+      username,
+      email,
+      password,
+      name,
       role: this.role
     };
     console.log(newUser);
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         console.log(data);
-        if (data.status == true) {
+        if (data.status === true) {
           this.successMess(data.message);
         } else {
           this.errorMess(data.message);
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     this.alertService.success(message);
     setTimeout(() => {
       this.alertService.clear();
-      this.router.navigate(["/admin/login"]);
+      this.router.navigate(['#/admin/login']);
     }, AlertTime.Long);
   }
   errorMess(message: string) {
