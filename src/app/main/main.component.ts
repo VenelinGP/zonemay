@@ -10,9 +10,8 @@ import {
   flipInXAnimation
 } from 'angular-animations';
 // import { menu } from '../test-base/menu';
-import { BaseService } from '../_services/base/base.service';
+import { BaseService } from '../_services/base.service';
 import { ActivatedRoute } from '@angular/router';
-import { IMenu } from '../_services/base/menu.interface';
 import { MainMenu } from '../_models/mainmenu';
 
 @Component({
@@ -38,51 +37,17 @@ export class MainComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(WINDOW) private window: Window,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private baseService: BaseService
   ) {}
 
   ngOnInit() {
     this.isShow = false;
-    this.menu = this.route.snapshot.data.menu.message.sort(( a, b) => {
-      return a.id - b.id;
-    });
-    console.log('1', this.menu);
-    this.menuString = '';
-    let i = 0;
-    let k = 0;
-    this.menuString += '<div class="col-3-2"><ul class="multi-column-dropdown">';
-    for (const mainmenu of this.menu) {
-      console.log(mainmenu);
-      const currentMenuName = mainmenu.name;
-      this.menuString += '<li> <div class="nav-category nav-category-bg1">' + currentMenuName + '</div></li>';
-      i++;
-      k++;
-      console.log(k, i);
-      if ((k % (12 - i)) === 0) {
-        console.log('IF:', k, 12 - i, (k % (12 - i)));
-        this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
-        i = 0;
-        k = 0;
-      }
-      mainmenu.submenu.forEach(sub => {
-        this.menuString += '<li><a href="#/shop">' + sub.name + '</a></li>';
-        k++;
-        console.log(k, i);
-        if ( ( k % (12 - i) ) === 0 ) {
-          console.log('IF:',  k, 12 - i, (k % (12 - i)));
-          this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
-          i = 0;
-          k = 0;
-        }
-      });
-      console.log('MainMenu: ', mainmenu.submenu.length);
-
-      if (mainmenu.submenu.length !== 0) {
-        this.menuString += '<li class="divider"></li>';
-      }
-    }
-    this.menuString += '</ul></div>';
-    console.log(this.menuString);
+    // this.baseService.getMenu()
+    //   .subscribe(menu => {
+    //     this.menu = menu.sort((a, b) => a.id - b.id);
+    //     this.createMenu();
+    //   });
   }
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -111,5 +76,45 @@ export class MainComponent implements OnInit {
 
   dropOut() {
     this.isShow = false;
+  }
+
+  createMenu(){
+    console.log('1', this.menu);
+    this.menuString = '';
+    let i = 0;
+    let k = 0;
+    this.menuString += '<div class="col-3-2"><ul class="multi-column-dropdown">';
+    for (const mainmenu of this.menu) {
+      console.log(mainmenu);
+      const currentMenuName = mainmenu.name;
+      this.menuString += '<li> <div class="nav-category nav-category-bg1">' + currentMenuName + '</div></li>';
+      i++;
+      k++;
+      console.log(k, i);
+      if ((k % (12 - i)) === 0) {
+        console.log('IF:', k, 12 - i, (k % (12 - i)));
+        this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
+        i = 0;
+        k = 0;
+      }
+      mainmenu.submenu.forEach(sub => {
+        this.menuString += '<li><a routerLink="/shop">' + sub.name + '</a></li>';
+        k++;
+        console.log(k, i);
+        if ((k % (12 - i)) === 0) {
+          console.log('IF:', k, 12 - i, (k % (12 - i)));
+          this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
+          i = 0;
+          k = 0;
+        }
+      });
+      console.log('MainMenu: ', mainmenu.submenu.length);
+
+      if (mainmenu.submenu.length !== 0) {
+        this.menuString += '<li class="divider"></li>';
+      }
+    }
+    this.menuString += '</ul></div>';
+    console.log(this.menuString);
   }
 }

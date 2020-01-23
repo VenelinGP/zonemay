@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
-import { IMenu } from './menu.interface';
 import { catchError, tap } from 'rxjs/operators';
-import { MainMenu } from '../../_models/mainmenu';
-import { Product } from '../../_models';
+import { MainMenu } from '../_models/mainmenu';
+import { Product } from '../_models';
 
 @Injectable()
 export class BaseService {
@@ -14,25 +13,33 @@ export class BaseService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   menuUrl = environment.apiUrl + '/menu';
+  getMenuUrl = environment.apiUrl + '/menu';
   addProductUrl = environment.apiUrl + '/addproduct';
   getProductUrl = environment.apiUrl + '/products';
   constructor(private http: HttpClient) {}
-  getMenu() {
-    return this.http.get<any>(this.menuUrl, this.httpOptions);
+
+  getMenu(): Observable<MainMenu[]> {
+    return this.http.get<MainMenu[]>(this.getMenuUrl).pipe(
+      tap(_ => this.log('fetched menu')),
+      catchError(this.handleError<MainMenu[]>('getMenu', []))
+    );
   }
-  // return this.http.get<IMenu[]>(this.menuUrl, this.httpOptions).pipe(
-  //     catchError(this.handleError<IMenu[]>('getMenu', []))
+  // getMenu1() Observable<MainMenu[]> {
+  //   return this.http.get<MainMenu[]>(this.menuUrl, this.httpOptions).;
+  // }
+  // return this.http.get<MainMenu[]>(this.menuUrl, this.httpOptions).pipe(
+  //     catchError(this.handleError<MainMenu[]>('getMenu', []))
   // );
 
   getMenuById(id: number) {
     const url = `${this.menuUrl}/${id}`;
-    return this.http.get<IMenu>(url).pipe(
-      tap(_ => this.log(`fetched IMenu id=${id}`)),
-      catchError(this.handleError<IMenu>(`getIMenu id=${id}`))
+    return this.http.get<MainMenu>(url).pipe(
+      tap(_ => this.log(`fetched MainMenu id=${id}`)),
+      catchError(this.handleError<MainMenu>(`getMainMenu id=${id}`))
     );
   }
 
-  /** PUT: update the IMenu on the server */
+  /** PUT: update the MainMenu on the server */
   updateMenu(menu: MainMenu[]): Observable<any> {
     return this.http.put(this.menuUrl, menu, this.httpOptions).pipe(
       tap(_ => this.log(`updated Menu`)),
@@ -40,22 +47,22 @@ export class BaseService {
     );
   }
 
-  /** POST: add a new IMenu to the server */
-  addMenu(menu: IMenu): Observable<IMenu> {
-    return this.http.post<IMenu>(this.menuUrl, menu, this.httpOptions).pipe(
-      tap((newMenu: IMenu) => this.log(`added IMenu w/ id=${newMenu._id}`)),
-      catchError(this.handleError<IMenu>('addIMenu'))
+  /** POST: add a new MainMenu to the server */
+  addMenu(menu: MainMenu): Observable<MainMenu> {
+    return this.http.post<MainMenu>(this.menuUrl, menu, this.httpOptions).pipe(
+      tap((newMenu: MainMenu) => this.log(`added MainMenu w/ id=${newMenu._id}`)),
+      catchError(this.handleError<MainMenu>('addMainMenu'))
     );
   }
 
-  /** DELETE: delete the IMenu from the server */
-  deleteMenu(menu: IMenu | number): Observable<IMenu> {
+  /** DELETE: delete the MainMenu from the server */
+  deleteMenu(menu: MainMenu | number): Observable<MainMenu> {
     const id = typeof menu === 'number' ? menu : menu._id;
     const url = `${this.menuUrl}/${id}`;
 
-    return this.http.delete<IMenu>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted IMenu id=${id}`)),
-      catchError(this.handleError<IMenu>('deleteIMenu'))
+    return this.http.delete<MainMenu>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted MainMenu id=${id}`)),
+      catchError(this.handleError<MainMenu>('deleteMainMenu'))
     );
   }
 
@@ -95,8 +102,8 @@ export class BaseService {
     );
   }
   private log(message: string) {
-    console.log(`IMenuService: ${message}`);
-    // this.messageService.add(`IMenuService: ${message}`);
+    console.log(`MainMenuService: ${message}`);
+    // this.messageService.add(`MainMenuService: ${message}`);
   }
 
   // Handle Http operation that failed.

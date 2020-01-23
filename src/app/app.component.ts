@@ -1,25 +1,87 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from './_services';
-import { User } from './_models';
+import { User, MainMenu } from './_models';
+import { BaseService } from './_services/base.service';
+import { BasketService } from './_services/basket.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   currentUser: User;
-
+  menu: MainMenu[] = [];
+  menuString: string;
+  isShow: boolean;
+  productsInBasket: number;
   constructor(
-
-    private authenticationService: AuthenticationService
-  ) {
+    private authenticationService: AuthenticationService,
+    private basketService: BasketService,
+    private baseService: BaseService ) {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       if (this.currentUser != null) {
         console.log(this.currentUser.name);
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.productsInBasket = 0;
+    this.basketService.currentbasket.subscribe(basket => {
+      this.productsInBasket = basket.length;
+    });
+
+    // this.isShow = false;
+    // this.baseService.getMenu()
+    //   .subscribe(menu => {
+    //     this.menu = menu.sort((a, b) => a.id - b.id);
+    //     this.createMenu();
+    //   });
+  }
+
+  drop() {
+    this.isShow = true;
+  }
+
+  dropOut() {
+    this.isShow = false;
+  }
+
+  createMenu() {
+    console.log('1', this.menu);
+    this.menuString = '';
+    let i = 0;
+    let k = 0;
+    this.menuString += '<div class="col-3-2"><ul class="multi-column-dropdown">';
+    for (const mainmenu of this.menu) {
+      const currentMenuName = mainmenu.name;
+      this.menuString += '<li> <div class="nav-category nav-category-bg1">' + currentMenuName + '</div></li>';
+      i++;
+      k++;
+      if ((k % (12 - i)) === 0) {
+        this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
+        i = 0;
+        k = 0;
+      }
+      mainmenu.submenu.forEach(sub => {
+        this.menuString += '<li><a routerLink="shop">' + sub.name + '</a></li>';
+        k++;
+        if ((k % (12 - i)) === 0) {
+          this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
+          i = 0;
+          k = 0;
+        }
+      });
+
+      if (mainmenu.submenu.length !== 0) {
+        this.menuString += '<li class="divider"></li>';
+      }
+    }
+    this.menuString += '</ul></div>';
+    console.log(this.menuString);
   }
 }

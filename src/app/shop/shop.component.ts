@@ -1,8 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MainMenu } from '../_models/mainmenu';
 import { ActivatedRoute } from '@angular/router';
-import { BaseService } from '../_services/base/base.service';
+import { BaseService } from '../_services/base.service';
 import { Product } from '../_models';
+import { BasketService } from '../_services/basket.service';
 
 @Component({
   selector: 'app-shop',
@@ -12,6 +13,7 @@ import { Product } from '../_models';
 export class ShopComponent implements OnInit {
   amazonServer = 'https://zonemay.s3.eu-central-1.amazonaws.com/';
   menu: MainMenu[] = [];
+  basket: Product[];
   menuString: string;
   rightMenu: string;
   isShow: boolean;
@@ -19,21 +21,30 @@ export class ShopComponent implements OnInit {
   products: Product[];
   constructor(
     private baseService: BaseService,
+    private basketService: BasketService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.isShow = false;
+    // this.isShow = false;
     this.products = [];
-    this.menu = this.route.snapshot.data.menu.message.sort((a, b) => {
-      return a.id - b.id;
-    });
-    this.createMenu();
+    // this.baseService.getMenu()
+    //   .subscribe(menu => {
+    //     this.menu = menu.sort((a, b) => a.id - b.id);
+    //     this.createMenu();
+    //   });
+
     this.baseService.getProducts()
       .subscribe(products => {
         this.products = products;
         this.products.map(p => p.imglink = this.amazonServer + p.imglink );
-        // console.log(products);
       });
+    this.basketService.currentbasket.subscribe(basket => this.basket = basket);
+  }
+
+  buy(product){
+    this.basket.push(product);
+    console.log(this.basket);
+    this.basketService.changeBasket(this.basket);
   }
 
   drop() {
@@ -68,7 +79,7 @@ export class ShopComponent implements OnInit {
         k = 0;
       }
       mainmenu.submenu.forEach(sub => {
-        this.menuString += '<li><a href="#/shop">' + sub.name + '</a></li>';
+        this.menuString += '<li><a href=shop">' + sub.name + '</a></li>';
         this.rightMenu += '<li><a href="#">' + sub.name + '</a></li>';
         k++;
 
@@ -90,4 +101,4 @@ export class ShopComponent implements OnInit {
     this.menuString += '</ul></div>';
     console.log(this.rightMenu);
   }
-  }
+}

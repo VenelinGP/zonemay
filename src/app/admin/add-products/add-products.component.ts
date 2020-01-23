@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { BaseService } from '../../_services/base/base.service';
-import { IMenu } from '../../_services/base/menu.interface';
+import { BaseService } from '../../_services/base.service';
 import { FormControl } from '@angular/forms';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { MainMenu } from '../../_models';
 
 @Component({
   selector: 'app-add-products',
@@ -26,7 +26,7 @@ export class AddProductsComponent implements OnInit {
   category: FormControl;
   picture: string;
   currentFileUpload: File;
-  menu: IMenu[] = [];
+  menu: MainMenu[] = [];
   imageChangedEvent: any = '';
   croppedImage: any = '';
   progress: { percentage: number; } = { percentage: 0 };
@@ -50,7 +50,7 @@ export class AddProductsComponent implements OnInit {
     this.isChecked = false;
     this.category = new FormControl();
     this.baseService.getMenu().subscribe(data => {
-        this.menu = data.message.sort((a, b) => {
+        this.menu = data.sort((a, b) => {
           return a.id - b.id;
         });
       });
@@ -78,7 +78,7 @@ export class AddProductsComponent implements OnInit {
   next() {
     this.isChecked = true;
   }
-  back(){
+  back() {
     this.isChecked = false;
   }
   saveProduct() {

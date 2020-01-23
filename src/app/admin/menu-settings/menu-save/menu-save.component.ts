@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MainMenu } from '../../../_models/mainmenu';
-import { BaseService } from '../../../_services/base/base.service';
+import { BaseService } from '../../../_services/base.service';
 import { AlertService, AlertTime } from '../../../_alert';
 
 @Component({

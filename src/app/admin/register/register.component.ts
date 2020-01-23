@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     this.alertService.success(message);
     setTimeout(() => {
       this.alertService.clear();
-      this.router.navigate(['#/admin/login']);
+      this.router.navigate(['admin/login']);
     }, AlertTime.Long);
   }
   errorMess(message: string) {

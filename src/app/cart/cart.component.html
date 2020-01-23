@@ -1,0 +1,165 @@
+<div class="hero-wrap hero-bread" style="background-image: url(/assets/images/cart-header2.jpg);">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 text-center animated fadeInUp">
+                <p class="breadcrumbs"><span>Заявени продукти</span></p>
+                <h1 class="mb-0 bread">Моята количка.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animated fadeInUp ">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>Продукт</th>
+                                <th>Цена</th>
+                                <th>Количество</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" *ngFor="let product of basket">
+                                <td class="product-remove">
+                                    <a (click)='remove(product._id)'><span class="ion-ios-close"></span></a>
+                                </td>
+
+                                <td class="image-prod">
+                                    <img class="img" src="{{product.imglink}}">
+                                </td>
+
+                                <td class="product-name">
+                                    <h3>{{product.name}}</h3>
+                                    <p>{{product.description}}</p>
+                                </td>
+
+                                <td class="price">{{product.price | number:'1.2-2'}}</td>
+
+                                <td class="quantity">
+                                    <div class="input-group mb-3">
+                                        <input #quantity type="text" name="quantity" class="quantity form-control input-number" [(ngModel)]="product.buyingQty" (keyup)='onKey()' value="1" min="1" max="100">
+                                    </div>
+                                </td>
+
+                                <td class="total">{{product.price * product.buyingQty | number:'1.2-2'}} лв.</td>
+                            </tr>
+                            <!-- END TR-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-lg-5 col-md-6 mt-5 cart-wrap fadeInUp animated">
+                <div class="cart-total mb-3">
+                    <h3>Всичко в количката</h3>
+                    <p class="d-flex">
+                        <span>Продукти</span>
+                        <span>{{sumOfBasket | number:'1.2-2'}} лв.</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Отстъпка</span>
+                        <span>{{sumOfDiscount | number:'1.2-2'}} лв.</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Доставка</span>
+                        <span>{{currierPrice | number:'1.2-2'}} лв.</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Общо</span>
+                        <span>{{total | number:'1.2-2'}} лв.</span>
+                    </p>
+                </div>
+                <p class="text-center"><a routerLink="checkout.html" class="btn btn-primary py-3 px-4">Поръчай</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+<footer class="ftco-footer bg-light ftco-section">
+    <div class="footer-color">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a routerLink="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Зона Май</h2>
+                        <p>Креативни, уникални и самоделни декорации и подаръци.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+
+                            <li class="fadeInUp animated"><a target="_blank" routerLink="https://www.facebook.com/%D0%97%D0%BE%D0%BD%D0%B0-%D0%9C%D0%B0%D0%B9-441507525941541/"><span
+                    class="icon-facebook"></span></a></li>
+                            <li class="fadeInUp animated"><a target="_blank" routerLink="https://www.instagram.com/explore/tags/%D0%B7%D0%BE%D0%BD%D0%B0%D0%BC%D0%B0%D0%B9/"><span
+                    class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Меню</h2>
+                        <ul class="list-unstyled">
+                            <li><a routerLink="shop.html" class="py-2 d-block">Магазин</a></li>
+                            <li><a routerLink="about.html" class="py-2 d-block">За Нас</a></li>
+                            <li><a routerLink="contact.html" class="py-2 d-block">Контакти</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Помощ</h2>
+                        <div class="d-flex">
+                            <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+                                <li><a routerLink="shipping.html" class="py-2 d-block">Информация за Доставка</a></li>
+                                <li><a routerLink="returns.html" class="py-2 d-block">Подмяна и връщане</a></li>
+                                <li><a routerLink="terms.html" class="py-2 d-block">Условия на закупуване</a></li>
+                                <li><a routerLink="faq.html" class="py-2 d-block">Често задавани въпроси</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Контакти</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">ул. Мишо Тодоров №7, Сливен,
+                    България</span></li>
+                                <li><a routerLink="tel:+359889785643"><span class="icon icon-phone"></span><span class="text">+359 88 978
+                      5643</span></a></li>
+                                <li><a routerLink="mailto:zonamai@abv.bg?subject=Здравейте!"><span class="icon icon-envelope"></span><span
+                      class="text">zonamai@abv.bg</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>Copyright ©
+                        <script type="text/javascript">
+                            document.write(new Date().getFullYear());
+                        </script>2019 | Всички права запазени. - Зона Май | <a routerLink="https://zonamai.bg/" target="_blank">zonamai.bg</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->

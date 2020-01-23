@@ -1,5 +1,5 @@
 export class Product{
-    id: number;
+    _id: number;
     name: string;
     price: number;
     discount: number;
@@ -10,4 +10,5 @@ export class Product{
     rating: number;
     sold: number;
     imglink: string;
+    buyingQty?: number;
 }

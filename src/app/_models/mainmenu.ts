@@ -5,5 +5,5 @@ export class MainMenu {
     _id: number;
     id: number;
     name: string;
-    submenu: SubMenu[];
+    submenu?: SubMenu[];
 }

@@ -28,18 +28,20 @@ import { AddProductsComponent } from './admin/add-products/add-products.componen
 
 // used to create fake backend
 import { UserService } from './_services/user.service';
-import { BaseService } from './_services/base/base.service';
+import { BaseService } from './_services/base.service';
 import { WINDOW_PROVIDERS } from './_services/window.service';
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppHeaderComponent } from './app-header/app-header.component';
-import { MenuResolve } from './_services/base/menu.resolve';
 import { MenuSettingsComponent } from './admin/menu-settings/menu-settings.component';
 
 // MATERIAL COMPONENTS
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { CartComponent } from './cart/cart.component';
+import { BasketService } from './_services/basket.service';
+import { HeaderComponent } from './header/header.component';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -56,7 +58,9 @@ import { MatSelectModule } from '@angular/material/select';
     MenuDetailComponent,
     MenuSaveComponent,
     ShopComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    CartComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   providers: [
     BaseService,
-    MenuResolve,
+    BasketService,
     UserService,
     WINDOW_PROVIDERS,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

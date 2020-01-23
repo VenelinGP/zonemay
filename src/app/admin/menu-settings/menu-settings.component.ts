@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { IMenu } from '../../_services/base/menu.interface';
 import { ActivatedRoute } from '@angular/router';
 import { MainMenu } from '../../_models/mainmenu';
-import { BaseService } from '../../_services/base/base.service'
-import { first } from 'rxjs/operators';
+import { BaseService } from '../../_services/base.service';
 
 
 @Component({
@@ -14,7 +12,7 @@ import { first } from 'rxjs/operators';
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MenuSettingsComponent implements OnInit {
-  menu: IMenu[] = [];
+  menu: MainMenu[] = [];
   selectedMenu: MainMenu;
   showInput = true;
   isOopen = 'close';
@@ -23,8 +21,8 @@ export class MenuSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.baseService.getMenu()
-    .subscribe(data =>{
-      this.menu = data.message.sort((a, b) => {
+    .subscribe(menu => {
+      this.menu = menu.sort((a, b) => {
         return a.id - b.id;
       });
     });
