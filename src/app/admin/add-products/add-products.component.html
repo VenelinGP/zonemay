@@ -1,18 +1,20 @@
 <div class="container" *ngIf="!isChecked">
     <div class="md-form">
-        <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="product.name" />
+        <input mdbInput type="text" id="form1" [(ngModel)]="product.name" />
         <label for="form1" class="">Продукт:</label>
     </div>
     <div class="md-form">
-        <input mdbInput type="text" id="form2" class="form-control" [(ngModel)]="product.price" />
+        <input mdbInput type="text" id="form2" [(ngModel)]="product.price" (keyup)="check('price')" />
         <label for="form2" class="">Цена:</label>
+        <mdb-error *ngIf="isPriceNumber">Грешен вход</mdb-error>
     </div>
     <div class="md-form">
-        <input mdbInput type="text" id="form3" class="form-control" [(ngModel)]="product.discount" />
+        <input mdbInput type="text" id="form3" [(ngModel)]="product.discount" (keyup)="check('disc')" />
         <label for="form3" class="">Отстъпка:</label>
+        <mdb-error *ngIf="isDiscountNumber">Грешен вход</mdb-error>
     </div>
     <div class="md-form">
-        <textarea mdbInput type="text" id="form4" class="form-control" [(ngModel)]="product.description"></textarea>
+        <textarea mdbInput type="text" id="form4" [(ngModel)]="product.description"></textarea>
         <label for="form4" class="">Описание:</label>
     </div>
     <mat-form-field>
@@ -27,8 +29,9 @@
         </mat-select>
     </mat-form-field>
     <div class="md-form">
-        <input mdbInput type="text" id="form6" class="form-control" [(ngModel)]="product.quantity" />
+        <input mdbInput type="text" id="form6" [(ngModel)]="product.quantity" (keyup)="check('quantity')" />
         <label for="form6" class="">Количество:</label>
+        <mdb-error *ngIf="isQuantityNumber">Грешен вход</mdb-error>
     </div>
 
     <input type="file" (change)="fileChangeEvent($event)" (change)="fileChangeEvent($event)">

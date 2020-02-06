@@ -1,25 +1,5 @@
 <!--Top Menu line-->
-<div class="py-1 bg-black">
-    <div class="container">
-        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
-            <div class="col-lg-12 d-block">
-                <div class="row d-flex">
-                    <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span>
-                        </div> <span class="text"><a routerLink="тел:+359 88 978 5643">+359 88 978 5643</a></span>
-                    </div>
-                    <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div> <span class="text"> <a
-                routerLink="mailto:zonamai@abv.bg?subject=Здравейте!g">zonamai@abv.bg</a></span>
-                    </div>
-                    <div class="col-md-5 pr-4 d-flex topper-long align-items-center text-lg-right">
-                        <span class="text">Доставка при наличност - 24 часа</span> <span class="text">При изработка - 10 раб.
-              дни</span> </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-top-header></app-top-header>
 <!--Nav-->
 <!-- <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar intro-fixed-nav" scrolled awake[containerInside]="false">    <mdb-navbar-brand>        <a class="logo navbar-brand" routerLink="#">            <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" />        </a>    </mdb-navbar-brand>    <links>        <ul class="navbar-nav mr-auto">            <li class="nav-item active waves-light" mdbWavesEffect>                <a class="nav-link">Home <span class="sr-only">(current)</span></a>            </li>            <li class="nav-item waves-light" mdbWavesEffect>                <a class="nav-link">Link</a>            </li>            <li class="nav-item waves-light" mdbWavesEffect>                <a class="nav-link">Profile</a>            </li>        </ul>    </links></mdb-navbar> -->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -100,7 +80,7 @@
                     </ul>
                 </li>
                 <li class="nav-item stroke3 nav-elongate"><a routerLink="about" class="nav-link">За Нас</a></li>
-                <li class="nav-item stroke4"><a routerLink="contact" class="nav-link">Контакти</a></li>
+                <li class="nav-item stroke4 nav-elongate"><a routerLink="contact" class="nav-link">Контакти</a></li>
                 <li class="nav-item cta cta-colored"><a routerLink="cart" class="nav-link"><span
               class="icon-shopping_cart"></span>[{{productsInBasket}}]</a></li>
             </ul>

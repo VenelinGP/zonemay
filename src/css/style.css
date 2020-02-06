@@ -10777,7 +10777,7 @@
     
     .caveat-title {
         line-height: 1.5;
-        font-size: 1.7em;
+        font-size: 3.8em;
         font-weight: 400;
         color: #000000;
         font-family: 'madelyn';
@@ -12691,7 +12691,7 @@
     .billing-form label {
         color: #000000;
         font-size: 22px;
-        font-family: 'madelyn';
+        font-family: 'Nunito', sans-serif;
     }
     
     .billing-form .icon {
@@ -14452,7 +14452,7 @@
         background-position: 0 1.2em;
         background-size: 0 100%;
         background-repeat: no-repeat;
-        transition: background .5s;
+        transition: background 0.5s;
     }
     
     .underlined--gradient {
@@ -15165,7 +15165,7 @@
     }
     
     .price {
-        font-family: 'madelyn';
+        font-family: 'Roboto';
     }
     
     .shop-top {

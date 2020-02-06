@@ -24,11 +24,10 @@
 </mdb-navbar>
 <div class="row">
     <div class="menu" *ngIf="currentUser">
-        <a href="javascript:void(0)" class="closebtn float-right" onclick="closeNav()">&times;</a>
-        <a href="admin/menu">Меню - настройки</a>
-        <a href="admin/products">Добавяне на продукти</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a routerLink="menu">Меню - настройки</a>
+        <a routerLink="products">Добавяне на продукти</a>
+        <a routerLink="clients">Клиенти</a>
+        <a href="admin">Contact</a>
     </div>
     <router-outlet></router-outlet>
     <div class="position-absolute w-100">

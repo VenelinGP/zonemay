@@ -1,0 +1,149 @@
+<div class="hero-wrap hero-bread" style="background-image: url(assets/images/checkout-header.jpg);">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 text-center fadeInUp animated">
+                <p class="breadcrumbs"><span>Адрес за доставка.</span></p>
+                <h1 class="mb-0 bread" style="font-size:  4.5vw">Потвърждаване на поръчката.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 fadeInUp animated">
+                <form action="#" class="billing-form">
+                    <h3 class="mb-4 billing-heading-big">Детайли за поръчка</h3>
+                    <div class="row align-items-end">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstName">Име</label>
+                                <input [(ngModel)]="client.name" name="first" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastname">Фамилия</label>
+                                <input [(ngModel)]="client.family" name="last" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="streetaddress">Адрес</label>
+                                <input [(ngModel)]="client.address" name="address" type="text" class="form-control" placeholder="Улица и номер">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input [(ngModel)]="client.address2" name="address2" type="text" class="form-control" placeholder="Вход, Етаж, Апартамент: (незадължително)">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="towncity">Град</label>
+                                <input [(ngModel)]="client.city" name="sity" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="postcodezip">Пощенски Код</label>
+                                <input [(ngModel)]="client.postCode" name="zip" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input [(ngModel)]="client.phone" name="phone" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="emailaddress">Email Адрес</label>
+                                <input [(ngModel)]="client.email" name="email" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-12">
+                            <div class="form-group mt-4">
+                                <div class="checkbox">
+                                    <label class="mr-3 d-block">
+                                        <input type="checkbox" name="optradio"> Регистрирайте нов акаунт! 
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="optradio"> Изпратете на друг адрес.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row mt-5 pt-3 d-flex">
+                <div class="col-md-6 d-flex">
+                    <div class="cart-detail cart-total bg-light p-3 p-md-4">
+                        <h3 class="billing-heading mb-4">Общо цена</h3>
+                        <p class="d-flex">
+                            <span>Продукти</span>
+                            <span>{{sumOfBasket | number:'1.2-2'}} лв.</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Отстъпка</span>
+                            <span>{{sumOfDiscount | number:'1.2-2'}} лв.</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Доставка</span>
+                            <span>{{currierPrice | number:'1.2-2'}} лв.</span>
+                        </p>
+                        <hr>
+                        <p class="d-flex total-price">
+                            <span>Общо</span>
+                            <span>{{total | number:'1.2-2'}} лв.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cart-detail bg-light p-3 p-md-4">
+                        <h3 class="billing-heading mb-4 selected">Начин на плащане</h3>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio" class="mr-2" [checked]='true' >С пощенски паричен превод!</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+										<div class="col-md-12">
+											<div class="radio">
+											   <label><input type="radio" name="optradio" class="mr-2">Дебитна/Кредитна карта</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-12">
+											<div class="radio">
+											   <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+											</div>
+										</div>
+									</div> -->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="" class="mr-2">Прочел съм условията и съм съгласен.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <p><a (click)="submit()" class="btn btn-primary btn-buy py-3 px-4" style="text-align:center;">Купи</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END -->

@@ -11,6 +11,7 @@ export class BasketService {
     constructor() { }
 
     changeBasket(basket: Product[]) {
+        console.log(basket);
         this.basketSource.next(basket);
     }
 }

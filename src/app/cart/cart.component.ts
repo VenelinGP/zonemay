@@ -19,23 +19,30 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.basketService.currentbasket.subscribe(basket => {
-      this.basket = basket;
-      this.basket.map( p => p.buyingQty = 1 );
-      this.onKey();
+      if (basket.length !== 0) {
+        this.basket = basket;
+        this.update();
+      }
     });
   }
 
-  onKey() {
+  update() {
     this.sumOfBasket = 0;
     this.sumOfDiscount = 0;
     this.total = 0;
-    this.basket.forEach(p =>{
-      this.sumOfBasket += p.price  * p.buyingQty;
-      if(p.discount > 0) {
+    this.basket.forEach(p => {
+      this.sumOfBasket += p.price * p.buyingQty;
+      if (p.discount > 0) {
         this.sumOfDiscount += (p.price - p.discount) * p.buyingQty;
       }
     });
     this.total = this.sumOfBasket - this.sumOfDiscount + this.currierPrice;
+  }
+
+
+  onKey() {
+    this.update();
+    console.log('click');
     this.basketService.changeBasket(this.basket);
   }
   remove(id) {
@@ -47,7 +54,7 @@ export class CartComponent implements OnInit {
     if (index > -1){
       this.basket.splice(index, 1);
     }
-    this.onKey()
+    this.update();
     console.log('Cart', this.basket);
     this.basketService.changeBasket(this.basket);
   }

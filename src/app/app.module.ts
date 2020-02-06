@@ -13,6 +13,11 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { AlertModule } from './_alert';
 import { AppRoutingModule } from './app-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {
+  RecaptchaModule,
+  RECAPTCHA_SETTINGS,
+  RecaptchaSettings
+} from 'ng-recaptcha';
 
 import { CarouselHolderComponent } from './carousel-holder/carousel-holder.component';
 
@@ -42,6 +47,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { CartComponent } from './cart/cart.component';
 import { BasketService } from './_services/basket.service';
 import { HeaderComponent } from './header/header.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ClientsComponent } from './admin/clients/clients.component';
+import { ClientBasketComponent } from './client-basket/client-basket.component';
+import { TopHeaderComponent } from './top-header/top-header.component';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -60,12 +69,17 @@ import { HeaderComponent } from './header/header.component';
     ShopComponent,
     AddProductsComponent,
     CartComponent,
-    HeaderComponent
+    HeaderComponent,
+    CheckoutComponent,
+    ClientsComponent,
+    ClientBasketComponent,
+    TopHeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    RecaptchaModule,
     ImageCropperModule,
     CarouselModule,
     ReactiveFormsModule,
@@ -84,6 +98,12 @@ import { HeaderComponent } from './header/header.component';
     WINDOW_PROVIDERS,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: '6Lci0dUUAAAAAEzsrb388R1Xk8CXvtYM9r0Rn-OO'
+      } as RecaptchaSettings
+    },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
     // provider used to create fake backend
     fakeBackendProvider

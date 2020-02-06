@@ -47,6 +47,7 @@
         "magnific-popup": "^1.1.0",
         "mongoose": "^5.8.9",
         "multer": "^1.4.2",
+        "ng-recaptcha": "^5.0.0",
         "ngx-image-cropper": "^2.1.2",
         "ngx-owl-carousel-o": "^2.0.3",
         "open-iconic": "^1.1.1",

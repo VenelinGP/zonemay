@@ -20,12 +20,12 @@ export class MenuSettingsComponent implements OnInit {
   constructor(private baseService: BaseService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.baseService.getMenu()
-    .subscribe(menu => {
-      this.menu = menu.sort((a, b) => {
-        return a.id - b.id;
-      });
-    });
+    // this.baseService.getMenu().subscribe(menu => {
+    //   this.menu = menu.sort((a, b) => {
+    //     return a.id - b.id;
+    //   });
+    // });
+    this.menu = this.baseService.getMenuNotObservable();
     console.log(this.menu);
   }
   onSelect(mainMenu: MainMenu): void {

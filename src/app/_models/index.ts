@@ -5,3 +5,5 @@ export * from './mainmenu';
 export * from './message';
 export * from './submenu';
 export * from './product';
+export * from './client';
+export * from './buingproduct';

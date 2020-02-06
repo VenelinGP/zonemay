@@ -12,20 +12,26 @@ import { MenuDetailComponent } from './admin/menu-settings/menu-detail/menu-deta
 import { AddProductsComponent } from './admin/add-products/add-products.component';
 import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ClientsComponent } from './admin/clients/clients.component';
+import { ClientBasketComponent } from './client-basket/client-basket.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'admin', redirectTo: 'admin/login' },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/register', component: RegisterComponent },
   { path: 'admin', component: HomeComponent, canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'menu', pathMatch: 'full'},
     { path: 'menu', component: MenuSettingsComponent, canActivate: [AuthGuard] },
     { path: 'products', component: AddProductsComponent, canActivate: [AuthGuard] },
-    { path: 'admin/master', component: MasterComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+    { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
+    { path: 'clients', component: ClientBasketComponent, canActivate: [AuthGuard] },
+    { path: 'clients/:id', component: ClientBasketComponent, canActivate: [AuthGuard] },
+    { path: 'master', component: MasterComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     { path: 'detail/:id', component: MenuDetailComponent, canActivate: [AuthGuard] },
   ]},
   { path: '**', redirectTo: 'main' }

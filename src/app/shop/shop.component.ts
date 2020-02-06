@@ -17,7 +17,9 @@ export class ShopComponent implements OnInit {
   menuString: string;
   rightMenu: string;
   isShow: boolean;
-
+  showLoader = true;
+  pages: number[];
+  appendClassTo: any[];
   products: Product[];
   constructor(
     private baseService: BaseService,
@@ -26,22 +28,36 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     // this.isShow = false;
+    this.pages = [];
     this.products = [];
+    this.appendClassTo = [];
+    this.appendClassTo.push(0);
     // this.baseService.getMenu()
     //   .subscribe(menu => {
     //     this.menu = menu.sort((a, b) => a.id - b.id);
     //     this.createMenu();
     //   });
 
+    this.menu = this.baseService.getMenuNotObservable();
+    this.createMenu();
+
     this.baseService.getProducts()
       .subscribe(products => {
         this.products = products;
         this.products.map(p => p.imglink = this.amazonServer + p.imglink );
+        this.pages = new Array(Math.round(this.products.length / 9));
+        if (this.pages.length === 0) {
+          this.pages = new Array(1);
+        }
+        this.showLoader = false;
       });
-    this.basketService.currentbasket.subscribe(basket => this.basket = basket);
+    this.basketService.currentbasket.subscribe(basket => {
+      this.basket = basket;
+    });
   }
 
-  buy(product){
+  buy(product: Product) {
+    product.buyingQty = 1;
     this.basket.push(product);
     console.log(this.basket);
     this.basketService.changeBasket(this.basket);
@@ -99,6 +115,28 @@ export class ShopComponent implements OnInit {
       }
     }
     this.menuString += '</ul></div>';
-    console.log(this.rightMenu);
+    // console.log(this.rightMenu);
+  }
+  leftClick() {
+    console.log(this.appendClassTo[0]);
+    if (this.appendClassTo[0] > 0) {
+      const currentPage = this.appendClassTo[0];
+      this.appendClassTo.splice(0);
+      this.appendClassTo.push(currentPage - 1);
+    }
+  }
+  rightClick() {
+    console.log(this.appendClassTo[0]);
+    if (this.appendClassTo[0] < this.pages.length - 1) {
+      const currentPage = this.appendClassTo[0];
+      this.appendClassTo.splice(0);
+      this.appendClassTo.push(currentPage + 1);
+    }
+  }
+  pageClick(i: number) {
+    console.log(i);
+    this.appendClassTo.splice(0);
+    this.appendClassTo.push(i - 1);
+    console.log(this.appendClassTo[0]);
   }
 }

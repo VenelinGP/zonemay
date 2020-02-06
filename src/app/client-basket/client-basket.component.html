@@ -1,0 +1,48 @@
+<div class="container">
+    <div>
+        <p><strong>Име </strong></p>
+        <p> {{client.name}} </p>
+    </div>
+    <div>
+        <p><strong>Фамилия </strong></p>
+        <p> {{client.family}} </p>
+    </div>
+    <div>
+        <p><strong>E-mail </strong></p>
+        <p> {{client.email}} </p>
+    </div>
+    <div>
+        <p><strong>Телефон: </strong></p>
+        <p> {{client.phone}} </p>
+    </div>
+    <div>
+        <p><strong>Адрес</strong></p>
+        <p> {{client.address}} </p>
+    </div>
+    <div>
+        <p><strong>Адрес 2</strong></p>
+        <p> {{client.address2}} </p>
+    </div>
+    <div>
+        <p><strong>Град</strong></p>
+        <p> {{client.city}} </p>
+    </div>
+    <div>
+        <p><strong>Пощенски Код</strong></p>
+        <p> {{client.postCode}} </p>
+    </div>
+    <div>
+        <p><strong>Продукти:</strong></p>
+        <p> {{client.basket.length}} </p>
+    </div>
+</div>
+<div class="container">
+    <div class="row" *ngFor="let product of client.basket">
+        <div>
+            <p><strong>Продукт: {{product.name}}   </strong></p>
+            <p>Цена: {{product.price }} лв. </p>
+            <p>Отстъпка: {{product.discount}} лв. </p>
+            <p>Брой: {{product.buyingQty}} </p>
+        </div>
+    </div>
+</div>

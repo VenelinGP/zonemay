@@ -11,6 +11,11 @@ import { MainMenu } from '../../_models';
   styleUrls: ['./add-products.component.scss']
 })
 export class AddProductsComponent implements OnInit {
+  isPriceNumber = false;
+  isDiscountNumber = false;
+  isQuantityNumber = false;
+  isImageStringLength = false;
+
   product: {
     name: string,
     price: number,
@@ -35,6 +40,10 @@ export class AddProductsComponent implements OnInit {
   constructor(private baseService: BaseService) {}
 
   ngOnInit() {
+    this.isPriceNumber = false;
+    this.isDiscountNumber = false;
+    this.isQuantityNumber = false;
+    this.isImageStringLength = false;
     this.product = {
       name: '',
       price: 0.00,
@@ -49,11 +58,13 @@ export class AddProductsComponent implements OnInit {
     };
     this.isChecked = false;
     this.category = new FormControl();
-    this.baseService.getMenu().subscribe(data => {
-        this.menu = data.sort((a, b) => {
-          return a.id - b.id;
-        });
-      });
+    // this.baseService.getMenu().subscribe(data => {
+    //     this.menu = data.sort((a, b) => {
+    //       return a.id - b.id;
+    //     });
+    //   });
+    this.menu = this.baseService.getMenuNotObservable();
+    console.log(this.menu);
     }
 
   fileChangeEvent(event: any): void {
@@ -76,7 +87,21 @@ export class AddProductsComponent implements OnInit {
   }
 
   next() {
-    this.isChecked = true;
+    if (typeof this.product.price === 'number') {
+      this.isPriceNumber = false;
+    }
+    if ( typeof this.product.discount === 'number') {
+      this.isDiscountNumber = false;
+    }
+    if (typeof this.product.quantity === 'number') {
+      this.isQuantityNumber = false;
+    }
+    if (this.product.imglink !== '') {
+      // this.isChecked = true;
+    }
+    if (!this.isPriceNumber && !this.isDiscountNumber && !this.isQuantityNumber && !this.isImageStringLength) {
+      this.isChecked = true;
+    }
   }
   back() {
     this.isChecked = false;
@@ -162,5 +187,35 @@ dataURItoBlob(dataURI): Blob {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: mimeString });
+  }
+
+  check(event){
+    if(event === 'price') {
+      if (isNaN(this.product.price)) {
+        this.isPriceNumber = true;
+        console.log('true' );
+      } else {
+        this.isPriceNumber = false;
+        console.log('false');
+      }
+    }
+    if (event === 'disc') {
+      if (isNaN(this.product.discount)) {
+        this.isDiscountNumber = true;
+        console.log('true');
+      } else {
+        this.isDiscountNumber = false;
+        console.log('false');
+      }
+    }
+    if (event === 'quantity') {
+      if (isNaN(this.product.quantity)) {
+        this.isQuantityNumber = true;
+        console.log('true');
+      } else {
+        this.isQuantityNumber = false;
+        console.log('false');
+      }
+    }
   }
 }

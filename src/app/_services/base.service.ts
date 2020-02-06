@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { MainMenu } from '../_models/mainmenu';
-import { Product } from '../_models';
+import { Product, Client } from '../_models';
 
 @Injectable()
 export class BaseService {
@@ -16,6 +16,8 @@ export class BaseService {
   getMenuUrl = environment.apiUrl + '/menu';
   addProductUrl = environment.apiUrl + '/addproduct';
   getProductUrl = environment.apiUrl + '/products';
+  clientBasketUrl = environment.apiUrl + '/client';
+  mainMenu: MainMenu[] = [];
   constructor(private http: HttpClient) {}
 
   getMenu(): Observable<MainMenu[]> {
@@ -24,13 +26,19 @@ export class BaseService {
       catchError(this.handleError<MainMenu[]>('getMenu', []))
     );
   }
-  // getMenu1() Observable<MainMenu[]> {
-  //   return this.http.get<MainMenu[]>(this.menuUrl, this.httpOptions).;
-  // }
-  // return this.http.get<MainMenu[]>(this.menuUrl, this.httpOptions).pipe(
-  //     catchError(this.handleError<MainMenu[]>('getMenu', []))
-  // );
-
+  getMenuNotObservable(): MainMenu[] {
+    console.log('BS: ', this.mainMenu.length);
+    if(this.mainMenu.length === 0) {
+      console.log('Get Menu 11111');
+      this.getMenu().subscribe(menu => {
+        this.mainMenu = menu.sort((a, b) => a.id - b.id);
+      });
+      return this.mainMenu;
+    } else {
+      console.log('Get Menu 22222');
+      return this.mainMenu;
+    }
+  }
   getMenuById(id: number) {
     const url = `${this.menuUrl}/${id}`;
     return this.http.get<MainMenu>(url).pipe(
@@ -99,6 +107,22 @@ export class BaseService {
     return this.http.get<Product[]>(this.getProductUrl).pipe(
       tap(_ => this.log('fetched products')),
       catchError(this.handleError<Product[]>('getProducts', []))
+    );
+  }
+
+  addClientBasket(client: any): Observable<any> {
+    return this.http.post<any>(this.clientBasketUrl, client, this.httpOptions).pipe(
+      tap((newClient: any) =>
+        this.log(`added Client w/ id=${newClient._id}`)
+      ),
+      catchError(this.handleError<any>('addClientBasket'))
+    );
+  }
+
+  getClientsBasket(): Observable<Client[]>{
+    return this.http.get<Client[]>(this.clientBasketUrl).pipe(
+      tap(_ => this.log('fetched clients requests')),
+      catchError(this.handleError<Client[]>('getRequests', []))
     );
   }
   private log(message: string) {

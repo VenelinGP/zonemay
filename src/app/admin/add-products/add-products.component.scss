@@ -3,9 +3,17 @@ label {
     display: inline-block
 }
 
-.form-control,
+input,
+textarea {
+    width: 80%;
+}
+
 .mat-form-field {
-    width: 1200px;
+    width: 800px;
+}
+
+.mat-form-field-wrapper {
+    width: 80%;
 }
 
 button {
