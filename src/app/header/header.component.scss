@@ -1,0 +1,49 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .menu-large {
+        display: none;
+    }
+    .menu-small {
+        display: flex;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .menu-large {
+        display: none;
+    }
+    .menu-small {
+        display: flex;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .ftco-navbar-light {
+        background: #ffffff !important;
+        z-index: 9999;
+        padding: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .menu-large {
+        display: flex;
+    }
+    .menu-small {
+        display: none;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .menu-large {
+        display: flex;
+    }
+    .menu-small {
+        display: none;
+    }
+}
