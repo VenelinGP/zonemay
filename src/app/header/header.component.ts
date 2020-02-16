@@ -3,6 +3,7 @@ import { MainMenu, User } from '../_models';
 import { AuthenticationService } from '../_services';
 import { BasketService } from '../_services/basket.service';
 import { BaseService } from '../_services/base.service';
+import { SideNavService } from '../_services/side_nav.service';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,15 @@ import { BaseService } from '../_services/base.service';
 export class HeaderComponent implements OnInit {
   currentUser: User;
   menu: MainMenu[] = [];
+  isMenuShow: boolean;
+  opened: boolean;
   menuString: string;
   isShow: boolean;
   productsInBasket: number;
   constructor(private authenticationService: AuthenticationService,
               private basketService: BasketService,
-              private baseService: BaseService) {
+              private baseService: BaseService,
+              private sideNavService: SideNavService) {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       if (this.currentUser != null) {
@@ -27,13 +31,23 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.opened = false;
+    this.sideNavService.changeState(this.opened);
+    this.sideNavService.currentState.subscribe(state => this.opened = state);
     this.productsInBasket = 0;
     this.basketService.currentbasket.subscribe(basket => {
       this.productsInBasket = basket.length;
     });
 
   }
-
+  menuShow() {
+    this.opened = !this.opened;
+    this.sideNavService.changeState(this.opened);
+  }
+  hideMenu() {
+    this.isMenuShow = false;
+    console.log(this.isMenuShow);
+  }
   drop() {
     this.isShow = true;
   }

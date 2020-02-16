@@ -187,83 +187,12 @@ a {
     color: #bbfffd;
 }
 
-@media (min-width: 576px) {
-    .container {
-        max-width: 540px;
-    }
+.content-desktop {
+    display: block;
 }
 
-@media (min-width: 800px) {
-    .bg-black {
-        background: #7e7f83 !important;
-    }
-    .container {
-        max-width: 720px;
-    }
-    .pl-md-0,
-    .px-md-0 {
-        padding-left: 0 !important;
-    }
-    .pr-md-0,
-    .px-md-0 {
-        padding-right: 0 !important;
-    }
-    .col-md {
-        -ms-flex-preferred-size: 0;
-        flex-basis: 0;
-        -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-        max-width: 100%;
-    }
-    .col-md-5 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 41.66667%;
-        flex: 0 0 41.66667%;
-        max-width: 41.66667%;
+@media screen and (max-width: 768px) {
+    .content-desktop {
+        display: none;
     }
 }
-
-@media (min-width: 992px) {
-    .container {
-        max-width: 960px;
-    }
-    .col-lg-12 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 100%;
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-    .text-lg-right {
-        text-align: right !important;
-    }
-    .topper-long {
-        display: -webkit-box !important;
-        display: flex !important;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
-    }
-}
-
-@media (min-width: 1366px) {
-    .container {
-        max-width: 1200px;
-    }
-    .topper,
-    .topper-long {
-        font-size: 11px;
-    }
-}
-
-// // Extra small devices (portrait phones, less than 576px)
-// @media (max-width: 575.98px) {}
-// // Small devices (landscape phones, less than 768px)
-// @media (max-width: 767.98px) {}
-// // Medium devices (tablets, less than 992px)
-// @media (max-width: 991px.98) {}
-// // Large devices (desktops, less than 1200px)
-// @media (max-width: 1199.98px) {}

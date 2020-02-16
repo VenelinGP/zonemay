@@ -1,2 +1,80 @@
-// z-index: 1;
-// padding-top: 60px;
+    .multi-column-dropdown li a {
+        display: block;
+        clear: both;
+        line-height: 0.5;
+        color: #333;
+        white-space: normal;
+        font-weight: 600;
+        -webkit-box-flex: 1;
+        flex: 1;
+        background-image: linear-gradient(to bottom right, #d0ebe6, #fff);
+        background-position: 0 1.2em;
+        background-size: 0 100%;
+        background-repeat: no-repeat;
+        -webkit-transition: background-color .5s;
+        transition: background-color .5s;
+        letter-spacing: 2px;
+        font-size: 0.9em;
+        font-family: 'Nunito', sans-serif;
+        text-transform: uppercase;
+    }
+    
+    .nav-category {
+        font-size: 3em;
+        letter-spacing: 0px;
+        padding: 0px;
+        font-family: 'madelynregular';
+        text-align: left;
+        margin-bottom: -15px;
+        padding-left: 14px;
+    }
+    
+    .nav-category-bg1 {
+        background-image: url('../assets/images/menu-stroke.svg');
+        background-position: left;
+        background-repeat: no-repeat;
+    }
+    
+    @media screen and (max-width: 991.98px) {
+        .stroke1 {
+            background-image: url(../assets/images/home-stroke-l0.svg);
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 120px;
+        }
+        .stroke1:hover {
+            background-image: url(../assets/images/home-stroke-l11.svg);
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 120px;
+            transition: 0.5s;
+        }
+        .multi-column-dropdown li a {
+            display: block;
+            clear: both;
+            line-height: 1.5;
+            color: #333;
+            white-space: normal;
+            font-weight: 600;
+            -webkit-box-flex: 1;
+            flex: 1;
+            background-image: linear-gradient(to bottom right, #d0ebe6, #fff);
+            background-position: 0 1.2em;
+            background-size: 0 100%;
+            background-repeat: no-repeat;
+            -webkit-transition: background-color .5s;
+            transition: background-color 0.5s;
+            letter-spacing: 2px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            text-transform: uppercase;
+        }
+        .nav-category {
+            font-size: 2.6em;
+            letter-spacing: 0px;
+            padding: 5px 29px 5px 5px;
+            font-family: 'madelynregular';
+            text-align: left;
+            margin-bottom: -15px;
+        }
+    }

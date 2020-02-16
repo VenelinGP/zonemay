@@ -2,8 +2,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MainMenu } from '../_models/mainmenu';
 import { ActivatedRoute } from '@angular/router';
 import { BaseService } from '../_services/base.service';
-import { Product } from '../_models';
+import { Product, SubMenu } from '../_models';
 import { BasketService } from '../_services/basket.service';
+import { SideNavService } from '../_services/side_nav.service';
 
 @Component({
   selector: 'app-shop',
@@ -13,6 +14,8 @@ import { BasketService } from '../_services/basket.service';
 export class ShopComponent implements OnInit {
   amazonServer = 'https://zonemay.s3.eu-central-1.amazonaws.com/';
   menu: MainMenu[] = [];
+  currentCategory: SubMenu;
+  category: SubMenu;
   basket: Product[];
   menuString: string;
   rightMenu: string;
@@ -24,6 +27,7 @@ export class ShopComponent implements OnInit {
   constructor(
     private baseService: BaseService,
     private basketService: BasketService,
+    private sideNavService: SideNavService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -32,25 +36,18 @@ export class ShopComponent implements OnInit {
     this.products = [];
     this.appendClassTo = [];
     this.appendClassTo.push(0);
-    // this.baseService.getMenu()
-    //   .subscribe(menu => {
-    //     this.menu = menu.sort((a, b) => a.id - b.id);
-    //     this.createMenu();
-    //   });
 
+    this.sideNavService.currentCategory.subscribe(cat => {
+      if (this.category !== cat) {
+        this.category = cat;
+        this.showLoader = true;
+        this.getProducts();
+      }
+    });
     this.menu = this.baseService.getMenuNotObservable();
     this.createMenu();
 
-    this.baseService.getProducts()
-      .subscribe(products => {
-        this.products = products;
-        this.products.map(p => p.imglink = this.amazonServer + p.imglink );
-        this.pages = new Array(Math.round(this.products.length / 9));
-        if (this.pages.length === 0) {
-          this.pages = new Array(1);
-        }
-        this.showLoader = false;
-      });
+    this.getProducts()
     this.basketService.currentbasket.subscribe(basket => {
       this.basket = basket;
     });
@@ -138,5 +135,18 @@ export class ShopComponent implements OnInit {
     this.appendClassTo.splice(0);
     this.appendClassTo.push(i - 1);
     console.log(this.appendClassTo[0]);
+  }
+  getProducts() {
+    this.baseService.getProducts()
+      .subscribe(products => {
+        console.log(products);
+        this.products = products.filter(p => p.category === this.category._id);
+        this.products.map(p => p.imglink = this.amazonServer + p.imglink);
+        this.pages = new Array(Math.round(this.products.length / 9));
+        if (this.pages.length === 0) {
+          this.pages = new Array(1);
+        }
+        this.showLoader = false;
+      });
   }
 }

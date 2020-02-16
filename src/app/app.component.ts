@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 import { AuthenticationService } from './_services';
-import { User, MainMenu } from './_models';
+import { User, MainMenu, SubMenu } from './_models';
 import { BaseService } from './_services/base.service';
 import { BasketService } from './_services/basket.service';
+import { SideNavService } from './_services/side_nav.service';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,23 @@ export class AppComponent implements OnInit{
 
   currentUser: User;
   menu: MainMenu[] = [];
+  menuId: SubMenu[] = [];
   menuString: string;
   isShow: boolean;
+  opened: boolean;
   productsInBasket: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (window.innerWidth >= 768) {
+      this.sideNavService.changeState(false);
+    }
+  }
   constructor(
     private authenticationService: AuthenticationService,
     private basketService: BasketService,
-    private baseService: BaseService ) {
+    private baseService: BaseService,
+    private sideNavService: SideNavService ) {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       if (this.currentUser != null) {
@@ -31,18 +42,28 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.productsInBasket = 0;
+    this.sideNavService.currentState.subscribe(state => (this.opened = state));
     this.basketService.currentbasket.subscribe(basket => {
       this.productsInBasket = basket.length;
     });
 
-    // this.isShow = false;
-    // this.baseService.getMenu()
-    //   .subscribe(menu => {
-    //     this.menu = menu.sort((a, b) => a.id - b.id);
-    //     this.createMenu();
-    //   });
+    this.isShow = false;
+    this.baseService.getMenu()
+      .subscribe(menu => {
+        this.menu = menu.sort((a, b) => a.id - b.id);
+        this.menu.forEach(m => {
+          m.submenu.forEach(s => {
+            this.menuId.push(s);
+          });
+        });
+        console.log(this.menuId);
+        // this.createMenu();
+      });
   }
-
+  hideMenu(categoriId: SubMenu) {
+    this.sideNavService.changeCategory(categoriId);
+    this.sideNavService.changeState(false);
+  }
   drop() {
     this.isShow = true;
   }

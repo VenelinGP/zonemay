@@ -44,6 +44,7 @@ import { MenuSettingsComponent } from './admin/menu-settings/menu-settings.compo
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { CartComponent } from './cart/cart.component';
 import { BasketService } from './_services/basket.service';
 import { HeaderComponent } from './header/header.component';
@@ -51,6 +52,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ClientsComponent } from './admin/clients/clients.component';
 import { ClientBasketComponent } from './client-basket/client-basket.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
+import { SideNavService } from './_services/side_nav.service';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -89,11 +91,13 @@ import { TopHeaderComponent } from './top-header/top-header.component';
     MDBBootstrapModule.forRoot(),
     MatButtonModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule
   ],
   providers: [
     BaseService,
     BasketService,
+    SideNavService,
     UserService,
     WINDOW_PROVIDERS,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

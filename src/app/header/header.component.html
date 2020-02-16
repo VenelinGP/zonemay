@@ -1,21 +1,40 @@
 <!--Nav-->
-<!-- <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar intro-fixed-nav" scrolled awake[containerInside]="false">    <mdb-navbar-brand>        <a class="logo navbar-brand" routerLink="#">            <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" />        </a>    </mdb-navbar-brand>    <links>        <ul class="navbar-nav mr-auto">            <li class="nav-item active waves-light" mdbWavesEffect>                <a class="nav-link">Home <span class="sr-only">(current)</span></a>            </li>            <li class="nav-item waves-light" mdbWavesEffect>                <a class="nav-link">Link</a>            </li>            <li class="nav-item waves-light" mdbWavesEffect>                <a class="nav-link">Profile</a>            </li>        </ul>    </links></mdb-navbar> -->
+<!-- <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar intro-fixed-nav" scrolled awake[containerInside]="false">
+    <mdb-navbar-brand>        
+        <a class="logo navbar-brand" routerLink="#">
+            <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" />
+        </a>
+    </mdb-navbar-brand>    
+    <links>        
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active waves-light" mdbWavesEffect>
+                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Link</a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Profile</a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar> -->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" routerLink="main">
             <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" alt="logo" />
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="oi oi-menu"></span> Меню
-    </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
+        <button class="navbar-toggler" type="button" (click)="menuShow()">
+            <span class="oi oi-menu"></span>
+        </button>
+        <div class="collapse navbar-collapse" [ngClass]="{'show':isMenuShow}" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active stroke1 nav-elongate">
-                    <a routerLink="main" class="nav-link">Начало</a>
+                <li class="nav-item stroke1 nav-elongate">
+                    <a routerLink="main" class="nav-link" (click)="hideMenu()">Начало</a>
                 </li>
                 <!-- id="desktrop-drop" -->
                 <li class="nav-item dropdown stroke2 nav-elongate" (mouseover)="drop()" (mouseout)="dropOut()" [ngClass]="{'show':isShow}">
-                    <a class="nav-link dropdown-toggle" routerLink="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="isShow">Магазин</a>
+                    <a class="nav-link dropdown-toggle" routerLink="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true">Магазин</a>
                     <ul class="dropdown-menu multi-column columns-3 zindex-9" [ngClass]="{'show':isShow}">
                         <div class="row menu-large">
                             <!-- HERE PUT MENU  [innerHTML]="menuString"-->
@@ -24,46 +43,46 @@
                                     <li>
                                         <div class="nav-category nav-category-bg1">Декорации</div>
                                     </li>
-                                    <li><a routerLink="shop">Кукли</a></li>
-                                    <li><a routerLink="shop">Бутикови кукли</a></li>
-                                    <li><a routerLink="shop">Цифри и букви</a></li>
-                                    <li><a routerLink="shop">Животни</a></li>
-                                    <li><a routerLink="shop">Възглавнички</a></li>
-                                    <li><a routerLink="shop">Дрехи за книги</a></li>
-                                    <li><a routerLink="shop">Несесери</a></li>
-                                    <li><a routerLink="shop">Цветя</a></li>
-                                    <li><a routerLink="shop">Фото Албуми</a></li>
-                                    <li><a routerLink="shop">За Дома</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Кукли</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Бутикови кукли</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Цифри и букви</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Животни</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Възглавнички</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Дрехи за книги</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Несесери</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Цветя</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Фото Албуми</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">За Дома</a></li>
                                 </ul>
                             </div>
                             <div class="col-3-2">
                                 <ul class="multi-column-dropdown">
-                                    <li><a routerLink="shop">Рамки</a></li>
-                                    <li><a routerLink="shop">Букети с бонбони</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Рамки</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Букети с бонбони</a></li>
                                     <li class="divider"></li>
                                     <li>
                                         <div class="nav-category nav-category-bg1">Бижута и аксесоари</div>
                                     </li>
-                                    <li><a routerLink="shop">Обици</a></li>
-                                    <li><a routerLink="shop">Колиета</a></li>
-                                    <li><a routerLink="shop">Комплекти</a></li>
-                                    <li><a routerLink="shop">Други</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Обици</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Колиета</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Комплекти</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Други</a></li>
                                     <li class="divider"></li>
                                     <li>
                                         <div class="nav-category nav-category-bg1">Тематични</div>
                                     </li>
-                                    <li><a routerLink="shop">Коледа</a></li>
-                                    <li><a routerLink="shop">Свети Валентин</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Коледа</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Свети Валентин</a></li>
                                 </ul>
                             </div>
                             <div class="col-3-2">
                                 <ul class="multi-column-dropdown">
-                                    <li><a routerLink="shop">Баба Марта</a></li>
-                                    <li><a routerLink="shop">8ми Март</a></li>
-                                    <li><a routerLink="shop">Велик ден</a></li>
-                                    <li><a routerLink="shop">Бал</a></li>
-                                    <li><a routerLink="shop">Морски</a></li>
-                                    <li><a routerLink="shop">Други</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Баба Марта</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">8ми Март</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Велик ден</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Бал</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Морски</a></li>
+                                    <li><a routerLink="shop" (click)="hideMenu()">Други</a></li>
                                     <li class="divider"></li>
                                     <li>
                                         <div class="nav-category nav-category-bg1">Промоции</div>
@@ -75,59 +94,14 @@
                             </div>
                             <!-- HERE PUT MENU -->
                         </div>
-                        <div class="row menu-small">
-                            <ul class="multi-column-dropdown">
-                                <li>
-                                    <div class="nav-category nav-category-bg1">Декорации</div>
-                                </li>
-                                <li><a routerLink="shop">Кукли</a></li>
-                                <li><a routerLink="shop">Бутикови кукли</a></li>
-                                <li><a routerLink="shop">Цифри и букви</a></li>
-                                <li><a routerLink="shop">Животни</a></li>
-                                <li><a routerLink="shop">Възглавнички</a></li>
-                                <li><a routerLink="shop">Дрехи за книги</a></li>
-                                <li><a routerLink="shop">Несесери</a></li>
-                                <li><a routerLink="shop">Цветя</a></li>
-                                <li><a routerLink="shop">Фото Албуми</a></li>
-                                <li><a routerLink="shop">За Дома</a></li>
-                                <li><a routerLink="shop">Рамки</a></li>
-                                <li><a routerLink="shop">Букети с бонбони</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="nav-category nav-category-bg1">Бижута и аксесоари</div>
-                                </li>
-                                <li><a routerLink="shop">Обици</a></li>
-                                <li><a routerLink="shop">Колиета</a></li>
-                                <li><a routerLink="shop">Комплекти</a></li>
-                                <li><a routerLink="shop">Други</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="nav-category nav-category-bg1">Тематични</div>
-                                </li>
-                                <li><a routerLink="shop">Коледа</a></li>
-                                <li><a routerLink="shop">Свети Валентин</a></li>
-                                <li><a routerLink="shop">Баба Марта</a></li>
-                                <li><a routerLink="shop">8ми Март</a></li>
-                                <li><a routerLink="shop">Велик ден</a></li>
-                                <li><a routerLink="shop">Бал</a></li>
-                                <li><a routerLink="shop">Морски</a></li>
-                                <li><a routerLink="shop">Други</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="nav-category nav-category-bg1">Промоции</div>
-                                </li>
-                                <li>
-                                    <div class="nav-category nav-category-bg1">Ваучери</div>
-                                </li>
-                            </ul>
-                        </div>
                     </ul>
                 </li>
                 <li class="nav-item stroke3 nav-elongate"><a routerLink="about" class="nav-link">За Нас</a></li>
                 <li class="nav-item stroke4 nav-elongate"><a routerLink="contact" class="nav-link">Контакти</a></li>
-                <li class="nav-item cta cta-colored"><a routerLink="cart" class="nav-link"><span
-              class="icon-shopping_cart"></span>[{{productsInBasket}}]</a></li>
             </ul>
+        </div>
+        <div class="nav-item cta cta-colored">
+            <a routerLink="cart" class="nav-link"><span class="icon-shopping_cart"></span>[{{productsInBasket}}]</a>
         </div>
     </div>
 </nav>

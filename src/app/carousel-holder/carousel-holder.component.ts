@@ -64,6 +64,8 @@ export class CarouselHolderComponent {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
+    autoWidth: true,
+    items: 1,
     dots: false,
     autoplayHoverPause: false,
     navSpeed: 700,
@@ -71,17 +73,6 @@ export class CarouselHolderComponent {
       '<span class="ion-ios-arrow-back">',
       '<span class="ion-ios-arrow-forward">'
     ],
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 1
-      },
-      1000: {
-        items: 1
-      }
-    },
     nav: true
   };
   isStartChange = false;

@@ -1,5 +1,9 @@
-@media (min-width: 1600px) {}
+#content-desktop {
+    display: block;
+}
 
-@media (min-width: 1400px) and (max-width: 1599px) {}
-
-@media (min-width: 1280px) and (max-width: 1399px) {}
+@media screen and (max-width: 768px) {
+    #content-desktop {
+        display: none !important;
+    }
+}

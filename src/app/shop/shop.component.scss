@@ -15,3 +15,9 @@
     font-size: 60px;
     font-weight: 300;
 }
+
+@media (max-width: 991.98px) {
+    .bg-light {
+        margin-top: 0;
+    }
+}
