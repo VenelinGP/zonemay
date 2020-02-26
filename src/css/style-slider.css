@@ -144,4 +144,33 @@
         .slide-parallax {
             display: none;
         }
+        .container-slider {
+            height: 32vh;
+        }
+        .carousel-caption {
+            right: 5%;
+            bottom: 15vh;
+            left: 5%;
+            top: 16vh;
+        }
+        .carousel-caption h3 {
+            top: 3vh;
+            font-size: 1.9em;
+            font-family: 'madelyn';
+        }
+        .carousel-caption button {
+            position: relative;
+            top: 5vh;
+            border-color: #00bfff;
+            margin-top: 1em;
+        }
+        .carousel-item {
+            min-height: 20vh;
+            height: 46vh;
+            width: 100%;
+        }
+        #contain-parallax {
+            height: 30vh;
+            width: 100%;
+        }
     }

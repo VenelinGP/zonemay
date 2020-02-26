@@ -1,29 +1,3 @@
-<!--Top Menu line-->
-<!--
-0: {_id: "5e1b906d1608b66bc0e2f401", id: 1, name: "Кукли"}
-1: {_id: "5e1b906d1608b66bc0e2f400", id: 2, name: "Бутикови кукли"}
-2: {_id: "5e1b906d1608b66bc0e2f3ff", id: 3, name: "Цифри и букви"}
-3: {_id: "5e1b906d1608b66bc0e2f3fe", id: 4, name: "Животни"}
-4: {_id: "5e1b906d1608b66bc0e2f3fd", id: 5, name: "Възглавнички"}
-5: {_id: "5e1b906d1608b66bc0e2f3fc", id: 6, name: "Дрехи за книги"}
-6: {_id: "5e1b906d1608b66bc0e2f3fb", id: 7, name: "Несесери"}
-7: {_id: "5e1b906d1608b66bc0e2f3fa", id: 8, name: "Цветя"}
-8: {_id: "5e1b906d1608b66bc0e2f3f9", id: 9, name: "Фото Албуми"}
-9: {_id: "5e1b906d1608b66bc0e2f3f8", id: 10, name: "За Дома"}
-10: {_id: "5e1b906d1608b66bc0e2f3f7", id: 11, name: "Рамки"}
-11: {_id: "5e1b906d1608b66bc0e2f3f6", id: 12, name: "Букети с бонбони"}
-12: {_id: "5e1b9a03cc7498610cc67ebc", id: 1, name: "Обици"}
-13: {_id: "5e1b9a03cc7498610cc67ebb", id: 2, name: "Колиета"}
-14: {_id: "5e1b9a03cc7498610cc67eba", id: 3, name: "Комплекти"}
-15: {_id: "5e1c8c63c7a9131bc4c24183", id: 4, name: "Други"}
-16: {_id: "5e1b8ff81608b66bc0e2f3f5", id: 1, name: "Коледа"}
-17: {_id: "5e1b977b76d37b66486e690e", id: 2, name: "Свети Валентин"}
-18: {_id: "5e1b977b76d37b66486e690d", id: 3, name: "Баба Марта"}
-19: {_id: "5e1b977b76d37b66486e690c", id: 4, name: "8ми Март"}
-20: {_id: "5e1b977b76d37b66486e690b", id: 5, name: "Велик ден"}
-21: {_id: "5e1b977b76d37b66486e690a", id: 6, name: "Бал"}
-22: {_id: "5e1b977b76d37b66486e6909", id: 7, name: "Морски"}
-23: {_id: "5e1b977b76d37b66486e6908", id: 8, name: "Други"} -->
 <app-top-header></app-top-header>
 <app-header></app-header>
 <mat-sidenav-container class="sidenav-container">
@@ -38,93 +12,94 @@
                         <div class="nav-category nav-category-bg1">Декорации</div>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f401',id:1,name:'Кукли'})">Кукли</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f401',id:1,name:'Кукли'})">Кукли</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f400',id:1,name:'Бутикови кукли'})">Бутикови кукли</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f400',id:1,name:'Бутикови кукли'})">Бутикови кукли</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3ff',id:1,name:'Цифри и букви'})">Цифри и букви</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3ff',id:1,name:'Цифри и букви'})">Цифри и букви</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3fe',id:1,name:'Животни'})">Животни</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3fe',id:1,name:'Животни'})">Животни</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3fd',id:1,name:'Възглавнички'})">Възглавнички</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3fd',id:1,name:'Възглавнички'})">Възглавнички</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3fc',id:1,name:'Дрехи за книги'})">Дрехи за книги</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3fc',id:1,name:'Дрехи за книги'})">Дрехи за книги</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3fb',id:1,name:'Несесери'})">Несесери</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3fb',id:1,name:'Несесери'})">Несесери</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3fa',id:1,name:'Цветя'})">Цветя</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3fa',id:1,name:'Цветя'})">Цветя</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3f9',id:1,name:'Фото Албуми'})">Фото Албуми</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3f9',id:1,name:'Фото Албуми'})">Фото Албуми</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3f8',id:1,name:'За Дома'})">За Дома</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3f8',id:1,name:'За Дома'})">За Дома</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3f7',id:1,name:'Рамки'})">Рамки</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3f7',id:1,name:'Рамки'})">Рамки</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b906d1608b66bc0e2f3f6',id:1,name:'Букети с бонбони'})">Букети с бонбони</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b906d1608b66bc0e2f3f6',id:1,name:'Букети с бонбони'})">Букети с бонбони</a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <div class="nav-category nav-category-bg1">Бижута и аксесоари</div>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b9a03cc7498610cc67ebc',id:1,name: 'Обици'})">Обици</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b9a03cc7498610cc67ebc',id:1,name: 'Обици'})">Обици</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b9a03cc7498610cc67ebb',id:1,name: 'Колиета'})">Колиета</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b9a03cc7498610cc67ebb',id:1,name: 'Колиета'})">Колиета</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b9a03cc7498610cc67eba',id:1,name: 'Комплекти'})">Комплекти</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b9a03cc7498610cc67eba',id:1,name: 'Комплекти'})">Комплекти</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1c8c63c7a9131bc4c24183',id:1,name: 'Други'})">Други</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1c8c63c7a9131bc4c24183',id:1,name: 'Други'})">Други</a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <div class="nav-category nav-category-bg1">Тематични</div>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b8ff81608b66bc0e2f3f5',id:1,name:'Коледа'})">Коледа</a></li>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b8ff81608b66bc0e2f3f5',id:1,name:'Коледа'})">Коледа</a></li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e690e',id:1,name:'Свети Валентин'})">Свети
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690e',id:1,name:'Свети Валентин'})">Свети
                               Валентин</a></li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e690d',id:1,name:'Баба Марта'})">Баба Марта</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690d',id:1,name:'Баба Марта'})">Баба Марта</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e690c',id:1,name:'8ми Март'})">8ми Март</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690c',id:1,name:'8ми Март'})">8ми Март</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e690b',id:1,name:'Велик ден'})">Велик ден</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690b',id:1,name:'Велик ден'})">Велик ден</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e690a',id:1,name:'Бал'})">Бал</a></li>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690a',id:1,name:'Бал'})">Бал</a></li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e6909',id:1,name:'Морски'})">Морски</a></li>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e6909',id:1,name:'Морски'})">Морски</a></li>
                     <li>
-                        <a routerLink="shop" (click)="hideMenu({_id:'5e1b977b76d37b66486e6908',id:1,name:'Други'})">Други</a></li>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e6908',id:1,name:'Други'})">Други</a></li>
                     <li class="divider"></li>
                     <li>
-                        <div class="nav-category nav-category-bg1" (click)="hideMenu()">Промоции</div>
+                        <div class="nav-category nav-category-bg1" (click)="changeCategory()">Промоции</div>
                     </li>
                     <li>
-                        <div class="nav-category nav-category-bg1" (click)="hideMenu()">Ваучери</div>
+                        <div class="nav-category nav-category-bg1" (click)="changeCategory()">Ваучери</div>
                     </li>
                 </ul>
             </div>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
+        <!-- (activate)="onActivate($event)" -->
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

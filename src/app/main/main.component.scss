@@ -1,3 +1,35 @@
 .zindex-9 {
     z-index: 900;
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding-top: 3vw;
+    }
+    .sale {
+        background: url("../../assets/images/sale1.jpg");
+        background-repeat: no-repeat;
+        background-size: 430px 273px;
+        height: 413px;
+        width: 650px;
+    }
+    .gift {
+        background-image: url("../../assets//images/giftcard2.jpg");
+        background-repeat: no-repeat;
+        background-size: 430px 273px;
+        height: 413px;
+        width: 650px;
+    }
+    .spacer-border {
+        width: 430px;
+    }
+    .product .text .bottom-area {
+        left: 0;
+        right: 9vw;
+    }
+    .pl-3,
+    .px-3 p {
+        //   background-color: #b0e3eb;
+        background-color: transparent;
+    }
+}

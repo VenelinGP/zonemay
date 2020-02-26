@@ -15180,12 +15180,16 @@
     
     .gift {
         background-image: url("../assets//images/giftcard2.jpg");
+        background-repeat: no-repeat;
+        background-size: 650px 413px;
         height: 413px;
         width: 650px;
     }
     
     .sale {
         background-image: url("../assets/images/sale1.jpg");
+        background-repeat: no-repeat;
+        background-size: 650px 413px;
         height: 413px;
         width: 650px;
     }

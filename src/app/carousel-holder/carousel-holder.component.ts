@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Location, ViewportScroller } from '@angular/common';
+import { Router, Scroll } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { SideNavService } from '../_services/side_nav.service';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import {
   bounceInLeftAnimation,
@@ -8,6 +12,8 @@ import {
   bounceInUpOnEnterAnimation,
   flipInXAnimation
 } from 'angular-animations';
+
+
 
 interface Image {
   src: string;
@@ -30,6 +36,13 @@ interface Image {
   ]
 })
 export class CarouselHolderComponent {
+  constructor(private sideNavService: SideNavService,private router: Router, private viewportScroller: ViewportScroller) {
+    this.router.events.pipe(filter(e => e instanceof Scroll)).subscribe((e: any) => {
+      console.log(e);
+
+      // this is fix for dynamic generated(loaded..?) content
+    });
+  }
   activeSlides: SlidesOutputData;
 
   slidesStore: any[];
@@ -112,5 +125,22 @@ export class CarouselHolderComponent {
       this.animationState = !this.animationState;
       this.isStartChange = true;
     }, 1);
+  }
+  goToScrool() {
+    this.router.events.pipe(filter(e => e instanceof Scroll)).subscribe((e: any) => {
+      console.log(e);
+
+      // this is fix for dynamic generated(loaded..?) content
+      setTimeout(() => {
+        if (e.anchor) {
+          this.viewportScroller.scrollToAnchor(e.anchor);
+        } else {
+          this.viewportScroller.scrollToPosition([0, 0]);
+        }
+      });
+    });
+  }
+  changeCategory(){
+    this.sideNavService.changeCategory({ _id: '', id: 0, name: 'Всички продукти' });
   }
 }

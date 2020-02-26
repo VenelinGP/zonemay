@@ -53,6 +53,7 @@ import { ClientsComponent } from './admin/clients/clients.component';
 import { ClientBasketComponent } from './client-basket/client-basket.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import { SideNavService } from './_services/side_nav.service';
+import { CheckoutAfterComponent } from './checkout-after/checkout-after.component';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -75,7 +76,8 @@ import { SideNavService } from './_services/side_nav.service';
     CheckoutComponent,
     ClientsComponent,
     ClientBasketComponent,
-    TopHeaderComponent
+    TopHeaderComponent,
+    CheckoutAfterComponent
   ],
   imports: [
     BrowserModule,

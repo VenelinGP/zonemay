@@ -15,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ClientsComponent } from './admin/clients/clients.component';
 import { ClientBasketComponent } from './client-basket/client-basket.component';
+import { CheckoutAfterComponent } from './checkout-after/checkout-after.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'finished', component: CheckoutAfterComponent },
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/register', component: RegisterComponent },
   { path: 'admin', component: HomeComponent, canActivate: [AuthGuard], children: [
@@ -38,7 +40,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    scrollOffset: [0, 72]
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

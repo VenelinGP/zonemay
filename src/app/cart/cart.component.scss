@@ -1,0 +1,125 @@
+////////////////////////////////////////
+// .image-prod {
+//     text-align: center !important;
+//     vertical-align: middle;
+//     padding: 40px 10px;
+//     border: 1px solid transparent !important;
+//     border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+// }
+h3 {
+    font-family: Roboto, "Helvetica Neue", sans-serif
+}
+
+.hero-wrap .slider-text .bread {
+    font-weight: 200;
+    color: #000000;
+    font-size: 4.4em;
+    letter-spacing: 7px;
+    text-transform: none;
+    font-family: 'madelynregular';
+}
+
+.image-prod {
+    text-align: center !important;
+    vertical-align: middle;
+    padding: 30px 10px;
+    border: 1px solid transparent !important;
+}
+
+.image-prod .img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text,
+.quantity span {
+    vertical-align: middle;
+    line-height: 54px;
+}
+
+// .thead-primary {
+//     // background: #c5eaea;
+// }
+// .thead-primary div {
+//     padding: 8px 0;
+//     color: #000 !important;
+//     font-size: 1.8em;
+//     border: 1px solid transparent !important;
+//     font-family: 'madelyn';
+// }
+.thead-primary {
+    margin-left: 20px;
+}
+
+.thead-primary div {
+    padding: 8px 0;
+    color: #000 !important;
+    font-size: 1.6em;
+    border: 1px solid transparent !important;
+    font-family: "madelyn";
+}
+
+.price,
+.total {
+    vertical-align: middle;
+    line-height: 54px;
+    font-size: 1.2em;
+}
+
+// .price,
+// .total {
+//   vertical-align: middle;
+//   line-height: 54px;
+//   font-size: 1em;
+// }
+// .oi {
+//     font-size: 0.8em;
+// }
+.last-col {
+    padding: 14px 0;
+}
+
+.product-remove {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    border: 1px solid #707070;
+    padding: 0 10px;
+}
+
+// .product-remove {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     border: 1px solid black;
+//     padding: 0 10px;
+//     border-radius: 2px;
+// }
+.oi {
+    font-size: 0.6em;
+}
+
+.product-name h3 {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #00565c;
+}
+
+.product-name p {
+    text-align: center;
+    padding: 5px 15px 15px 15px;
+    margin-bottom: 37px;
+    font-size: 0.9em;
+    border-bottom: 1px solid #b1b1b1;
+}

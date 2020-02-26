@@ -20,4 +20,39 @@
     .bg-light {
         margin-top: 0;
     }
+    .container {
+        width: 100%;
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .product .text .bottom-area {
+        position: absolute;
+        top: -65px;
+        left: 20px;
+        right: 20px;
+        opacity: 1;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .pl-3,
+    .px-3 p {
+        font-size: 3vw;
+        background-color: transparent;
+    }
+    .pl-3 .pricing p,
+    .px-3 .pricing p,
+    .pl-3 .rating p,
+    .px-3 .rating p {
+        font-size: 3vw;
+        background-color: #b0e3eb;
+    }
+    .sidebar {
+        display: none;
+    }
+    .hero-wrap .slider-text .bread,
+    .noproducts {
+        font-size: 3.6em;
+    }
 }

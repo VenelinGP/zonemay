@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MainMenu, User } from '../_models';
+import { MainMenu, User, SubMenu } from '../_models';
 import { AuthenticationService } from '../_services';
 import { BasketService } from '../_services/basket.service';
 import { BaseService } from '../_services/base.service';
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.opened = false;
-    this.sideNavService.changeState(this.opened);
+    this.sideNavService.changeShowHideMenu(this.opened);
     this.sideNavService.currentState.subscribe(state => this.opened = state);
     this.productsInBasket = 0;
     this.basketService.currentbasket.subscribe(basket => {
@@ -42,11 +42,15 @@ export class HeaderComponent implements OnInit {
   }
   menuShow() {
     this.opened = !this.opened;
-    this.sideNavService.changeState(this.opened);
+    this.sideNavService.changeShowHideMenu(this.opened);
   }
   hideMenu() {
     this.isMenuShow = false;
     console.log(this.isMenuShow);
+  }
+  changeCategory(categoriId: SubMenu) {
+    this.sideNavService.changeCategory(categoriId);
+    this.sideNavService.changeShowHideMenu(false);
   }
   drop() {
     this.isShow = true;

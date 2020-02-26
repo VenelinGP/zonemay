@@ -11,8 +11,7 @@ import { SideNavService } from './_services/side_nav.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-
+export class AppComponent implements OnInit {
   currentUser: User;
   menu: MainMenu[] = [];
   menuId: SubMenu[] = [];
@@ -24,7 +23,7 @@ export class AppComponent implements OnInit{
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (window.innerWidth >= 768) {
-      this.sideNavService.changeState(false);
+      this.sideNavService.changeShowHideMenu(false);
     }
   }
   constructor(
@@ -60,9 +59,12 @@ export class AppComponent implements OnInit{
         // this.createMenu();
       });
   }
-  hideMenu(categoriId: SubMenu) {
+  hideMenu(){
+    this.sideNavService.changeShowHideMenu(false);
+  }
+  changeCategory(categoriId: SubMenu) {
     this.sideNavService.changeCategory(categoriId);
-    this.sideNavService.changeState(false);
+    this.sideNavService.changeShowHideMenu(false);
   }
   drop() {
     this.isShow = true;
@@ -105,4 +107,15 @@ export class AppComponent implements OnInit{
     this.menuString += '</ul></div>';
     console.log(this.menuString);
   }
+
+  onActivate(event) {
+        const scrollToTop = window.setInterval(() => {
+            const pos = window.pageYOffset;
+            if (pos > 0) {
+                window.scrollTo(0, pos - 20); // how far to scroll on each step
+            } else {
+                window.clearInterval(scrollToTop);
+            }
+        }, 16);
+    }
 }

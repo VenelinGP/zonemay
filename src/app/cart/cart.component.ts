@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   sumOfDiscount = 0;
   total = 0;
   currierPrice = 3;
+  isNotEmpty = false;
   basket: Product[];
   constructor( private basketService: BasketService) { }
 
@@ -21,7 +22,10 @@ export class CartComponent implements OnInit {
     this.basketService.currentbasket.subscribe(basket => {
       if (basket.length !== 0) {
         this.basket = basket;
+        this.isNotEmpty = true;
         this.update();
+      } else {
+        this.isNotEmpty = false;
       }
     });
   }
@@ -37,6 +41,13 @@ export class CartComponent implements OnInit {
       }
     });
     this.total = this.sumOfBasket - this.sumOfDiscount + this.currierPrice;
+    if (this.total > 0) {
+      this.isNotEmpty = true;
+      console.log(this.isNotEmpty);
+    } else {
+      this.isNotEmpty = false;
+      console.log(this.isNotEmpty);
+    }
   }
 
 
@@ -57,6 +68,19 @@ export class CartComponent implements OnInit {
     this.update();
     console.log('Cart', this.basket);
     this.basketService.changeBasket(this.basket);
+  }
+
+  minus(id){
+   const i = this.basket.findIndex(p => p._id === id);
+   if(this.basket[i].buyingQty > 1){
+     this.basket[i].buyingQty--;
+   }
+   this.update();
+  }
+  plus(id) {
+    const i = this.basket.findIndex(p => p._id === id);
+    this.basket[i].buyingQty++;
+    this.update();
   }
 }
 

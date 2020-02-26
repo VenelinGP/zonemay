@@ -3,15 +3,59 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 text-center animated fadeInUp">
                 <p class="breadcrumbs"><span>Заявени продукти</span></p>
-                <h1 class="mb-0 bread">Моята количка.</h1>
+                <h1 class="mb-0 bread">Моята количка</h1>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section ftco-cart">
+<section *ngIf="isNotEmpty" class="ftco-section ftco-cart">
     <div class="container">
         <div class="row">
+            <div class="col-md-12 animated fadeInUp ">
+                <div class="cart-list">
+                    <div class="text-center" *ngFor="let product of basket">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="image-prod">
+                                    <img class="img" src="{{product.imglink}}">
+                                </div>
+                            </div>
+                            <div class="col-4 thead-primary">
+                                <div class="text-right">Ед. Цена</div>
+                                <div class="text text-right">Количество</div>
+                                <div class="text-right">Цена</div>
+                            </div>
+                            <div class="col-4 last-col">
+                                <div class="price">{{product.price | number:'1.2-2'}} лв.</div>
+                                <div class="quantity">
+                                    <div class="row">
+                                        <span class="col oi oi-minus text-right" (click)="minus(product._id)"></span>
+                                        <div class="col input-group mb-3">
+                                            <input type="text" name="quantity" class="quantity form-control input-number" [(ngModel)]="product.buyingQty" (keyup)='onKey()' value="1" min="1" max="100">
+                                        </div>
+                                        <span class="col oi oi-plus text-left" (click)="plus(product._id)"></span>
+                                    </div>
+                                </div>
+                                <div class="total">{{product.price * product.buyingQty | number:'1.2-2'}} лв.</div>
+                                <div class="product-remove">
+                                    <a (click)='remove(product._id)'>
+                                        <span class="ion-ios-close"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="product-name">
+                                <h3>{{product.name}}</h3>
+                                <p>{{product.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
             <div class="col-md-12 animated fadeInUp ">
                 <div class="cart-list">
                     <table class="table">
@@ -20,7 +64,7 @@
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
                                 <th>Продукт</th>
-                                <th>Цена</th>
+                                <th>Ед. Цена</th>
                                 <th>Количество</th>
                                 <th>Цена</th>
                             </tr>
@@ -50,14 +94,13 @@
 
                                 <td class="total">{{product.price * product.buyingQty | number:'1.2-2'}} лв.</td>
                             </tr>
-                            <!-- END TR-->
                         </tbody>
                     </table>
                 </div>
             </div>
 
 
-        </div>
+        </div> -->
 
         <div class="row justify-content-center">
             <div class="col col-lg-5 col-md-6 mt-5 cart-wrap fadeInUp animated">
@@ -88,7 +131,15 @@
         </div>
     </div>
 </section>
-
+<section *ngIf="!isNotEmpty" class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 text-center animated fadeInUp">
+                <h3 class="mb-0 bread">Количката Ви е празна</h3>
+            </div>
+        </div>
+    </div>
+</section>
 <!--Footer-->
 <footer class="ftco-footer bg-light ftco-section">
     <div class="footer-color">

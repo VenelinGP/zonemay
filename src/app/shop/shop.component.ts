@@ -47,17 +47,24 @@ export class ShopComponent implements OnInit {
     this.menu = this.baseService.getMenuNotObservable();
     this.createMenu();
 
-    this.getProducts()
+    this.getProducts();
     this.basketService.currentbasket.subscribe(basket => {
       this.basket = basket;
     });
   }
 
   buy(product: Product) {
-    product.buyingQty = 1;
-    this.basket.push(product);
     console.log(this.basket);
-    this.basketService.changeBasket(this.basket);
+    const index = this.basket.findIndex(p => p._id === product._id);
+    if (index < 0) {
+      product.buyingQty = 1;
+      this.basket.push(product);
+      this.basketService.changeBasket(this.basket);
+    } else {
+      this.basket[index].buyingQty++;
+      this.basketService.changeBasket(this.basket);
+    }
+
   }
 
   drop() {
@@ -140,7 +147,11 @@ export class ShopComponent implements OnInit {
     this.baseService.getProducts()
       .subscribe(products => {
         console.log(products);
-        this.products = products.filter(p => p.category === this.category._id);
+        if(this.category.id !== 0){
+          this.products = products.filter(p => p.category === this.category._id);
+        } else {
+          this.products = products;
+        }
         this.products.map(p => p.imglink = this.amazonServer + p.imglink);
         this.pages = new Array(Math.round(this.products.length / 9));
         if (this.pages.length === 0) {

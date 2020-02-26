@@ -13,6 +13,8 @@ import {
 import { BaseService } from '../_services/base.service';
 import { ActivatedRoute } from '@angular/router';
 import { MainMenu } from '../_models/mainmenu';
+import { SideNavService } from '../_services/side_nav.service';
+import { SubMenu } from '../_models';
 
 @Component({
   selector: 'app-main',
@@ -38,8 +40,8 @@ export class MainComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     @Inject(WINDOW) private window: Window,
     private route: ActivatedRoute,
-    private baseService: BaseService
-  ) {}
+    private baseService: BaseService,
+    private sideNavService: SideNavService ) {}
 
   ngOnInit() {
     this.isShow = false;
@@ -77,44 +79,7 @@ export class MainComponent implements OnInit {
   dropOut() {
     this.isShow = false;
   }
-
-  createMenu(){
-    console.log('1', this.menu);
-    this.menuString = '';
-    let i = 0;
-    let k = 0;
-    this.menuString += '<div class="col-3-2"><ul class="multi-column-dropdown">';
-    for (const mainmenu of this.menu) {
-      console.log(mainmenu);
-      const currentMenuName = mainmenu.name;
-      this.menuString += '<li> <div class="nav-category nav-category-bg1">' + currentMenuName + '</div></li>';
-      i++;
-      k++;
-      console.log(k, i);
-      if ((k % (12 - i)) === 0) {
-        console.log('IF:', k, 12 - i, (k % (12 - i)));
-        this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
-        i = 0;
-        k = 0;
-      }
-      mainmenu.submenu.forEach(sub => {
-        this.menuString += '<li><a routerLink="/shop">' + sub.name + '</a></li>';
-        k++;
-        console.log(k, i);
-        if ((k % (12 - i)) === 0) {
-          console.log('IF:', k, 12 - i, (k % (12 - i)));
-          this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
-          i = 0;
-          k = 0;
-        }
-      });
-      console.log('MainMenu: ', mainmenu.submenu.length);
-
-      if (mainmenu.submenu.length !== 0) {
-        this.menuString += '<li class="divider"></li>';
-      }
-    }
-    this.menuString += '</ul></div>';
-    console.log(this.menuString);
+  goToShop(categoriId: SubMenu){
+    this.sideNavService.changeCategory(categoriId);
   }
 }

@@ -113,7 +113,7 @@ export class BaseService {
   addClientBasket(client: any): Observable<any> {
     return this.http.post<any>(this.clientBasketUrl, client, this.httpOptions).pipe(
       tap((newClient: any) =>
-        this.log(`added Client w/ id=${newClient._id}`)
+        this.log(`added Client w/ id=${newClient}`)
       ),
       catchError(this.handleError<any>('addClientBasket'))
     );
