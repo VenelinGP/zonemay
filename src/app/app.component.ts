@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.productsInBasket = 0;
     this.sideNavService.currentState.subscribe(state => (this.opened = state));
-    this.basketService.currentbasket.subscribe(basket => {
+    this.basketService.currentBasket.subscribe(basket => {
       this.productsInBasket = basket.length;
     });
 

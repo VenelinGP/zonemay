@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   constructor( private basketService: BasketService) { }
 
   ngOnInit() {
-    this.basketService.currentbasket.subscribe(basket => {
+    this.basketService.currentBasket.subscribe(basket => {
       if (basket.length !== 0) {
         this.basket = basket;
         this.isNotEmpty = true;

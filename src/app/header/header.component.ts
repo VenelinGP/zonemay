@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     this.sideNavService.changeShowHideMenu(this.opened);
     this.sideNavService.currentState.subscribe(state => this.opened = state);
     this.productsInBasket = 0;
-    this.basketService.currentbasket.subscribe(basket => {
+    this.basketService.currentBasket.subscribe(basket => {
       this.productsInBasket = basket.length;
     });
 
@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   dropOut() {
-    this.isShow = true;
+    this.isShow = false;
   }
 
   createMenu() {

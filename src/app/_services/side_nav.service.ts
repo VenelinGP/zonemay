@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SubMenu } from '../_models';
+import { SubMenu, Product } from '../_models';
 
 @Injectable()
 export class SideNavService {
@@ -9,10 +9,13 @@ export class SideNavService {
         id: 0,
         name: ''
     };
+    private product: Product;
     private showHideSource = new BehaviorSubject(false);
-    private categorySource = new BehaviorSubject(this.sb);
     currentState = this.showHideSource.asObservable();
+    private categorySource = new BehaviorSubject(this.sb);
     currentCategory = this.categorySource.asObservable();
+    private productSource = new BehaviorSubject(this.product);
+    currentProduct = this.productSource.asObservable();
 
     constructor() { }
 
@@ -21,5 +24,8 @@ export class SideNavService {
     }
     changeCategory(category: SubMenu){
         this.categorySource.next(category);
+    }
+    changeProduct(prod: Product){
+        this.productSource.next(prod)
     }
 }

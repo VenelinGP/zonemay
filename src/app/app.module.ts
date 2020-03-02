@@ -54,6 +54,10 @@ import { ClientBasketComponent } from './client-basket/client-basket.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import { SideNavService } from './_services/side_nav.service';
 import { CheckoutAfterComponent } from './checkout-after/checkout-after.component';
+import { ShopItemComponent } from './shop-item/shop-item.component';
+import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -77,7 +81,11 @@ import { CheckoutAfterComponent } from './checkout-after/checkout-after.componen
     ClientsComponent,
     ClientBasketComponent,
     TopHeaderComponent,
-    CheckoutAfterComponent
+    CheckoutAfterComponent,
+    ShopItemComponent,
+    FooterComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

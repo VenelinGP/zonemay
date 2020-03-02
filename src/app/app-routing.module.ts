@@ -16,14 +16,27 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ClientsComponent } from './admin/clients/clients.component';
 import { ClientBasketComponent } from './client-basket/client-basket.component';
 import { CheckoutAfterComponent } from './checkout-after/checkout-after.component';
+import { ShopItemComponent } from './shop-item/shop-item.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'shop', component: ShopComponent },
+  { path: 'shop/:id', component: ShopItemComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkoutafter', component: CheckoutAfterComponent},
   { path: 'finished', component: CheckoutAfterComponent },
+  { path: 'about', component: AboutComponent},
+  { path: 'contacts', component: ContactComponent },
+  { path: 'shipping', component: AppHeaderComponent },
+  { path: 'returns', component: AppHeaderComponent },
+  { path: 'terms', component: AppHeaderComponent },
+  { path: 'privacypolicy', component: AppHeaderComponent },
+  { path: 'faq', component: AppHeaderComponent },
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/register', component: RegisterComponent },
   { path: 'admin', component: HomeComponent, canActivate: [AuthGuard], children: [

@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MainMenu } from '../_models/mainmenu';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseService } from '../_services/base.service';
 import { Product, SubMenu } from '../_models';
 import { BasketService } from '../_services/basket.service';
 import { SideNavService } from '../_services/side_nav.service';
+import { amazoneUrl } from '../_constants/constants'
 
 @Component({
   selector: 'app-shop',
@@ -12,7 +13,6 @@ import { SideNavService } from '../_services/side_nav.service';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  amazonServer = 'https://zonemay.s3.eu-central-1.amazonaws.com/';
   menu: MainMenu[] = [];
   currentCategory: SubMenu;
   category: SubMenu;
@@ -28,7 +28,7 @@ export class ShopComponent implements OnInit {
     private baseService: BaseService,
     private basketService: BasketService,
     private sideNavService: SideNavService,
-    private route: ActivatedRoute) { }
+    private router: Router) { }
 
   ngOnInit() {
     // this.isShow = false;
@@ -48,7 +48,7 @@ export class ShopComponent implements OnInit {
     this.createMenu();
 
     this.getProducts();
-    this.basketService.currentbasket.subscribe(basket => {
+    this.basketService.currentBasket.subscribe(basket => {
       this.basket = basket;
     });
   }
@@ -152,12 +152,18 @@ export class ShopComponent implements OnInit {
         } else {
           this.products = products;
         }
-        this.products.map(p => p.imglink = this.amazonServer + p.imglink);
+        this.products.map(p => p.imglink = amazoneUrl + p.imglink);
         this.pages = new Array(Math.round(this.products.length / 9));
         if (this.pages.length === 0) {
           this.pages = new Array(1);
         }
         this.showLoader = false;
       });
+  }
+  seeDetails(id, i) {
+    const pr = this.products.filter(p => p._id === id)[0];
+    this.sideNavService.changeProduct(pr);
+    this.router.navigate(['/shop', i]);
+    // [routerLink]="[]"
   }
 }

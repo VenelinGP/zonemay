@@ -18,7 +18,7 @@
                 </div>
                 <!-- Products -->
                 <div class="row" *ngIf='products.length > 0'>
-                    <div class="col-sm-6 col-md-6 col-lg-4 fadeInUp animated" *ngFor="let product of products">
+                    <div class="col-sm-6 col-md-6 col-lg-4 fadeInUp animated" *ngFor="let product of products; let i = index">
                         <div class="product">
                             <a href="#" class="img-prod">
                                 <img class="img-fluid" src="{{product.imglink}}" alt="Снимка Продукт">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <p class="bottom-area d-flex px-3">
-                                    <a href="#" class="add-to-cart text-center py-2 mr-1">
+                                    <a class="add-to-cart text-center py-2 mr-1" (click)="seeDetails(product._id, i)">
                                         <span>Виж продукт 
                                             <i class="ion-ios-add ml-1"></i>
                                         </span>
@@ -90,80 +90,5 @@
 </section>
 
 <!--Footer-->
-<footer class="ftco-footer bg-light ftco-section">
-    <div class="footer-color">
-        <div class="container">
-            <div class="row">
-                <div class="mouse">
-                    <a class="mouse-icon" (click)='moveUp()'>
-                        <div class="mouse-wheel">
-                            <span class="ion-ios-arrow-up"></span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Зона Май</h2>
-                        <p>Креативни, уникални и самоделни декорации и подаръци.</p>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-
-                            <li class="ftco-animate fadeInUp ftco-animated"><a target="_blank" href="https://www.facebook.com/%D0%97%D0%BE%D0%BD%D0%B0-%D0%9C%D0%B0%D0%B9-441507525941541/"><span
-                        class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate fadeInUp ftco-animated"><a target="_blank" href="https://www.instagram.com/explore/tags/%D0%B7%D0%BE%D0%BD%D0%B0%D0%BC%D0%B0%D0%B9/"><span
-                        class="icon-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Меню</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="shop.html" class="py-2 d-block">Магазин</a></li>
-                            <li><a href="about.html" class="py-2 d-block">За Нас</a></li>
-                            <li><a href="contact.html" class="py-2 d-block">Контакти</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Помощ</h2>
-                        <div class="d-flex">
-                            <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                <li><a href="shipping.html" class="py-2 d-block">Информация за Доставка</a></li>
-                                <li><a href="returns.html" class="py-2 d-block">Подмяна и връщане</a></li>
-                                <li><a href="terms.html" class="py-2 d-block">Условия на закупуване</a></li>
-                                <li><a href="faq.html" class="py-2 d-block">Често задавани въпроси</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Контакти</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">ул. Мишо Тодоров №7, Сливен,
-                        България</span></li>
-                                <li><a href="tel:+359889785643"><span class="icon icon-phone"></span><span class="text">+359 88 978
-                          5643</span></a></li>
-                                <li><a href="mailto:zonamai@abv.bg?subject=Здравейте!"><span class="icon icon-envelope"></span><span
-                          class="text">zonamai@abv.bg</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>Copyright ©
-                        <script type="text/javascript">
-                            document.write(new Date().getFullYear());
-                        </script>2019 | Всички права запазени. - Зона Май | <a href="https://zonamai.bg/" target="_blank">zonamai.bg</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<app-footer></app-footer>
 <!--Footer End-->

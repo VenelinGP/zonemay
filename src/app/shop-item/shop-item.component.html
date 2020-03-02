@@ -1,0 +1,108 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row shop-top" *ngIf="product">
+            <div class="col-lg-6 mb-5 fadeInUp ftco-animated">
+                <a class="image-popup">
+                    <img [src]="product.imglink" class="img-fluid" alt="Продукт">
+                </a>
+            </div>
+            <div class="col-lg-6 product-details pl-md-5 fadeInUp ftco-animated">
+                <h3>{{product.name}}</h3>
+                <div class="rating d-flex">
+                    <p class="text-left mr-4">
+                        <a class="mr-2">{{product.rating | number: '1.1-1'}}</a>
+                        <a><span class="ion-ios-star-outline"></span></a>
+                        <a><span class="ion-ios-star-outline"></span></a>
+                        <a><span class="ion-ios-star-outline"></span></a>
+                        <a><span class="ion-ios-star-outline"></span></a>
+                        <a><span class="ion-ios-star-outline"></span></a>
+                    </p>
+                    <p class="text-left mr-4">
+                        <a class="mr-2 rate-number">100 <span class="rate">Рейтинг</span></a>
+                    </p>
+                    <p class="text-left">
+                        <a class="mr-2 rate-number">30 <span class="rate">Продадени</span></a>
+                    </p>
+                </div>
+                <p class="price"><span>Цена: </span><span>{{product.price | number:'1.2-2'}} лв.</span></p>
+                <p>Описание тук<br> {{product.description}}</p>
+                <div class="row mt-4">
+                    <div class="w-100"></div>
+                    <div class="input-group col-md-6 d-flex mb-3">
+                        <span class="input-group-btn mr-2">
+                  <button type="button" class="quantity-left-minus btn" data-type="minus" (click)='remove()'>
+                    <i class="ion-ios-remove"></i>
+                  </button>
+                </span>
+                        <input type="text" id="quantity" name="quantity" class="form-control input-number" [(ngModel)]="product.buyingQty" (keyup)='onKey()' value="1" min="1" max="100">
+                        <span class="input-group-btn ml-2">
+                  <button type="button" class="quantity-right-plus btn" data-type="plus" (click)='add()'>
+                    <i class="ion-ios-add"></i>
+                  </button>
+                </span>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                        <p style="color: #000;">{{product.quantity}} налични</p>
+                    </div>
+                </div>
+                <p>
+                    <a class="btn btn-blue py-3 px-5" (click)="buy()">Добави в количка</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center fadeInUp ftco-animated">
+                <h2 class="mb-4">Подоби продукти</h2>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm col-md-6 col-lg fadeInUp ftco-animated" *ngFor="let product of similarProducts; let i = index ">
+                <div class="product">
+                    <a class="img-prod">
+                        <img [src]="product.imglink" class="img-fluid" alt="Продукт">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 px-3">
+                        <h3>
+                            <a>{{product.name}}</a>
+                        </h3>
+                        <div class="d-flex">
+                            <div class="pricing">
+                                <p class="price">
+                                    <span>{{product.price | number:'1.2-2'}} лв.</span>
+                                </p>
+                            </div>
+                            <div class="rating">
+                                <p class="text-right">
+                                    <a><span class="ion-ios-star-outline"></span></a>
+                                    <a><span class="ion-ios-star-outline"></span></a>
+                                    <a><span class="ion-ios-star-outline"></span></a>
+                                    <a><span class="ion-ios-star-outline"></span></a>
+                                    <a><span class="ion-ios-star-outline"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="bottom-area d-flex px-3">
+                            <a class="add-to-cart text-center py-2 mr-1" (click)="seeDetails(product._id, i)">
+                                <span>Виж продукт <i class="ion-ios-add ml-1"></i></span>
+                            </a>
+                            <!-- <span class="buy-now text-center py-2">Купи<span>
+                                <i class="ion-ios-cart ml-1"></i></span>
+                            </a> -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

@@ -82,4 +82,8 @@ export class MainComponent implements OnInit {
   goToShop(categoriId: SubMenu){
     this.sideNavService.changeCategory(categoriId);
   }
+
+  changeCategory() {
+    this.sideNavService.changeCategory({ _id: '', id: 0, name: 'Всички продукти' });
+  }
 }

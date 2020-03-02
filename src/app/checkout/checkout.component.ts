@@ -16,6 +16,8 @@ export class CheckoutComponent implements OnInit {
   basket: Product[];
 
   client: Client;
+  deliveryAddress = false;
+  isApproved = false;
   constructor(private baseService: BaseService, private basketService: BasketService) { }
 
   ngOnInit() {
@@ -35,7 +37,7 @@ export class CheckoutComponent implements OnInit {
       deleted: false
     };
 
-    this.basketService.currentbasket.subscribe(basket => {
+    this.basketService.currentBasket.subscribe(basket => {
       if (basket.length !== 0) {
         this.basket = basket;
         this.update();
@@ -74,10 +76,20 @@ export class CheckoutComponent implements OnInit {
       currentbasket.push(product);
     });
     this.client.basket = currentbasket;
+    this.basketService.changeClient(this.client);
     console.log(this.client);
     this.baseService.addClientBasket(this.client)
       .subscribe(data => {
         console.log(data);
     });
+  }
+  registerAccount(checked) {
+    console.log(checked);
+  }
+  eventCheck(checked) {
+      this.deliveryAddress = checked;
+  }
+  approval(checked) {
+    this.isApproved = checked;
   }
 }

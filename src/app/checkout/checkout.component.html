@@ -8,9 +8,10 @@
         </div>
     </div>
 </div>
+<!-- .ftco-cart -->
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-xl-8 fadeInUp animated">
                 <form action="#" class="billing-form">
                     <h3 class="mb-4 billing-heading-big">Детайли за поръчка</h3>
@@ -68,17 +69,45 @@
                             </div>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group mt-4">
                                 <div class="checkbox">
                                     <label class="mr-3 d-block">
-                                        <input type="checkbox" name="optradio"> Регистрирайте нов акаунт! 
+                                        <input type="checkbox" name="optradio" (change)="registerAccount($event.target.checked)"> Регистрирайте нов акаунт!
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="optradio"> Изпратете на друг адрес.
+                                        <input type="checkbox" name="optradio" (change)="eventCheck($event.target.checked)"> Изпратете на друг адрес.
                                     </label>
                                 </div>
                             </div>
+                        </div>
+                        <div *ngIf="deliveryAddress" class="w-100">
+                            <div class="w-100"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="streetaddress">Адрес</label>
+                                    <input [(ngModel)]="client.address" name="address" type="text" class="form-control" placeholder="Улица и номер">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input [(ngModel)]="client.address2" name="address2" type="text" class="form-control" placeholder="Вход, Етаж, Апартамент: (незадължително)">
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="towncity">Град</label>
+                                    <input [(ngModel)]="client.city" name="sity" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="postcodezip">Пощенски Код</label>
+                                    <input [(ngModel)]="client.postCode" name="zip" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
                         </div>
                     </div>
                 </form>
@@ -106,6 +135,7 @@
                         </p>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="cart-detail bg-light p-3 p-md-4">
                         <h3 class="billing-heading mb-4 selected">Начин на плащане</h3>
@@ -133,7 +163,8 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="" class="mr-2">Прочел съм условията и съм съгласен.</label>
+                                    <label>
+                                        <input type="checkbox" class="mr-2" (change)="approval($event.target.checked)">Прочел съм условията и съм съгласен.</label>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +172,13 @@
                     </div>
 
                 </div>
-                <p><a (click)="submit()" class="btn btn-primary btn-buy py-3 px-4" style="text-align:center;">Купи</a></p>
+                <!-- btn-buy -->
+
+            </div>
+            <div class="col col-lg-5 col-md-6 mt-5 cart-wrap fadeInUp animated">
+                <p class="text-center">
+                    <button routerLink="/checkoutafter" (click)="submit()" [disabled]="!isApproved" class="btn btn-primary py-3 px-4">Купи</button>
+                </p>
             </div>
         </div>
     </div>

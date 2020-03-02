@@ -1,0 +1,13 @@
+.address {
+    font-size: 1.8vw;
+}
+
+@media screen and (max-width: 768px) {
+    .address {
+        font-size: 6vw;
+    }
+    .gmap_canvas {
+        height: 436px;
+        width: 436px;
+    }
+}
