@@ -19,7 +19,7 @@ import { CheckoutAfterComponent } from './checkout-after/checkout-after.componen
 import { ShopItemComponent } from './shop-item/shop-item.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -32,11 +32,11 @@ const routes: Routes = [
   { path: 'finished', component: CheckoutAfterComponent },
   { path: 'about', component: AboutComponent},
   { path: 'contacts', component: ContactComponent },
-  { path: 'shipping', component: AppHeaderComponent },
-  { path: 'returns', component: AppHeaderComponent },
-  { path: 'terms', component: AppHeaderComponent },
-  { path: 'privacypolicy', component: AppHeaderComponent },
-  { path: 'faq', component: AppHeaderComponent },
+  { path: 'shipping', component: HelpComponent },
+  { path: 'returns', component: HelpComponent },
+  { path: 'terms', component: HelpComponent },
+  { path: 'privacypolicy', component: HelpComponent },
+  { path: 'faq', component: HelpComponent },
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/register', component: RegisterComponent },
   { path: 'admin', component: HomeComponent, canActivate: [AuthGuard], children: [

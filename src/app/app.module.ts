@@ -37,7 +37,6 @@ import { BaseService } from './_services/base.service';
 import { WINDOW_PROVIDERS } from './_services/window.service';
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AppHeaderComponent } from './app-header/app-header.component';
 import { MenuSettingsComponent } from './admin/menu-settings/menu-settings.component';
 
 // MATERIAL COMPONENTS
@@ -58,6 +57,7 @@ import { ShopItemComponent } from './shop-item/shop-item.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { HelpComponent } from './help/help.component';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -69,7 +69,6 @@ import { ContactComponent } from './contact/contact.component';
     MainComponent,
     HomeComponent,
     MasterComponent,
-    AppHeaderComponent,
     MenuSettingsComponent,
     MenuDetailComponent,
     MenuSaveComponent,
@@ -85,7 +84,8 @@ import { ContactComponent } from './contact/contact.component';
     ShopItemComponent,
     FooterComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
