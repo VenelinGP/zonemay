@@ -13027,7 +13027,8 @@
         font-weight: 400;
         font-family: 'madelynregular';
         /*text-transform: uppercase;*/
-        letter-spacing: 2px;
+        /* letter-spacing: 2px; */
+        letter-spacing: 1.1px;
         color: #00ada1;
     }
     
