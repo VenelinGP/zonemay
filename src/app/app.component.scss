@@ -1,3 +1,12 @@
+:host {
+    .header-flex-col {
+        display: flex;
+        flex-direction: column;
+        app-top-header,
+        app-header {
+            flex-grow: 1;
+        }
+    }
     .multi-column-dropdown li a {
         display: block;
         clear: both;
@@ -18,7 +27,6 @@
         font-family: 'Nunito', sans-serif;
         text-transform: uppercase;
     }
-    
     .nav-category {
         font-size: 3em;
         letter-spacing: 0px;
@@ -28,13 +36,14 @@
         margin-bottom: -15px;
         padding-left: 14px;
     }
-    
     .nav-category-bg1 {
         background-image: url('../assets/images/menu-stroke.svg');
         background-position: left;
         background-repeat: no-repeat;
     }
-    
+    .sidenav-container {
+        overflow-x: hidden;
+    }
     @media screen and (max-width: 991.98px) {
         .stroke1 {
             background-image: url(../assets/images/home-stroke-l0.svg);
@@ -78,3 +87,4 @@
             margin-bottom: -15px;
         }
     }
+}

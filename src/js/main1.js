@@ -140,7 +140,7 @@
          $(window).scroll(function() {
              var $w = $(this),
                  st = $w.scrollTop(),
-                 navbar = $('.ftco_navbar'),
+                 navbar = $('._navbar'),
                  sd = $('.js-scroll-wrap');
 
              if (st > 150) {

@@ -1,79 +1,139 @@
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 500px) {
-//     .menu-large {
-//         display: none;
-//     }
-//     .menu-small {
-//         display: flex;
-//     }
-// }
-// Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-//     .menu-large {
-//         display: none;
-//     }
-//     .menu-small {
-//         display: flex;
-//     }
-// }
-// Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-//     .ftco-navbar-light {
-//         background: #ffffff !important;
-//         z-index: 9999;
-//         padding: 0;
-//         margin-top: 0;
-//         margin-left: 0;
-//         margin-right: 0;
-//     }
-//     .menu-large {
-//         display: flex;
-//     }
-//     .menu-small {
-//         display: none;
-//     }
-// }
-// Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-//     .menu-large {
-//         display: flex;
-//     }
-//     .menu-small {
-//         display: none;
-//     }
-// }
-#content-desktop {
-    display: block;
-}
-
-.sidenav {
-    position: absolute;
-    display: block;
-    top: 80px;
-    left: 2px;
-    width: 20px;
-}
-
-@media screen and (max-width: 768px) {
-    .ftco-navbar-light {
-        background: #ffffff !important;
-        z-index: 9999;
-        padding: 0;
+@import '../../css/responsive';
+:host {
+    // #content-desktop {
+    //     display: block;
+    // }
+    // .sidenav {
+    //     position: absolute;
+    //     display: block;
+    //     top: 80px;
+    //     left: 2px;
+    //     width: 20px;
+    // }
+    // @include less-than(tablet) {
+    //     .ftco-navbar-light {
+    //         background: #ffffff !important;
+    //         z-index: 9999;
+    //         padding: 0;
+    //         margin-top: 0;
+    //         margin-left: 0;
+    //         margin-right: 0;
+    //     }
+    //     .ftco-navbar-light .navbar-toggler {
+    //         background: #e5fbff !important;
+    //         position: absolute;
+    //         overflow: hidden;
+    //         top: 1em;
+    //         right: 5em;
+    //         padding: 10px 15px;
+    //     }
+    //     #content-desktop {
+    //         display: none;
+    //     }
+    // }
+    >nav {
         margin-top: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .ftco-navbar-light .navbar-toggler {
-        background: #e5fbff !important;
-        position: absolute;
-        overflow: hidden;
-        top: 1em;
-        right: 5em;
-        padding: 10px 15px;
-    }
-    #content-desktop {
-        display: none;
+        >.nav-container {
+            margin: 0px 20%;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            >.navbar-brand {
+                >img {
+                    width: 100px;
+                    height: 54px;
+                }
+            }
+            >.navbar-navigation {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                >.navbar-toggler {
+                    font-size: 1.8vw;
+                    background: #e5fbff !important;
+                    padding: 10px 15px;
+                    border: 0 solid transparent;
+                    border-radius: 0.25rem;
+                    top: 0;
+                    @include less-than(largePhone) {
+                        font-size: 2.8vw;
+                    }
+                }
+                >button {
+                    display: none;
+                    >.oi {
+                        font-family: Icons;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1;
+                        -webkit-font-smoothing: antialiased;
+                        top: 0;
+                    }
+                    @include less-than(miniDesktop) {
+                        display: flex;
+                    }
+                }
+                >div {
+                    >.navbar-nav {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        >.nav-item {
+                            a {
+                                font-size: 0.7vw;
+                                padding-top: 1.5rem;
+                                padding-bottom: 1.5rem;
+                                padding-left: 15px;
+                                padding-right: 15px;
+                                color: #000000;
+                                text-transform: uppercase;
+                                letter-spacing: 2px;
+                                opacity: 1 !important;
+                                font-family: 'Nunito', sans-serif;
+                                font-weight: 500;
+                            }
+                        }
+                        @include less-than(miniDesktop) {
+                            display: none;
+                        }
+                    }
+                }
+                >.nav-cart {
+                    >.nav-link {
+                        @include less-than(smallDesktop) {
+                            font-size: 1.4vw;
+                        }
+                        @include less-than(miniDesktop) {
+                            font-size: 1.8vw;
+                        }
+                        @include less-than(tablet) {
+                            font-size: 2.6vw;
+                        }
+                        @include less-than(phone) {
+                            font-size: 3vw;
+                        }
+                    }
+                }
+            }
+            @include less-than(smallDesktop) {
+                margin: 0px 8%;
+                font-size: 1vw;
+                >.navbar-navigation {
+                    >div {
+                        >.navbar-nav {
+                            >.nav-item {
+                                a {
+                                    font-size: 1vw;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @include less-than(tablet) {
+                margin: 0;
+            }
+        }
     }
 }

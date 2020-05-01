@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, } from '@angular/core';
 
 import { AuthenticationService } from './_services';
 import { User, MainMenu, SubMenu } from './_models';
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
         // this.createMenu();
       });
   }
-  hideMenu(){
+  hideMenu() {
     this.sideNavService.changeShowHideMenu(false);
   }
   changeCategory(categoriId: SubMenu) {

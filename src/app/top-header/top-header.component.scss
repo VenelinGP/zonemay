@@ -1,4 +1,74 @@
 @import '../../css/responsive';
+:host {
+    background-color: grey;
+    a {
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease;
+        color: #bbfffd;
+    }
+    >.top-header-desktop {
+        padding: 0.25rem 0;
+        background-color: grey;
+        >.top-header-container {
+            margin: 0 20%;
+            display: flex;
+            font-family: "Open Sans", Arial, sans-serif;
+            font-weight: 400;
+            font-size: 0.6vw;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            >.top-header-desktop-contacts-info {
+                display: flex;
+                justify-content: space-around;
+                width: 50%;
+                span {
+                    margin-right: 0.5rem;
+                    color: white;
+                }
+                >.top-header-desktop-gsm {
+                    padding: 0 15px;
+                }
+                >.top-header-desktop-email {
+                    padding: 0 15px;
+                }
+                @include less-than(tablet) {
+                    width: 100%;
+                    font-size: 1.6vw;
+                }
+                @include less-than(phone) {
+                    font-size: 2.4vw;
+                }
+            }
+            >.top-header-desktop-work-info {
+                display: flex;
+                width: 50%;
+                justify-content: space-around;
+                >.top-header-desktop-work {
+                    padding: 0 15px;
+                    color: white;
+                }
+                @include less-than(tablet) {
+                    display: none;
+                }
+            }
+            @include between(smallDesktop, desktop) {
+                margin: 0 10%;
+                font-size: 0.7vw;
+            }
+            @include between(tablet, smallDesktop) {
+                margin: 0 1%;
+                font-size: 0.9vw;
+            }
+            @include less-than(tablet) {
+                margin: 0 10%;
+            }
+        }
+    }
+}
+
 // .pb-1,
 // .py-1 {
 //     padding-bottom: 0.25rem !important;
@@ -179,73 +249,3 @@
 //         display: none;
 //     }
 // }
-:host {
-    background-color: grey;
-    // border: 1px solid black;
-    a {
-        text-decoration: none;
-        background-color: transparent;
-        -webkit-transition: .3s all ease;
-        -o-transition: .3s all ease;
-        transition: .3s all ease;
-        color: #bbfffd;
-    }
-    >.top-header-desktop {
-        padding: 0.25rem 0;
-        background-color: grey;
-        >.top-header-container {
-            margin: 0 20%;
-            display: flex;
-            font-family: "Open Sans", Arial, sans-serif;
-            font-weight: 400;
-            font-size: 0.6vw;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            >.top-header-desktop-contacts-info {
-                display: flex;
-                justify-content: space-around;
-                width: 50%;
-                span {
-                    margin-right: 0.5rem;
-                    color: white;
-                }
-                >.top-header-desktop-gsm {
-                    padding: 0 15px;
-                }
-                >.top-header-desktop-email {
-                    padding: 0 15px;
-                }
-                @include less-than(tablet) {
-                    width: 100%;
-                    font-size: 1.6vw;
-                }
-                @include less-than(phone) {
-                    font-size: 2.4vw;
-                }
-            }
-            >.top-header-desktop-work-info {
-                display: flex;
-                width: 50%;
-                justify-content: space-around;
-                >.top-header-desktop-work {
-                    padding: 0 15px;
-                    color: white;
-                }
-                @include less-than(tablet) {
-                    display: none;
-                }
-            }
-            @include between(smallDesktop, desktop) {
-                margin: 0 10%;
-                font-size: 0.7vw;
-            }
-            @include between(tablet, smallDesktop) {
-                margin: 0 1%;
-                font-size: 0.9vw;
-            }
-            @include less-than(tablet) {
-                margin: 0 10%;
-            }
-        }
-    }
-}

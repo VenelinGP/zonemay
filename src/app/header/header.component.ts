@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MainMenu, User, SubMenu } from '../_models';
 import { AuthenticationService } from '../_services';
 import { BasketService } from '../_services/basket.service';
@@ -10,7 +10,8 @@ import { SideNavService } from '../_services/side_nav.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
+
   currentUser: User;
   menu: MainMenu[] = [];
   isMenuShow: boolean;
@@ -28,9 +29,15 @@ export class HeaderComponent implements OnInit {
         console.log(this.currentUser.name);
       }
     });
+    this.baseService.getMenu().subscribe((res) => {
+      console.log(res);
+      this.menu = res;
+      this.createMenu();
+    });
     }
 
   ngOnInit() {
+    console.log('ngOnInit');
     this.opened = false;
     this.sideNavService.changeShowHideMenu(this.opened);
     this.sideNavService.currentState.subscribe(state => this.opened = state);
@@ -39,6 +46,10 @@ export class HeaderComponent implements OnInit {
       this.productsInBasket = basket.length;
     });
 
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
   }
   menuShow() {
     this.opened = !this.opened;

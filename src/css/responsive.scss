@@ -1,4 +1,4 @@
-$breakpointsWidth: (phone: 568px, largePhone:688px, tablet: 768px, smallDesktop: 1200px, desktop: 1368px);
+$breakpointsWidth: (phone: 568px, largePhone:688px, tablet: 768px, miniDesktop: 968px, smallDesktop: 1200px, desktop: 1368px);
 $breakpointsHeight: (landscapeTablet: 800px, landscapePhone: 550px, superWide: 420px, );
 @mixin more-than($breakpoint) {
     @if map-has-key($breakpointsWidth, $breakpoint) {

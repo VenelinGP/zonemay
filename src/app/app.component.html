@@ -1,5 +1,7 @@
-<app-top-header></app-top-header>
-<app-header></app-header>
+<div class="header-flex-col">
+    <app-top-header></app-top-header>
+    <app-header></app-header>
+</div>
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="over" [(opened)]="opened">
         <div class="sidenav">
@@ -79,7 +81,7 @@
                         <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690c',id:1,name:'8ми Март'})">8ми Март</a>
                     </li>
                     <li>
-                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690b',id:1,name:'Велик ден'})">Велик ден</a>
+                        <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690b',id:1,name:'Великден'})">Великден</a>
                     </li>
                     <li>
                         <a routerLink="shop" (click)="changeCategory({_id:'5e1b977b76d37b66486e690a',id:1,name:'Бал'})">Бал</a></li>

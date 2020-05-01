@@ -1,25 +1,4 @@
-<!--Nav-->
-<!-- <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar intro-fixed-nav" scrolled awake[containerInside]="false">
-    <mdb-navbar-brand>        
-        <a class="logo navbar-brand" routerLink="#">
-            <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" />
-        </a>
-    </mdb-navbar-brand>    
-    <links>        
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active waves-light" mdbWavesEffect>
-                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item waves-light" mdbWavesEffect>
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item waves-light" mdbWavesEffect>
-                <a class="nav-link">Profile</a>
-            </li>
-        </ul>
-    </links>
-</mdb-navbar> -->
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark _navbar ftco-navbar-light">
     <div class="container">
         <a class="navbar-brand" routerLink="main">
             <img src="assets/images/logo.jpg" class="img-fluid flex-center" style="width: 100px; height: 54px;" alt="logo" />
@@ -31,14 +10,14 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item stroke1 nav-elongate">
                     <a routerLink="main" class="nav-link" (click)="hideMenu()">Начало</a>
-                </li>
-                <!-- id="desktrop-drop" -->
-                <li class="nav-item dropdown stroke2 nav-elongate" (mouseover)="drop()" (mouseout)="dropOut()" [ngClass]="{'show':isShow}">
+                </li> -->
+<!-- id="desktrop-drop" -->
+<!-- <li class="nav-item dropdown stroke2 nav-elongate" (mouseover)="drop()" (mouseout)="dropOut()" [ngClass]="{'show':isShow}">
                     <a class="nav-link dropdown-toggle" routerLink="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true">Магазин</a>
                     <ul class="dropdown-menu multi-column columns-3 zindex-9" [ngClass]="{'show':isShow}">
-                        <div class="row menu-large">
-                            <!-- HERE PUT MENU  [innerHTML]="menuString"-->
-                            <div class="col-3-2">
+                        <div class="row menu-large"> -->
+<!-- HERE PUT MENU  [innerHTML]="menuString"-->
+<!-- <div class="col-3-2">
                                 <ul class="multi-column-dropdown">
                                     <li>
                                         <div class="nav-category nav-category-bg1">Декорации</div>
@@ -80,7 +59,7 @@
                                 <ul class="multi-column-dropdown">
                                     <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690d', id: 1, name: 'Баба Марта'})">Баба Марта</a></li>
                                     <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690c', id: 1, name: '8ми Март'})">8ми Март</a></li>
-                                    <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690b', id: 1, name: 'Велик ден'})">Велик ден</a></li>
+                                    <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690b', id: 1, name: 'Великден'})">Великден</a></li>
                                     <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690a', id: 1, name: 'Бал'})">Бал</a></li>
                                     <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e6909', id: 1, name: 'Морски'})">Морски</a></li>
                                     <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e6908', id: 1, name: 'Други'})">Други</a></li>
@@ -92,9 +71,9 @@
                                         <div class="nav-category nav-category-bg1">Ваучери</div>
                                     </li>
                                 </ul>
-                            </div>
-                            <!-- HERE PUT MENU -->
-                        </div>
+                            </div> -->
+<!-- HERE PUT MENU -->
+<!-- </div>
                     </ul>
                 </li>
                 <li class="nav-item stroke3 nav-elongate"><a routerLink="about" class="nav-link">За Нас</a></li>
@@ -105,5 +84,95 @@
             <a routerLink="cart" class="nav-link"><span class="icon-shopping_cart"></span>[{{productsInBasket}}]</a>
         </div>
     </div>
-</nav>
+</nav> -->
 <!-- END Nav -->
+
+<nav class="_navbar ftco-navbar-light">
+    <div class="nav-container">
+        <a routerLink="main" class="navbar-brand">
+            <img src="assets/images/logo.jpg" class="navbar-brand-image" alt="logo">
+        </a>
+        <div class="navbar-navigation">
+            <button class="navbar-toggler" type="button" (click)="menuShow()">
+                <span class="oi oi-menu"></span>
+            </button>
+            <!-- class="collapse navbar-collapse" id="ftco-nav"-->
+            <div [ngClass]="{'show':isMenuShow}">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item stroke1 nav-elongate">
+                        <a routerLink="main" class="nav-link" (click)="hideMenu()">Начало</a>
+                    </li>
+                    <li class="nav-item dropdown stroke2 nav-elongate" (mouseover)="drop()" (mouseout)="dropOut()" [ngClass]="{'show':isShow}">
+                        <a class="nav-link dropdown-toggle" routerLink="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true">Магазин</a>
+                        <ul class="dropdown-menu multi-column columns-3 zindex-9" [ngClass]="{'show':isShow}">
+                            <div class="row menu-large" [innerHTML]="menuString">
+                                <!-- HERE PUT MENU  [innerHTML]="menuString"
+                                <div class="col-3-2">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <div class="nav-category nav-category-bg1">Декорации</div>
+                                        </li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f401', id: 1, name: 'Кукли'})">Кукли</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f400', id: 1, name: 'Бутикови кукли'})">Бутикови кукли</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3ff', id: 1, name: 'Цифри и букви'})">Цифри и букви</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3fe', id: 1, name: 'Животни'})">Животни</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3fd', id: 1, name: 'Възглавнички'})">Възглавнички</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3fc', id: 1, name: 'Дрехи за книги'})">Дрехи за книги</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3fb', id: 1, name: 'Несесери'})">Несесери</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3fa', id: 1, name: 'Цветя'})">Цветя</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3f9', id: 1, name: 'Фото Албуми'})">Фото Албуми</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3f8', id: 1, name: 'За Дома'})">За Дома</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-3-2">
+                                    <ul class="multi-column-dropdown">
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3f7', id: 1, name: 'Рамки'})">Рамки</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b906d1608b66bc0e2f3f6', id: 1, name: 'Букети с бонбони'})">Букети с бонбони</a></li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="nav-category nav-category-bg1">Бижута и аксесоари</div>
+                                        </li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b9a03cc7498610cc67ebc', id: 1, name: 'Обици'})">Обици</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b9a03cc7498610cc67ebb', id: 1, name: 'Колиета'})">Колиета</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b9a03cc7498610cc67eba', id: 1, name: 'Комплекти'})">Комплекти</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1c8c63c7a9131bc4c24183', id: 1, name: 'Други'})">Други</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="nav-category nav-category-bg1">Тематични</div>
+                                        </li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b8ff81608b66bc0e2f3f5', id: 1, name: 'Коледа'})">Коледа</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690e', id: 1, name: 'Свети Валентин'})">Свети Валентин</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-3-2">
+                                    <ul class="multi-column-dropdown">
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690d', id: 1, name: 'Баба Марта'})">Баба Марта</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690c', id: 1, name: '8ми Март'})">8ми Март</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690b', id: 1, name: 'Великден'})">Великден</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e690a', id: 1, name: 'Бал'})">Бал</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e6909', id: 1, name: 'Морски'})">Морски</a></li>
+                                        <li><a routerLink="shop" (click)="changeCategory({_id: '5e1b977b76d37b66486e6908', id: 1, name: 'Други'})">Други</a></li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="nav-category nav-category-bg1">Промоции</div>
+                                        </li>
+                                        <li>
+                                            <div class="nav-category nav-category-bg1">Ваучери</div>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                                <!-- HERE PUT MENU -->
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="nav-item stroke3 nav-elongate"><a routerLink="about" class="nav-link">За Нас</a></li>
+                    <li class="nav-item stroke4 nav-elongate"><a routerLink="contacts" class="nav-link">Контакти</a></li>
+                </ul>
+            </div>
+            <div class="nav-cart cta cta-colored">
+                <a routerLink="cart" class="nav-link"><span class="icon-shopping_cart"></span>[{{productsInBasket}}]</a>
+            </div>
+        </div>
+    </div>
+</nav>
