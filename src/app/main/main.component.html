@@ -11,25 +11,28 @@
             <!-- -->
             <div class="col-md-12 heading-section text-center animated" [class.bounceInUp]=isStartChange>
                 <h2 class="mb-4">Продукти по категория</h2>
-                <p class="caveat-title">Ръчно Изработени Декорации</p>
-                <div class="spacer-border"></div>
             </div>
         </div>
     </div>
-    <div class="container" id="category-3">
-        <div class="row">
-            <div class="col-sm col-md-6 col-lg wow fadeInUp">
+    <!--@Angular section-->
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3" *ngFor="let category of categoryList">
+            <div class="col-md-12 heading-section text-center">
+                <p class="caveat-title">{{category.name}}</p>
+                <div class="spacer-border  mb-4 pb-4"></div>
+            </div>
+            <div *ngFor="let subCategory of category.submenu; let i = index" class="category col-sm col-md-6 col-lg-3 wow fadeInUp" attr.data-wow-delay='{{i*0.2}}s'>
                 <div class="product">
                     <a class="img-prod">
-                        <img class="img-fluid" src="../../assets/product-img/category/product-2.jpg" alt="Кукли">
+                        <img class="img-fluid" [src]="subCategory.imglink" alt="Кукли">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 px-3">
                         <h3>
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f401', id:1 ,name:'Кукли'})">Кукли</a>
+                            <a routerLink="/shop" (click)="goToShop(subCategory)">{{subCategory.name}}</a>
                         </h3>
                         <p class="bottom-area d-flex px-3">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f401', id:1 ,name:'Кукли'})" class="add-to-cart text-center py-2 mr-1">
+                            <a routerLink="/shop" (click)="goToShop(subCategory)" class="add-to-cart text-center py-2 mr-1">
                                 <span>Виж всички<i class="ion-ios-add ml-1"></i></span>
                             </a>
                         </p>
@@ -37,410 +40,28 @@
                 </div>
             </div>
             <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <div class="product">
-                    <a class="img-prod"><img class="img-fluid" src="../../assets/product-img/category/b-doll.jpg" alt="Бутикови Кукли">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 px-3">
-                        <h3><a routerLink="">Бутикови кукли</a></h3>
-                        <p class="bottom-area d-flex px-3">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f400',id:1,name:'Бутикови кукли'})" class="add-to-cart text-center py-2 mr-1">
-                                <span>Виж всички<i class="ion-ios-add ml-1"></i></span>
-                            </a>
-                        </p>
+            <!-- <div class="col-sm col-md-6 col-lg" data-wow-delay="0.2s">
+                    <div class="product">
+                        <a class="img-prod">
+                            <img class="img-fluid" src="../../assets/product-img/category/b-doll.jpg" alt="Бутикови Кукли">
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 px-3">
+                            <h3>
+                                <a routerLink="">Бутикови кукли</a>
+                            </h3>
+                            <p class="bottom-area d-flex px-3">
+                                <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f400',id:1,name:'Бутикови кукли'})" class="add-to-cart text-center py-2 mr-1">
+                                    <span>Виж всички<i class="ion-ios-add ml-1"></i></span>
+                                </a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
             <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <div class="product">
-                    <a class="img-prod"><img class="img-fluid" src="../../assets/product-img/category/letter.jpg" alt="Цифри и Букви">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 px-3">
-                        <h3><a routerLink="">Цифри и букви</a></h3>
-                        <p class="bottom-area d-flex px-3">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3ff',id:1,name:'Цифри и букви'})" class="add-to-cart text-center py-2 mr-1">
-                                <span>Виж всички<i class="ion-ios-add ml-1"></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <div class="product">
-                    <a class="img-prod"><img class="img-fluid" src="../../assets/product-img/category/animal.jpg" alt="Животни">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 px-3">
-                        <h3><a routerLink="">Животни</a></h3>
-                        <p class="bottom-area d-flex px-3">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3fe',id:1,name:'Животни'})" class="add-to-cart text-center py-2 mr-1">
-                                <span>Виж всички<i class="ion-ios-add ml-1"></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/cushions.jpg " alt="Възглавнички ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Възглавнички</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3fd',id:1,name:'Възглавнички'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/book-cover.jpg " alt="Дрехи за книги ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Дрехи за книги</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3fc',id:1,name:'Дрехи за книги'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/cases.jpg " alt="Несесери ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Несесери</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3fb',id:1,name:'Несесери'})" class="
-                              add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <div class="product ">
-                    <a class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/flowers.jpg " alt="Цветя ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Цветя</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3fa',id:1,name:'Цветя'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row ">
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/album.jpg " alt="Фото Албуми ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Фото Албуми</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3f9',id:1,name:'Фото Албуми'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/frames.jpg " alt="Рамки ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Рамки</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3f7',id:1,name:'Рамки'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/home.jpg " alt="За дома ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">За дома</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3f8',id:1,name:'За Дома'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/candy-b.jpg " alt="Букети с бонбони ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Букети с бонбони</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b906d1608b66bc0e2f3f6',id:1,name:'Букети с бонбони'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <!--Category Bijuta-->
-    <div class="container ">
-        <div class="row justify-content-center mb-3 pb-3 ">
-            <!-- -->
-            <div class="col-md-12 heading-section text-center ">
-                <p class="caveat-title ">Бижута и аксесоари</p>
-                <div class="spacer-border "></div>
-            </div>
-        </div>
-    </div>
-    <div class="container ">
-        <div class="row ">
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/jewelry.jpg " alt="Обеци ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Обеци</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b9a03cc7498610cc67ebc',id:1,name: 'Обици'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/necklaces.jpg " alt="Колиета ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Колиета</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b9a03cc7498610cc67ebb',id:1,name: 'Колиета'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/set.jpg " alt="Комплекти ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Комплекти</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b9a03cc7498610cc67eba',id:1,name: 'Комплекти'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <div class="product">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/jewelry1.jpg " alt="Други ">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Други</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1c8c63c7a9131bc4c24183',id:1,name: 'Други'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Category Tematichni -->
-    <div class="container" id="tema">
-        <div class="row justify-content-center mb-3 pb-3 ">
-            <!-- -->
-            <div class="col-md-12 heading-section text-center ">
-                <p class="caveat-title ">Тематични</p>
-                <div class="spacer-border "></div>
-            </div>
-        </div>
-    </div>
-    <div class="container " id="category-2 ">
-        <div class="row ">
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/xmas.jpg " alt="Коледа ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Коледа</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b8ff81608b66bc0e2f3f5',id:1,name:'Коледа'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/valantine.jpg " alt="Свети Валентин ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Свети Валентин</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e690e',id:1,name:'Свети Валентин'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/baba.jpg " alt="Баба Марта ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Баба Марта</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e690d',id:1,name:'Баба Марта'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i>
-                                </span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/march.jpg " alt="Осми Март ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Осми Март</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e690c',id:1,name:'8ми Март'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row ">
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/east.jpg " alt="Великден ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Великден</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e690b',id:1,name:'Великден'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/prom.jpg " alt="Бал ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Бал</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e690a',id:1,name:'Бал'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/sea.jpg " alt="Морски ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Морски</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e6909',id:1,name:'Морски'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- -->
-            <div class="col-sm col-md-6 col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <div class="product ">
-                    <a href="# " class="img-prod "><img class="img-fluid " src="../../assets/product-img/category/baloon.jpg " alt="Други ">
-                        <div class="overlay "></div>
-                    </a>
-                    <div class="text py-3 px-3 ">
-                        <h3><a href="# ">Други</a></h3>
-                        <p class="bottom-area d-flex px-3 ">
-                            <a routerLink="/shop" (click)="goToShop({_id:'5e1b977b76d37b66486e6908',id:1,name:'Други'})" class="add-to-cart text-center py-2 mr-1 ">
-                                <span>Виж всички<i class="ion-ios-add ml-1 "></i></span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--@Angular section-->
 </section>
 
 <section class="ftco-section bg-light ">

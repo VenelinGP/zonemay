@@ -112,9 +112,7 @@ export class AddProductsComponent implements OnInit {
       this.uploadAttachmentToServer( picture );
     }
   }
-  uploadAttachmentToServer(
-    picture: string
-  ) {
+  uploadAttachmentToServer(picture: string) {
     this.currentFileUpload = new File(
       [this.dataURItoBlob(picture)],
       'picture.jpg'

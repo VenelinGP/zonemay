@@ -1,5 +1,7 @@
 export class SubMenu {
-    _id: string;
+    _id?: string;
     id: number;
     name: string;
+    imglink: string;
+    imgBig: string;
 }

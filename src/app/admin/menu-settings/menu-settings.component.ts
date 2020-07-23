@@ -3,6 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { ActivatedRoute } from '@angular/router';
 import { MainMenu } from '../../_models/mainmenu';
 import { BaseService } from '../../_services/base.service';
+import { amazoneUrl } from '../../_constants/constants';
 
 
 @Component({
@@ -20,13 +21,10 @@ export class MenuSettingsComponent implements OnInit {
   constructor(private baseService: BaseService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // this.baseService.getMenu().subscribe(menu => {
-    //   this.menu = menu.sort((a, b) => {
-    //     return a.id - b.id;
-    //   });
-    // });
-    this.menu = this.baseService.getMenuNotObservable();
-    console.log(this.menu);
+    this.baseService.getMenu()
+    .subscribe(menu => {
+      this.menu = menu.sort((a, b) => a.id - b.id);
+    });
   }
   onSelect(mainMenu: MainMenu): void {
     this.selectedMenu = mainMenu;

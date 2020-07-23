@@ -11,21 +11,52 @@
         <button (click)="save(selectedMenu._id)">Запази</button>
         <button (click)="goBack()">Откажи</button>
     </div>
+</div>
+<div class="sub">
+    <h3>Подменю</h3>
     <ul class="submenu">
         <li *ngFor="let sub of selectedMenu.submenu">
-            <a routerLink="/detail/{{sub.id}}">
-                <span class="badge">{{sub.id}}</span> {{sub.name}}
-            </a>
-            <button class="delete" title="delete subMenu" (click)="delete(sub.id)">x</button>
+            <div class="subcontainer">
+                <!-- routerLink="detail/{{sub.id}}" -->
+                <a>
+                    <span class="badge">{{sub.id}}</span>
+                    <span class="name">{{sub.name}}</span>
+                </a>
+                <button class="delete" title="delete subMenu" (click)="delete(sub.id)">x</button>
+            </div>
+            <img [src]="sub.imglink" alt="">
         </li>
     </ul>
-    <div>
-        <label>Подменю:
-        <input class="form-control mb-4" #subName />
+    <div class='addsubmenu' *ngIf='!isChecked'>
+        <div class="submenu">
+            <label>Добави Подменю:
+        <input class="form-control mb-4" #subName (keyup)="onKey($event)"/>
       </label>
-        <!-- (click) passes input value to add() and then clears the input -->
-        <button (click)="add(subName.value); subName.value=''">
-        Добави
-      </button>
+
+        </div>
+        <input type="file" (change)="fileChangeEvent($event)" (change)="fileChangeEvent($event)">
+        <div *ngIf="!isChecked">
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1/1" [resizeToHeight]="409" [resizeToWidth]="400" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+            <button class="btn btn-info" (click)="next()" [disabled]='isDisabled'>Напред ></button>
+        </div>
+
+        <!-- (click) passes input value to add() and then clears the input
+        <button (click)="add(subName.value); subName.value=''">Добави</button> -->
+    </div>
+</div>
+<div class='next' *ngIf="isChecked">
+    <div class="flow-vertical">
+        <div class="flex-container">
+            <h3>{{subMenu}}</h3>
+        </div>
+        <div class="flex-container">
+            <img [src]="croppedImage" />
+        </div>
+    </div>
+    <div class="flex-container">
+        <button class="btn btn-info" (click)="back()">< Назад</button>
+        <button class="btn btn-info" (click)="add(subMenu)">Запази подменюто</button>
     </div>
 </div>

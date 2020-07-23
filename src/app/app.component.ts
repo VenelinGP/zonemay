@@ -1,10 +1,11 @@
-import { Component, OnInit, HostListener, Inject, } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 import { AuthenticationService } from './_services';
 import { User, MainMenu, SubMenu } from './_models';
 import { BaseService } from './_services/base.service';
 import { BasketService } from './_services/basket.service';
 import { SideNavService } from './_services/side_nav.service';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,8 @@ export class AppComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private basketService: BasketService,
     private baseService: BaseService,
+    private route: ActivatedRoute,
+    private router: Router,
     private sideNavService: SideNavService ) {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
@@ -40,6 +43,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.route.parent.data.subscribe(r => {
+    //   console.log(r);
+    // });
     this.productsInBasket = 0;
     this.sideNavService.currentState.subscribe(state => (this.opened = state));
     this.basketService.currentBasket.subscribe(basket => {
@@ -55,8 +61,6 @@ export class AppComponent implements OnInit {
             this.menuId.push(s);
           });
         });
-        console.log(this.menuId);
-        // this.createMenu();
       });
   }
   hideMenu() {

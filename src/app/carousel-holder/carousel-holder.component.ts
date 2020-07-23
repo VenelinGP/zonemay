@@ -140,7 +140,7 @@ export class CarouselHolderComponent {
       });
     });
   }
-  changeCategory(){
-    this.sideNavService.changeCategory({ _id: '', id: 0, name: 'Всички продукти' });
+  changeCategory() {
+    this.sideNavService.changeCategory({ _id: '', id: 0, name: 'Всички продукти', imglink: '', imgBig: '' });
   }
 }

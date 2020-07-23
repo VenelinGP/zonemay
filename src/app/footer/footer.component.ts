@@ -14,6 +14,6 @@ export class FooterComponent implements OnInit {
   }
 
   changeCategory() {
-    this.sideNavService.changeCategory({ _id: '', id: 0, name: 'Всички продукти' });
+    this.sideNavService.changeCategory({ _id: '', id: 0, name: 'Всички продукти', imglink: '', imgBig: '' });
   }
 }

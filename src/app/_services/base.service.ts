@@ -21,14 +21,15 @@ export class BaseService {
   constructor(private http: HttpClient) {}
 
   getMenu(): Observable<MainMenu[]> {
+    console.log('menu: ', this.getMenuUrl);
     return this.http.get<MainMenu[]>(this.getMenuUrl).pipe(
-      tap(_ => this.log('fetched menu')),
+      tap(_ => this.log('Fetched menu')),
       catchError(this.handleError<MainMenu[]>('getMenu', []))
     );
   }
   getMenuNotObservable(): MainMenu[] {
     console.log('BS: ', this.mainMenu.length);
-    if(this.mainMenu.length === 0) {
+    if (this.mainMenu.length === 0) {
       console.log('Get Menu 11111');
       this.getMenu().subscribe(menu => {
         this.mainMenu = menu.sort((a, b) => a.id - b.id);
@@ -48,7 +49,8 @@ export class BaseService {
   }
 
   /** PUT: update the MainMenu on the server */
-  updateMenu(menu: MainMenu[]): Observable<any> {
+  updateMenu(menu: MainMenu): Observable<any> {
+    // console.log('menu: ', menu);
     return this.http.put(this.menuUrl, menu, this.httpOptions).pipe(
       tap(_ => this.log(`updated Menu`)),
       catchError(this.handleError<any>('updateMenu'))
@@ -93,7 +95,25 @@ export class BaseService {
 
     return this.http.request(req);
   }
+  pushMenuFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
 
+    formdata.append('submenu', file, file.name);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })
+    };
+    const req = new HttpRequest(
+      'POST',
+      environment.apiUrl + '/uploadsubmenu',
+      formdata,
+      {
+        reportProgress: true,
+        responseType: 'text'
+      }
+    );
+
+    return this.http.request(req);
+  }
   addProduct(product: any): Observable<any> {
     return this.http.post<any>(this.addProductUrl, product, this.httpOptions).pipe(
       tap((newProduct: any) =>

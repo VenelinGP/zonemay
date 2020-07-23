@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MainMenu, User, SubMenu } from '../_models';
 import { AuthenticationService } from '../_services';
 import { BasketService } from '../_services/basket.service';
@@ -10,10 +10,14 @@ import { SideNavService } from '../_services/side_nav.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit {
 
   currentUser: User;
   menu: MainMenu[] = [];
+  col0 = [];
+  col1 = [];
+  col2 = [];
+  col3 = [];
   isMenuShow: boolean;
   opened: boolean;
   menuString: string;
@@ -30,14 +34,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       }
     });
     this.baseService.getMenu().subscribe((res) => {
-      console.log(res);
       this.menu = res;
       this.createMenu();
     });
     }
 
   ngOnInit() {
-    console.log('ngOnInit');
     this.opened = false;
     this.sideNavService.changeShowHideMenu(this.opened);
     this.sideNavService.currentState.subscribe(state => this.opened = state);
@@ -46,10 +48,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.productsInBasket = basket.length;
     });
 
-  }
-
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
   }
   menuShow() {
     this.opened = !this.opened;
@@ -72,36 +70,28 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   createMenu() {
-    console.log('1', this.menu);
     this.menuString = '';
-    let i = 0;
-    let k = 0;
-    this.menuString += '<div class="col-3-2"><ul class="multi-column-dropdown">';
+    const flatMenu = [];
+    this.menu.sort((a, b) => a.id - b.id);
     for (const mainmenu of this.menu) {
-      const currentMenuName = mainmenu.name;
-      this.menuString += '<li> <div class="nav-category nav-category-bg1">' + currentMenuName + '</div></li>';
-      i++;
-      k++;
-      if ((k % (12 - i)) === 0) {
-        this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
-        i = 0;
-        k = 0;
-      }
-      mainmenu.submenu.forEach(sub => {
-        this.menuString += '<li><a routerLink="shop">' + sub.name + '</a></li>';
-        k++;
-        if ((k % (12 - i)) === 0) {
-          this.menuString += '</ul></div><div class="col-3-2"><ul class="multi-column-dropdown">';
-          i = 0;
-          k = 0;
-        }
+      let item = {_id: mainmenu._id, id: mainmenu.id, name: mainmenu.name, flag: 'm'};
+      flatMenu.push(item);
+      mainmenu.submenu.forEach( sub => {
+        item = {_id: sub._id, id: sub.id, name: sub.name, flag: 's' };
+        flatMenu.push(item);
       });
-
-      if (mainmenu.submenu.length !== 0) {
-        this.menuString += '<li class="divider"></li>';
+    }
+    for (let i = 0; i < flatMenu.length; i++) {
+      const element = flatMenu[i];
+      if ( i < 10) {
+        this.col0.push(element);
+      } else if (i >= 10 && i < 20) {
+        this.col1.push(element);
+      } else if (i >= 20 && i < 30) {
+        this.col2.push(element);
+      } else if (i >= 30 && i < 40) {
+        this.col3.push(element);
       }
     }
-    this.menuString += '</ul></div>';
-    console.log(this.menuString);
   }
 }
