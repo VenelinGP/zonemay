@@ -12,7 +12,7 @@ export class SideNavService {
         imgBig: ''
     };
     private smb: any[] = [];
-    private product: Product;
+    private product: Product = new Product();
     private showHideSource = new BehaviorSubject(false);
     currentState = this.showHideSource.asObservable();
     private categorySource = new BehaviorSubject(this.sb);
