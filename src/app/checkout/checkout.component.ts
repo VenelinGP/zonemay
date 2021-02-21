@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../_services/basket.service';
 import { Product, Client, BuyingProduct } from '../_models';
 import { BaseService } from '../_services/base.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -18,9 +20,19 @@ export class CheckoutComponent implements OnInit {
   client: Client;
   deliveryAddress = false;
   isApproved = false;
-  constructor(private baseService: BaseService, private basketService: BasketService) { }
+
+  registerForm!: FormGroup
+  submitted = false;
+  posts: any;
+  constructor(private baseService: BaseService, private basketService: BasketService, private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      firstname: ['', [Validators.required, Validators.minLength(6)]],
+      mobile: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]]
+  });
     this.client = {
       name: '',
       family: '',

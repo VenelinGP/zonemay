@@ -19,7 +19,8 @@ export class MenuDetailComponent implements OnInit {
   menu: any;
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  isChecked: boolean;
+  showAddingSubMenu: boolean;
+  showDetailedSubMenu: boolean;
   isDisabled: boolean;
   @Input() selectedMenu: MainMenu;
   constructor(
@@ -28,7 +29,8 @@ export class MenuDetailComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.isChecked = false;
+    this.showAddingSubMenu = true;
+    this.showDetailedSubMenu = false;
     this.isDisabled = true;
     this.selectedMenu.submenu.map(s =>  s.imglink = amazoneUrl + s.imglink);
   }
@@ -64,7 +66,6 @@ export class MenuDetailComponent implements OnInit {
     this.addedSubmenu.push({_id: this.selectedMenu._id, id, imglink});
     this.sideNavService.changeSubMenu(this.addedSubmenu);
 
-    // ---------
     const reader = new FileReader();
     let base64String: any;
     reader.readAsDataURL(imglink);
@@ -77,12 +78,13 @@ export class MenuDetailComponent implements OnInit {
         imgBig: ''
       };
       this.selectedMenu.submenu.push(newSubmenuElement);
-      this.isChecked = false;
+      this.showAddingSubMenu = false;
       this.croppedImage = '';
     };
     console.log(this.addedSubmenu);
   }
-  onKey(event: any) { // without type info
+  onKey(event: any) {
+    // without type info
     if (this.subMenu !== null || this.subMenu === '') {
       this.isDisabled = false;
     }
@@ -93,28 +95,19 @@ export class MenuDetailComponent implements OnInit {
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-    // this.w = event.cropperPosition.x2 - event.cropperPosition.x1;
-    // this.h = event.cropperPosition.y2 - event.cropperPosition.y1;
-    // console.log(event);
   }
-  imageLoaded() {
-    // show cropper
-  }
-  cropperReady() {
-    // cropper ready
-  }
-  loadImageFailed() {
-    // show message
-  }
-  next() {
+    next() {
     if (typeof this.subMenu === 'string') {
-      this.isChecked = true;
+      this.showAddingSubMenu = true;
     }
   }
   back() {
-    this.isChecked = false;
+    this.showAddingSubMenu = false;
   }
-
+  editSubMenu() {
+    this.showAddingSubMenu = false;
+    this.showDetailedSubMenu = true;
+  }
   dataURItoBlob(dataURI): Blob {
     const byteString = atob(dataURI.split(',')[1]);
     const mimeString = dataURI

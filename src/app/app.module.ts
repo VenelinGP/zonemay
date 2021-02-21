@@ -8,6 +8,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AlertModule } from './_alert';
@@ -58,6 +59,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
+import { SubmenuComponent } from './admin/menu-settings/submenu/submenu.component';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -85,7 +87,8 @@ import { HelpComponent } from './help/help.component';
     FooterComponent,
     AboutComponent,
     ContactComponent,
-    HelpComponent
+    HelpComponent,
+    SubmenuComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@
                                     <ul class="multi-column-dropdown">
                                         <li *ngFor="let item of col0">
                                             <div *ngIf='item.flag === "m"' class="nav-category nav-category-bg1">{{item.name}}</div>
-                                            <a *ngIf='item.flag === "s"' routerLink="shop" (click)="changeCategory({_id: item._id, id: item.id, name: item.name})">{{item.name}}</a>
+                                            <a *ngIf='item.flag === "s"' routerLink="shop" (click)="changeCategory({_id: item._id, id: item.id, name: item.name, imglink: item.imglink, imgBig: item.imgBig})">{{item.name}}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -29,7 +29,7 @@
                                         <li *ngFor="let item of col1">
                                             <div *ngIf='item.flag === "m"' class="nav-category nav-category-bg1">
                                                 {{item.name}}</div>
-                                            <a *ngIf='item.flag === "s"' routerLink="shop" (click)="changeCategory({_id: 'item._id', id: item.id, name: 'item.name'})">{{item.name}}</a>
+                                            <a *ngIf='item.flag === "s"' routerLink="shop" (click)="changeCategory({_id: 'item._id', id: item.id, name: 'item.name', imglink: 'item.imglink', imgBig: 'item.imgBig'})">{{item.name}}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -38,7 +38,7 @@
                                         <li *ngFor="let item of col3">
                                             <div *ngIf='item.flag === "m"' class="nav-category nav-category-bg1">
                                                 {{item.name}}</div>
-                                            <a *ngIf='item.flag === "s"' routerLink="shop" (click)="changeCategory({_id: 'item._id', id: item.id, name: 'item.name'})">{{item.name}}</a>
+                                            <a *ngIf='item.flag === "s"' routerLink="shop" (click)="changeCategory({_id: 'item._id', id: item.id, name: 'item.name', imglink: 'item.imglink', imgBig: 'item.imgBig'})">{{item.name}}</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -12,13 +12,12 @@
         <button (click)="goBack()">Откажи</button>
     </div>
 </div>
-<div class="sub">
+<div class="sub" *ngIf='!showDetailedSubMenu'>
     <h3>Подменю</h3>
     <ul class="submenu">
         <li *ngFor="let sub of selectedMenu.submenu">
             <div class="subcontainer">
-                <!-- routerLink="detail/{{sub.id}}" -->
-                <a>
+                <a (click)='editSubMenu()'>
                     <span class="badge">{{sub.id}}</span>
                     <span class="name">{{sub.name}}</span>
                 </a>
@@ -27,7 +26,7 @@
             <img [src]="sub.imglink" alt="">
         </li>
     </ul>
-    <div class='addsubmenu' *ngIf='!isChecked'>
+    <div class='addsubmenu' *ngIf='showAddingSubMenu && !showDetailedSubMenu'>
         <div class="submenu">
             <label>Добави Подменю:
         <input class="form-control mb-4" #subName (keyup)="onKey($event)"/>
@@ -35,9 +34,8 @@
 
         </div>
         <input type="file" (change)="fileChangeEvent($event)" (change)="fileChangeEvent($event)">
-        <div *ngIf="!isChecked">
-            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1/1" [resizeToHeight]="409" [resizeToWidth]="400" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
-                (loadImageFailed)="loadImageFailed()">
+        <div *ngIf="showAddingSubMenu && !showDetailedSubMenu">
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1/1" [resizeToHeight]="409" [resizeToWidth]="400" format="png" (imageCropped)="imageCropped($event)">
             </image-cropper>
             <button class="btn btn-info" (click)="next()" [disabled]='isDisabled'>Напред ></button>
         </div>
@@ -46,7 +44,7 @@
         <button (click)="add(subName.value); subName.value=''">Добави</button> -->
     </div>
 </div>
-<div class='next' *ngIf="isChecked">
+<div class='next' *ngIf="showAddingSubMenu">
     <div class="flow-vertical">
         <div class="flex-container">
             <h3>{{subMenu}}</h3>
@@ -60,3 +58,4 @@
         <button class="btn btn-info" (click)="add(subMenu)">Запази подменюто</button>
     </div>
 </div>
+<app-submenu *ngIf="showDetailedSubMenu"></app-submenu>

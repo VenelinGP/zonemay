@@ -1,11 +1,12 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MainMenu } from '../_models/mainmenu';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BaseService } from '../_services/base.service';
 import { Product, SubMenu } from '../_models';
 import { BasketService } from '../_services/basket.service';
 import { SideNavService } from '../_services/side_nav.service';
-import { amazoneUrl } from '../_constants/constants'
+import { amazoneUrl } from '../_constants/constants';
+import { AlertService } from '../_alert/alert.service';
 
 @Component({
   selector: 'app-shop',
@@ -24,7 +25,14 @@ export class ShopComponent implements OnInit {
   pages: number[];
   appendClassTo: any[];
   products: Product[];
+  
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
+
   constructor(
+    private alertService: AlertService,
     private baseService: BaseService,
     private basketService: BasketService,
     private sideNavService: SideNavService,
@@ -54,6 +62,7 @@ export class ShopComponent implements OnInit {
   }
 
   buy(product: Product) {
+    this.alertService.info("Продукта е добавен в количката", this.options);
     console.log(this.basket);
     const index = this.basket.findIndex(p => p._id === product._id);
     if (index < 0) {

@@ -26,7 +26,9 @@ export class HeaderComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService,
               private basketService: BasketService,
               private baseService: BaseService,
-              private sideNavService: SideNavService) {
+              private sideNavService: SideNavService) {}
+
+  ngOnInit() {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       if (this.currentUser != null) {
@@ -37,9 +39,6 @@ export class HeaderComponent implements OnInit {
       this.menu = res;
       this.createMenu();
     });
-    }
-
-  ngOnInit() {
     this.opened = false;
     this.sideNavService.changeShowHideMenu(this.opened);
     this.sideNavService.currentState.subscribe(state => this.opened = state);

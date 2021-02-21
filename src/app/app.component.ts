@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   productsInBasket: number;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize( event: any) {
     if (window.innerWidth >= 768) {
       this.sideNavService.changeShowHideMenu(false);
     }

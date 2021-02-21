@@ -20,6 +20,7 @@ import { ShopItemComponent } from './shop-item/shop-item.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
+import { SubmenuComponent } from './admin/menu-settings/submenu/submenu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -47,9 +48,9 @@ const routes: Routes = [
     { path: 'clients', component: ClientBasketComponent, canActivate: [AuthGuard] },
     { path: 'clients/:id', component: ClientBasketComponent, canActivate: [AuthGuard] },
     { path: 'master', component: MasterComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-    { path: 'detail/:id', component: MenuDetailComponent, canActivate: [AuthGuard] },
+    { path: 'detail', component: MenuDetailComponent, canActivate: [AuthGuard] }
   ]},
-  { path: '**', redirectTo: 'main' }
+  // { path: '**', redirectTo: 'main' }
 ];
 
 @NgModule({

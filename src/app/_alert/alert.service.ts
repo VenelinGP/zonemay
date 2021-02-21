@@ -1,62 +1,45 @@
-import { Injectable } from "@angular/core";
-import { Router, NavigationStart } from "@angular/router";
-import { Observable, Subject } from "rxjs";
-import { filter } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
-import { Alert, AlertType } from "./alert.model";
+import { Alert, AlertType } from './alert.model';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AlertService {
-  private subject = new Subject<Alert>();
-  private keepAfterRouteChange = true;
+    private subject = new Subject<Alert>();
+    private defaultId = 'default-alert';
 
-  constructor(private router: Router) {
-    // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        if (this.keepAfterRouteChange) {
-          // only keep for a single route change
-          this.keepAfterRouteChange = false;
-        } else {
-          // clear alert messages
-          this.clear();
-        }
-      }
-    });
-  }
+    // enable subscribing to alerts observable
+    onAlert(id = this.defaultId): Observable<Alert> {
+        return this.subject.asObservable().pipe(filter(x => x && x.id === id));
+    }
 
-  // enable subscribing to alerts observable
-  onAlert(alertId?: string): Observable<Alert> {
-    return this.subject
-      .asObservable()
-      .pipe(filter(x => x && x.alertId === alertId));
-  }
+    // convenience methods
+    success(message: string, options?: any) {
+        this.alert(new Alert({ ...options, type: AlertType.Success, message }));
+    }
 
-  // convenience methods
-  success(message: string, alertId?: string) {
-    this.alert(new Alert({ message, type: AlertType.Success, alertId }));
-  }
+    error(message: string, options?: any) {
+        this.alert(new Alert({ ...options, type: AlertType.Error, message }));
+    }
 
-  error(message: string, alertId?: string) {
-    this.alert(new Alert({ message, type: AlertType.Error, alertId }));
-  }
+    info(message: string, options?: any) {
+      console.log(message, options);
+        this.alert(new Alert({ ...options, type: AlertType.Info, message }));
+    }
 
-  info(message: string, alertId?: string) {
-    this.alert(new Alert({ message, type: AlertType.Info, alertId }));
-  }
+    warn(message: string, options?: any) {
+        this.alert(new Alert({ ...options, type: AlertType.Warning, message }));
+    }
 
-  warn(message: string, alertId?: string) {
-    this.alert(new Alert({ message, type: AlertType.Warning, alertId }));
-  }
+    // main alert method    
+    alert(alert: Alert) {
+        alert.id = alert.id || this.defaultId;
+        this.subject.next(alert);
+    }
 
-  // main alert method
-  alert(alert: Alert) {
-    this.keepAfterRouteChange = alert.keepAfterRouteChange;
-    this.subject.next(alert);
-  }
-
-  // clear alerts
-  clear(alertId?: string) {
-    this.subject.next(new Alert({ alertId }));
-  }
+    // clear alerts
+    clear(id = this.defaultId) {
+        this.subject.next(new Alert({ id }));
+    }
 }
