@@ -31,13 +31,7 @@ export class AuthenticationService {
     };
     console.log('URL:' + environment.apiUrl + '/authenticate');
     return this.http
-      .post<any>(
-        environment.apiUrl + '/authenticate',
-        {
-          username,
-          password
-        },
-        httpOptions
+      .post<any>(environment.apiUrl + '/authenticate', {username,password},httpOptions
       )
       .pipe(
         map(res => {

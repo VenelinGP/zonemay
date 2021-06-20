@@ -24,6 +24,7 @@ export class CheckoutComponent implements OnInit {
   registerForm!: FormGroup
   submitted = false;
   posts: any;
+  products = "";
   constructor(private baseService: BaseService, private basketService: BasketService, private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
@@ -68,7 +69,7 @@ export class CheckoutComponent implements OnInit {
     });
     this.total = this.sumOfBasket - this.sumOfDiscount + this.currierPrice;
   }
-  submit() {
+  onSubmit() {
     const currentbasket: BuyingProduct[] = [];
     let product: BuyingProduct = {
       productId: 0,
@@ -77,6 +78,7 @@ export class CheckoutComponent implements OnInit {
       discount: 0,
       buyingQty: 0
     };
+    let i = 1;
     this.basket.forEach(p => {
       product = {
         productId: p._id,
@@ -85,7 +87,11 @@ export class CheckoutComponent implements OnInit {
         discount: p.discount,
         buyingQty: p.buyingQty
       };
+      
+      this.products += '<a style="text-decoration: none" title="Zone May" href="http://zonemay.bg" target="_blank" rel="noreferrer"><img style="max-width: 60%; min-width: 80px; max-width: 80px" src=' + p.imglink + ' alt="ZoneMay"></a><br><b>' + i + '. ' + p.name + "</b> - Ед. Цена: " + p.price + "лв., Отстъпка: " + p.discount + "лв., Количество: "+ p.buyingQty + " броя. <br><br>";
+      console.log(this.products);
       currentbasket.push(product);
+      i++;
     });
     this.client.basket = currentbasket;
     this.basketService.changeClient(this.client);
@@ -94,6 +100,28 @@ export class CheckoutComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
     });
+    const params = new HttpParams({
+      fromObject: {
+        name: this.client.name,
+        family: this.client.family,
+        mobile: this.client.phone,
+        email: this.client.email,
+        postCode: this.client.postCode,
+        city: this.client.city,
+        address: this.client.address,
+        products: this.products
+      }
+    });
+    console.log("params: ",params);
+    // return this.http.post('http://zonemay.bg/sendmail.php', params).subscribe(data => {
+      return this.http.post('http://localhost:4200/sendmail.php', params).subscribe(data => {
+      this.posts = data;
+      // show data in console
+      console.log(this.posts);
+    });
+    // } else {
+    //  return;
+    // }
   }
   registerAccount(checked) {
     console.log(checked);
